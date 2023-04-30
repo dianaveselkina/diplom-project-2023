@@ -1,6 +1,6 @@
 import React from 'react';
-import './post.css';
-import { ReactComponent } from '../img/like.svg';
+import './style.css';
+import { ReactComponent } from './img/like.svg';
 export const Post = ({ title, text, image, tags }) => {
   return (
     <div className="card__conteiner">

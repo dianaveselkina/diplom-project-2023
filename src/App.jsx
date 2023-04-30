@@ -1,7 +1,7 @@
 import './App.css';
-import { Footer } from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
-import { PostList } from './components/PostList/PostList';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { PostList } from './components/PostList';
 import data from './DB/data.json';
 
 function App() {

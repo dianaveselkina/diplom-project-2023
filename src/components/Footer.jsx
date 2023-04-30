@@ -13,7 +13,7 @@ export const Footer = () => {
         position: 'fixed',
         bottom: '0',
         width: '100%',
-        height: '80px',
+        height: '60px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -22,7 +22,7 @@ export const Footer = () => {
         zIndex: '2'
       }}
     >
-      <Typography noWrap={true} sx={{ fontSize: '18px', color: '#3059b7', marginRight: '350px' }}>
+      <Typography noWrap={true} sx={{ fontSize: '18px', color: '#0766be', marginRight: '350px' }}>
         ⒸAuthors: Di & Lou
       </Typography>
 
