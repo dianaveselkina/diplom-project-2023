@@ -1,14 +1,11 @@
 import { Post } from '../Post/Post';
 import './postlist.css';
-export const PostList = () => {
+export const PostList = ({ posts }) => {
   return (
     <div className="postlist__conteiner">
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((item) => {
+        return <Post key={item.name} {...item} posts={item} />;
+      })}
     </div>
   );
 };
