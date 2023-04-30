@@ -6,6 +6,9 @@ export const PostList = () => {
       <Post />
       <Post />
       <Post />
+      <Post />
+      <Post />
+      <Post />
     </div>
   );
 };
