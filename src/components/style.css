@@ -1,106 +1,121 @@
 .header {
-    background-color: #7ff2d2;
-    top: 0;
-    padding: 0.5rem 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: fixed;
-    width: 100%;
-    height: 90px;
-    z-index: 2;
+  background-color: #7ff2d2;
+  top: 0;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
+  height: 90px;
+  z-index: 2;
 }
 
 .header__logotip {
-    fill: #0766be;
-    height: 70px;
-    width: 150px;
+  fill: #0766be;
+  height: 70px;
+  width: 150px;
 }
 
 .header__titlle {
-    color: #0766be;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 30px;
-    font-style: italic;
-    font-weight: 300;
+  color: #0766be;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 300;
 }
 
 .header__button {
-    width: 150px;
-    height: 60px;
-    background-color: #88bff3;
-    border: 1px #06575a;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px#a0aaa7;
-    margin: 10px;
-    font-size: 20px;
+  width: 150px;
+  height: 60px;
+  background-color: #88bff3;
+  border: 1px #06575a;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px#a0aaa7;
+  margin: 10px;
+  font-size: 20px;
 }
 
 .header__button:hover {
-    box-shadow: none;
-    cursor: pointer;
+  box-shadow: none;
+  cursor: pointer;
 }
 
 .card__conteiner {
-    color: rgb(135, 201, 180);
-    width: 380px;
-    height: 720px;
-    border: 1px #7ff2d2 solid;
-    margin: 20px 20px;
-    padding: 10px;
-    display: grid;
-    gap: 15px;
-    border-radius: 6px;
-    flex-direction: column;
-    grid-template-rows: 500px auto 1fr 30px;
-    align-content: flex-start;
-    position: relative;
-    overflow: hidden;
-    /* Скрыть, что не вмещается */
+  color: rgb(135, 201, 180);
+  width: 380px;
+  height: 720px;
+  border: 1px #7ff2d2 solid;
+  margin: 20px 20px;
+  padding: 10px;
+  display: grid;
+  gap: 15px;
+  border-radius: 6px;
+  flex-direction: column;
+  grid-template-rows: 500px auto 1fr 30px;
+  align-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  /* Скрыть, что не вмещается */
 }
 
 .card__conteiner img {
-    max-height: 100%;
-    width: 280px;
-    display: block;
-    justify-self: center;
-    padding-top: 50px;
-    position: absolute;
-    z-index: -1;
+  max-height: 100%;
+  width: 280px;
+  display: block;
+  justify-self: center;
+  padding-top: 50px;
+  position: absolute;
+  z-index: -1;
 }
 
 .card__author {
-    font-size: 1.2em;
-    padding-top: 5px;
+  font-size: 1.2em;
+  padding-top: 5px;
 }
 
 .card__logotip {
-    width: 60px;
-    height: 20px;
-    color: #7ff2d2;
+  width: 60px;
+  height: 20px;
+  color: #7ff2d2;
 }
 
 .card__titlle {
-    font-size: 1.2em;
-    margin-top: auto;
+  font-size: 1.2em;
+  margin-top: auto;
 }
 
 .card__info {
-    display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-evenly;
+}
+.card__like {
+  cursor: pointer;
+  fill: none;
+  stroke: red;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+}
+.card__like_active {
+  border: none;
+  background: none;
+  fill: red;
+  stroke: red;
 }
 
 .postlist__conteiner {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: absolute;
 }
 
 @media (max-width: 600px) {
-    .postlist__container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .postlist__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

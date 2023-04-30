@@ -19,10 +19,13 @@ export const Footer = () => {
         justifyContent: 'center',
         backgroundColor: '#7ff2d2',
         marginBottom: 0,
-        zIndex: '2'
+        zIndex: '2',
       }}
     >
-      <Typography noWrap={true} sx={{ fontSize: '18px', color: '#0766be', marginRight: '350px' }}>
+      <Typography
+        noWrap={true}
+        sx={{ fontSize: '18px', color: '#0766be', marginRight: '350px' }}
+      >
         ⒸAuthors: Di & Lou
       </Typography>
 
