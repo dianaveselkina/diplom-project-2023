@@ -1,0 +1,32 @@
+.card__conteiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 5px 5px 5px#a8cbc1;
+  width: 400px;
+  height: 800px;
+  border: 2px #7ff2d2 solid;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 10px;
+}
+.card__author {
+  font-size: 2rem;
+}
+.card__logotip {
+  width: 60px;
+  height: 20px;
+  color: #7ff2d2;
+}
+.card__titlle {
+  font-size: 1.5rem;
+}
+.card__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.card__conteiner:hover {
+  box-shadow: 15px 10px 10px#a0aaa7;
+}
