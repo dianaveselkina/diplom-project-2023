@@ -1,3 +1,8 @@
+Здравствуй, посетитель!
+
+Этот командный проект, выполняется по-этапно, используя инструменты Reаct.
+Программа обучения Сберуниверситета.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
