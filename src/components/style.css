@@ -7,12 +7,11 @@
   justify-content: space-around;
   position: fixed;
   width: 100%;
-  height: 90px;
+  height: 75px;
   z-index: 2;
 }
 
 .header__logotip {
-  fill: #0766be;
   height: 70px;
   width: 150px;
 }
@@ -26,14 +25,14 @@
 }
 
 .header__button {
-  width: 150px;
-  height: 60px;
+  width: 100px;
+  height: 50px;
   background-color: #88bff3;
   border: 1px #06575a;
   border-radius: 10px;
   box-shadow: 5px 5px 5px#a0aaa7;
   margin: 10px;
-  font-size: 20px;
+  font-size: 1em;
 }
 
 .header__button:hover {
@@ -44,7 +43,7 @@
 .card__conteiner {
   color: rgb(135, 201, 180);
   width: 380px;
-  height: 720px;
+  height: 750px;
   border: 1px #7ff2d2 solid;
   margin: 20px 20px;
   padding: 10px;
@@ -91,6 +90,7 @@
   /* align-items: center; */
   justify-content: space-evenly;
 }
+
 .card__like {
   cursor: pointer;
   fill: none;
@@ -100,18 +100,39 @@
   padding: 0;
   display: flex;
 }
+
 .card__like_active {
   border: none;
   background: none;
   fill: red;
   stroke: red;
+
+
+  @keyframes logo-spn {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .postlist__conteiner {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  position: absolute;
+  /* display: flex;
+  flex-direction: row; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* flex-wrap: wrap; */
+  /* position: absolute; */
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding-bottom: 50px;
+  margin-bottom: auto;
+  align-content: flex-start;
 }
 
 @media (max-width: 600px) {
