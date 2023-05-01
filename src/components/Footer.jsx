@@ -19,16 +19,21 @@ export const Footer = () => {
         justifyContent: 'center',
         backgroundColor: '#7ff2d2',
         marginBottom: 0,
-        zIndex: '2',
+        /* zIndex: '2', */
       }}
     >
       <Typography
         noWrap={true}
         sx={{ fontSize: '18px', color: '#0766be', marginRight: '350px' }}
       >
-        ⒸAuthors: Di & Lou
+        Authors: Di & Lou
       </Typography>
-
+      <Typography
+        noWrap={true}
+        sx={{ fontSize: '18px', color: '#0766be', marginRight: '350px' }}
+      >
+        Ⓒ{new Date().getFullYear()}
+      </Typography>
       <Link
         href="Lel.: 8 888-999-99-99"
         sx={{
