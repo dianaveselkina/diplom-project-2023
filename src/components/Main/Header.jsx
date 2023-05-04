@@ -1,4 +1,4 @@
-import { ReactComponent } from './img/logo.svg';
+import { ReactComponent } from '../img/logo.svg';
 import './style.css';
 export const Header = () => {
   return (

@@ -1,14 +1,15 @@
 
 
 const onResponce = (res) => {
-    return res.ok ? res.json() : res.json().then(err => Promise.reject(err));
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 
 }
 
 class Api {
-    constructor({ baseUrl }) {
-        this._baseUrl = baseUrl;
-    }
+	constructor({ baseUrl, token }) {
+		this._token = `Bearer ${token}`;
+		this._baseUrl = baseUrl;
+	}
 
     singIn(user) {
         return fetch('https://api.react-learning.ru/signin', {
@@ -29,15 +30,14 @@ class Api {
         }).then(onResponce)
     }
 
-    getUserInf() {
-        return fetch(`${this._baseUrl}${localStorage.getItem('group')}/users/me`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('postApi')}`
-            }
-        }).then(onResponce)
-    }
-    
+    getUserInfo() {
+		return fetch(`${this._baseUrl}/users/me`, {
+			headers: {
+				authorization: this._token,
+			},
+		}).then(onResponce);
+	}
+  
     getAllPosts() {
         return fetch(`${this._baseUrl}${localStorage.getItem('group')}/posts`, {
             headers: {
@@ -91,8 +91,8 @@ class Api {
 }
 
 const config = {
-    baseUrl: 'https://api.react-learning.ru/v2/',
-
+    baseUrl:'https://api.react-learning.ru',
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao ?? eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjJmOTk5MmFlNWM0MGMxMGMxMWRmZTQiLCJpYXQiOjE2NDcyODY2ODEsImV4cCI6MTY3ODgyMjY4MX0.WHKXAErKZtY445yXecOFZsx981MuXicJti-okSY-tac'
 }
 
 const api = new Api(config);
