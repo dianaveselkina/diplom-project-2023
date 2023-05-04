@@ -10,7 +10,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   margin: 100px 0;
-  background: #090a0f;
+  /* background: #090a0f; */
   min-height: 100vh;
 }
 

@@ -6,15 +6,16 @@ import { PostList } from './components/PostList';
 import data from './DB/data.json';
 import { PostPage } from './pages/PostPage';
 import { UserPage } from './pages/UserPost';
+import { CreatePostPage } from './pages/CreatePostPage';
 /* import api from "./Utils/api" */
-
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <PostList posts={data} />
-      {<PostPage />}
+      {/* <PostList posts={data} /> */}
+      {/* <CreatePostPage /> */}
+      {/* {<PostPage />} */}
       {<UserPage />}
       <Footer />
     </div>
