@@ -17,7 +17,7 @@ export const Footer = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#7ff2d2',
+        backgroundColor: '#5FCDD9',
         marginBottom: 0,
         /* zIndex: '2', */
       }}
@@ -48,7 +48,7 @@ export const Footer = () => {
       </Link>
 
       <Link
-        href="https://t.me/Diana"
+        href="https://t.me/Diana" //напишите тут свой Телеграм-линк
         sx={{
           padding: '10px',
           opacity: 0.9,

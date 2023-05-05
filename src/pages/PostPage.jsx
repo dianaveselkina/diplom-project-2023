@@ -1,18 +1,21 @@
-import React from 'react';
-import { useState } from 'react';
-import { ReactComponent } from '../components/img/like.svg';
+import React from "react";
+import { useState } from "react";
+import { ReactComponent } from "../components/img/like.svg";
+import { Link, useNavigate } from "react-router-dom";
+
+import { Button } from "@mui/material";
 
 export const PostPage = () => {
   const handleClick = (e) => {
-    e.currentTarget.classList.toggle('card__like_active');
+    e.currentTarget.classList.toggle("card__like_active");
   };
 
   return (
     <div className="postpage__conteiner">
       <img
         src="https://i.yapx.ru/V8YwI.jpg"
-        width={'400px'}
-        height={'400px'}
+        width={"400px"}
+        height={"400px"}
         alt="картинка"
       />
       <div className="postpage__infa">
@@ -38,6 +41,9 @@ export const PostPage = () => {
 
         <span>Теги</span>
         <span>28 апреля 2023</span>
+        <Link to="/" className="btn__home">
+          <Button variant="contained">Вернуться на главную страницу</Button>
+        </Link>
       </div>
     </div>
   );

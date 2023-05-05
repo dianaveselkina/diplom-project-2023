@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
 
-import { Footer } from './components/Main/Footer';
-import { Header } from './components/Main/Header';
-import { PostList } from './components/Main/PostList';
+import { Footer } from "./components/Main/Footer";
+import { Header } from "./components/Main/Header";
+import { PostList } from "./components/Main/PostList";
 // import data from './DB/data.json';
-import { PostPage } from './pages/PostPage';
-import { UserPage } from './pages/UserPost';
-import { CreatePostPage } from './pages/CreatePostPage';
-import { ErrorPage } from './pages/ErrorPage';
-import { api } from './Utils/api';
-import { DataArray } from '@mui/icons-material';
+import { PostPage } from "./pages/PostPage";
+import { UserPage } from "./pages/UserPost";
+import { CreatePostPage } from "./pages/CreatePostPage";
+import { ErrorPage } from "./pages/ErrorPage";
+import { api } from "./Utils/api";
+import { DataArray } from "@mui/icons-material";
 
 function App() {
   const [post, setPost] = useState([]);
 
   const filteredPosts = (posts) => {
-    return posts.filter((e) => e.author._id === '64423c303291d790b3fc967c || 644573ee3291d790b3073d8d');
+    return posts.filter((e) => e.author._id === "64423c303291d790b3fc967c");
   };
 
   useEffect(() => {
@@ -36,7 +36,17 @@ function App() {
     </div>
   );
 
-  
+  return (
+    <>
+      <Routes>
+        <Route path="*" element={<Header />} />
+      </Routes>
+
+      <Routes>
+        <Route path="*" element={<Footer />} />
+      </Routes>
+    </>
+  );
 }
 
 /* const App = () => {
