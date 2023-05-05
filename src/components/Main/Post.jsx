@@ -22,7 +22,7 @@ export const Post = ({ title, text, pictures, image, likes, userId, tags, ...arg
         >
           <ReactComponent />
         </button>
-        <span>('HH:MM:s DD/MM/YYYY')</span>
+        <span>$('HH:MM:s DD/MM/YYYY')</span>
       </div>
     </div>
   );

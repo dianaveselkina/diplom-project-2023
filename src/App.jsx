@@ -14,10 +14,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <PostList posts={data} /> */}
+ <PostList posts={data} /> 
       {/* <CreatePostPage /> */}
       {/* {<PostPage />} */}
-      {<UserPage />}
+      {/* {<UserPage />} */}
       <Footer />
     </div>
   );
