@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { PostList } from './components/PostList';
+
+import { Footer } from './components/Main/Footer';
+import { Header } from './components/Main/Header';
+import { PostList } from './components/Main/PostList';
 import data from './DB/data.json';
 import { PostPage } from './pages/PostPage';
 import { UserPage } from './pages/UserPost';
@@ -13,14 +14,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <PostList posts={data} /> */}
+ <PostList posts={data} /> 
       {/* <CreatePostPage /> */}
       {/* {<PostPage />} */}
-      {<UserPage />}
+      {/* {<UserPage />} */}
       <Footer />
     </div>
   );
 }
+
 
 /* const App = () => {
 

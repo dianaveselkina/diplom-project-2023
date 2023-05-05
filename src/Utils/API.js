@@ -1,14 +1,18 @@
 
 
 const onResponce = (res) => {
-    return res.ok ? res.json() : res.json().then(err => Promise.reject(err));
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 
 }
 
 class Api {
-    constructor({ baseUrl }) {
-        this._baseUrl = baseUrl;
-    }
+	constructor({ baseUrl, basePostsUrl, baseUserUrl, token }) {
+		this._token = `Bearer ${token}`;
+		this._baseUrl = baseUrl;
+        this._basePostsUrl = basePostsUrl;
+        this.baseUserUrl = baseUserUrl;
+
+	}
 
     singIn(user) {
         return fetch('https://api.react-learning.ru/signin', {
@@ -19,6 +23,8 @@ class Api {
             body: JSON.stringify(user),
         }).then(onResponce)
     }
+    
+
     singUp(user) {
         return fetch('https://api.react-learning.ru/signup', {
             method: 'POST',
@@ -29,17 +35,16 @@ class Api {
         }).then(onResponce)
     }
 
-    getUserInf() {
-        return fetch(`${this._baseUrl}${localStorage.getItem('group')}/users/me`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('postApi')}`
-            }
-        }).then(onResponce)
-    }
-    
+    getUserInfo() {
+		return fetch(`${this._baseUserUrl}/me`, {
+			headers: {
+				authorization: this._token,
+			},
+		}).then(onResponce);
+	}
+  
     getAllPosts() {
-        return fetch(`${this._baseUrl}${localStorage.getItem('group')}/posts`, {
+        return fetch(`${this._basePostsUrl}`, {
             headers: {
                 'content-type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('postApi')}`
@@ -48,7 +53,7 @@ class Api {
     }
    
     addNewPost(post) {
-        return fetch(`${this._baseUrl}${localStorage.getItem('group')}/posts`, {
+        return fetch(`${this._basePostsUrl}`, {
             method: 'POST',
             body: JSON.stringify(post),
             headers: {
@@ -58,7 +63,7 @@ class Api {
         }).then(onResponce)
     }
     changePost(post, postid,) {
-        return fetch(`${this._baseUrl}${localStorage.getItem('group')}/posts/${postid}`, {
+        return fetch(`${this._basePostsUrl}/${postid}`, {
             method: 'PATCH',
             body: JSON.stringify(post),
             headers: {
@@ -68,7 +73,7 @@ class Api {
         }).then(onResponce)
     }
     deletePostById(idPost) {
-        return fetch(`${this._baseUrl}${localStorage.getItem('group')}/posts/${idPost}`, {
+        return fetch(`${this._basePostsUrl}/${idPost}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -79,7 +84,7 @@ class Api {
 
 
     changePostLike(postId, islike) {
-        return fetch(`${this._baseUrl}${localStorage.getItem('group')}/posts/likes/${postId}`, {
+        return fetch(`${this._basePostsUrl}/likes/${postId}`, {
             method: islike ? "DELETE" : "PUT",
             headers: {
                 'content-type': 'application/json',
@@ -91,8 +96,10 @@ class Api {
 }
 
 const config = {
-    baseUrl: 'https://api.react-learning.ru/v2/',
-
+    baseUrl:'https://api.react-learning.ru',
+    basePostsUrl: 'https://api.react-learning.ru/v2/12/posts',
+    baseUserUrl: 'https://api.react-learning.ru/users',
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao ?? eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjJmOTk5MmFlNWM0MGMxMGMxMWRmZTQiLCJpYXQiOjE2NDcyODY2ODEsImV4cCI6MTY3ODgyMjY4MX0.WHKXAErKZtY445yXecOFZsx981MuXicJti-okSY-tac'
 }
 
 const api = new Api(config);
