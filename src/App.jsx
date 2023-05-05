@@ -4,25 +4,37 @@ import './App.css';
 import { Footer } from './components/Main/Footer';
 import { Header } from './components/Main/Header';
 import { PostList } from './components/Main/PostList';
-import data from './DB/data.json';
+// import data from './DB/data.json';
 import { PostPage } from './pages/PostPage';
 import { UserPage } from './pages/UserPost';
 import { CreatePostPage } from './pages/CreatePostPage';
-/* import api from "./Utils/api" */
+import { ErrorPage } from './pages/ErrorPage';
+import { api } from './Utils/api';
+import { DataArray } from '@mui/icons-material';
 
 function App() {
+  const [post, setPost] = useState([]);
+
+  const filteredPosts = (posts) => {
+    return posts.filter((e) => e.author._id === '64423c303291d790b3fc967c');
+  };
+
+  useEffect(() => {
+    api.getAllPosts().then((data) => setPost(filteredPosts(data)));
+  }, []);
+
   return (
     <div className="App">
       <Header />
- <PostList posts={data} /> 
+      <PostList posts={post} />
       {/* <CreatePostPage /> */}
       {/* {<PostPage />} */}
       {/* {<UserPage />} */}
+      {/* <ErrorPage /> */}
       <Footer />
     </div>
   );
 }
-
 
 /* const App = () => {
 

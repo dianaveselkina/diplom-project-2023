@@ -4,8 +4,8 @@ import './style.css';
 export const PostList = ({ posts }) => {
   return (
     <div className="postlist__conteiner">
-      {posts.map((item) => {
-        return <Post key={item.name} {...item} posts={item} />;
+      {posts.map((post) => {
+        return <Post key={post.name} {...post} posts={post} />;
       })}
     </div>
   );
