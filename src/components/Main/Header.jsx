@@ -9,11 +9,11 @@ export const Header = () => {
   return (
     <div className="header">
       <ReactComponent className="header__logotip" />
-      <span className="header__titlle">
-        Журнал
-        <br />
-        Весёлые заметки
-      </span>
+      <div className="marquee-container">
+        <span className="marquee">
+          <pre>Журнал "Весёлые заметки"</pre>
+        </span>
+      </div>
       <Link to="CreatePostPage" className="header__button">
         <Stack spacing={2} direction="row">
           <Button variant="contained">Прислать заметку</Button>
