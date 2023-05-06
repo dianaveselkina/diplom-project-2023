@@ -49,21 +49,20 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <PostList posts={post} />
       {/* <CreatePostPage /> */}
       {/* {<PostPage />} */}
       {/* {<UserPage />} */}
       {/* <ErrorPage /> */}
 
-      {/*       <>
+      <>
         <Routes>
-          <Route path="/" element={<PostList />} />
-          <Route path="*" element={<ErrorPage/>} />
+          <Route path="/" element={<PostList posts={post} />} />
+          <Route path="*" element={<ErrorPage />} />
           <Route path="*" element={<CreatePostPage />} />
           <Route path="*" element={<PostPage />} />
           <Route path="*" element={<UserPage />} />
         </Routes>
-      </> */}
+      </>
 
       <Footer />
     </div>
