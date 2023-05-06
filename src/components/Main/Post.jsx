@@ -47,6 +47,7 @@ export const Post = ({
             type="button"
             onClick={handleClick}
           >
+            <Badge badgeContent={likes.length} color="primary"></Badge>
             <ReactComponent />
           </button>
         }
