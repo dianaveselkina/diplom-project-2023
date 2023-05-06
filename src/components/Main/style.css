@@ -51,7 +51,7 @@
 }
 @keyframes marquee {
   0% {
-    transform: translateX(120%)
+    transform: translateX(150%)
   }
   100% {
     transform: translateX(-50%)
