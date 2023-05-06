@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ReactComponent } from "../components/img/like.svg";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Button } from "@mui/material";
+/* import { Button } from "@mui/material"; */
 
 export const PostPage = () => {
   const handleClick = (e) => {
@@ -42,7 +42,8 @@ export const PostPage = () => {
         <span>Теги</span>
         <span>28 апреля 2023</span>
         <Link to="/" className="btn__home">
-          <Button variant="contained">Вернуться на главную страницу</Button>
+          {/* <Button variant="contained">Вернуться на главную страницу</Button> */}
+          <button>Вернуться на главную страницу</button>
         </Link>
       </div>
     </div>

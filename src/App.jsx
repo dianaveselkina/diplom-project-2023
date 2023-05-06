@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 import { Footer } from "./components/Main/Footer";
 import { Header } from "./components/Main/Header";
@@ -11,7 +11,7 @@ import { UserPage } from "./pages/UserPost";
 import { CreatePostPage } from "./pages/CreatePostPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { api } from "./Utils/api";
-import { DataArray } from "@mui/icons-material";
+/* import { DataArray } from "@mui/icons-material"; */
 
 function App() {
   const [post, setPost] = useState([]);
@@ -32,20 +32,21 @@ function App() {
       {/* {<PostPage />} */}
       {/* {<UserPage />} */}
       {/* <ErrorPage /> */}
+
+      {/*       <>
+        <Routes>
+          <Route path="/" element={<PostList />} />
+          <Route path="*" element={<div>NOT FOUND 404</div>} />
+          <Route path="*" element={<CreatePostPage />} />
+          <Route path="*" element={<PostPage />} />
+          <Route path="*" element={<UserPage />} />
+          <Route path="*" element={<Header />} />
+          <Route path="*" element={<Footer />} />
+        </Routes>
+      </> */}
+
       <Footer />
     </div>
-  );
-
-  return (
-    <>
-      <Routes>
-        <Route path="*" element={<Header />} />
-      </Routes>
-
-      <Routes>
-        <Route path="*" element={<Footer />} />
-      </Routes>
-    </>
   );
 }
 

@@ -1,12 +1,13 @@
-import React from 'react';
-import { useState } from 'react';
-import { FaRegWindowClose } from 'react-icons/fa';
+import React from "react";
+import { useState } from "react";
+import { FaRegWindowClose } from "react-icons/fa";
+
 export const CreatePostPage = () => {
   const [data, setData] = useState({
-    titlle: '',
-    post: '',
-    text: '',
-    link: '',
+    titlle: "",
+    post: "",
+    text: "",
+    link: "",
   });
 
   function handleFormSubmit(event) {
@@ -20,7 +21,7 @@ export const CreatePostPage = () => {
       <div className="userpage__profile">
         <titlle>Создать пост</titlle>
         <button className="userpage__close">
-          {' '}
+          {" "}
           <FaRegWindowClose className="close__icons" />
         </button>
       </div>
@@ -30,7 +31,7 @@ export const CreatePostPage = () => {
             type="url"
             value={data.link}
             placeholder="url вашей картинки"
-            onChange={(e) => handleInputChange(e, 'link')}
+            onChange={(e) => handleInputChange(e, "link")}
           />
           <div className="userpage__defolt">
             <img src="./defoltimage.svg" />
@@ -40,7 +41,7 @@ export const CreatePostPage = () => {
             type="text"
             value={data.username}
             placeholder="Заголовок поста"
-            onChange={(e) => handleInputChange(e, 'titlle')}
+            onChange={(e) => handleInputChange(e, "titlle")}
           />
         </label>
         <label>
@@ -48,7 +49,7 @@ export const CreatePostPage = () => {
             type="text"
             placeholder="Текст поста"
             value={data.email}
-            onChange={(e) => handleInputChange(e, 'post')}
+            onChange={(e) => handleInputChange(e, "post")}
           />
         </label>
         <label>
@@ -56,7 +57,7 @@ export const CreatePostPage = () => {
             type="text"
             value={data.description}
             placeholder="введите теги через запятую"
-            onChange={(e) => handleInputChange(e, 'text')}
+            onChange={(e) => handleInputChange(e, "text")}
           />
         </label>
         <div className="userpage__button">

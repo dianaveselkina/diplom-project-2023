@@ -25,14 +25,17 @@
 }
 
 .header__button {
-  width: 100px;
+  text-decoration: none;
+  border: none;
+  color: #F2E3D5;;
+/*   width: 100px;
   height: 50px;
-  background-color: #88bff3;
+  background-color: #F2E3D5;
   border: 1px #06575a;
   border-radius: 10px;
   box-shadow: 5px 5px 5px#a0aaa7;
   margin: 10px;
-  font-size: 1em;
+  font-size: 1em; */
 }
 
 .header__button:hover {
@@ -71,14 +74,18 @@
   position: relative;
 }
 
-.card__conteiner img {
-  max-height: 100%;
-  width: 280px;
-  display: grid;
-            
+.card__conteiner img {            
   justify-self: center;
   padding-top: 50px;
-  position: absolute;
+  position: absolute;display: block;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-background-position: center;
+  background-position: center;
+  width: 100%;
+  height: calc(850px - 25%);
+  object-fit: cover;
 }
 
 .card__author {
@@ -95,14 +102,12 @@
 .card__titlle {
   font-size: 1.3em;
   font-weight: 600;
-  position: relative;
-  /* margin-top: auto; */
 }
 
 .card__info {
   display: flex;
   justify-content: space-around;
-  margin-top: calc(70px - 50%);
+  margin-top: calc(80px - 10%);
 }
 .card__time {
   gap: 10px;

@@ -1,12 +1,25 @@
-import { Post } from './Post';
-import './style.css';
+import { Post } from "./Post";
+import "./style.css";
 
-export const PostList = ({ posts }) => {
+/* export const PostList = ({ posts }) => {
+  console.log(goods);
   return (
     <div className="postlist__conteiner">
       {posts.map((post) => {
         return <Post key={post.name} {...post} posts={post} />;
       })}
+    </div>
+  );
+}; */
+
+export const PostList = ({ posts }) => {
+  console.log(posts);
+  return (
+    <div className="postlist__conteiner">
+      {/* <h1 style={{ margin: 0, gridColumnEnd: "span 4" }}>Все посты</h1> */}
+      {posts.map((post, i) => (
+        <Post key={post.name} {...post} posts={post} />
+      ))}
     </div>
   );
 };
