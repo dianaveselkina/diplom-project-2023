@@ -80,7 +80,7 @@
   background-color: #F2E3D5;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 30px;
   padding: 50px;
   margin-bottom: auto;
   align-content: flex-start;
@@ -100,7 +100,7 @@
   grid-template-rows: 500px auto 1fr 30px;
   align-content: flex-start;
   position: relative;
-  box-shadow: 0 15px 25px#e6c3a4;
+  box-shadow: 0 15px 25px#ebbb91;
   cursor: pointer;
   overflow: hidden;
   border-radius: 2px;
