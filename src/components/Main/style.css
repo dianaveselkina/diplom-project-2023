@@ -1,5 +1,5 @@
 .header {
-  background-color: #7ff2d2;
+  background-color: #5FCDD9;
   top: 0;
   padding: 0.5rem 0.5rem;
   display: flex;
@@ -7,7 +7,7 @@
   justify-content: space-around;
   position: fixed;
   width: 100%;
-  height: 75px;
+  height: 100px;
   z-index: 2;
 }
 
@@ -16,23 +16,59 @@
   width: 150px;
 }
 
-.header__titlle {
-  color: #0766be;
+.marquee-text {
+  color: #027373;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 30px;
   font-style: italic;
   font-weight: 300;
+
+  margin: 10px auto;
+  border: none;
+  max-width: 60%;
+  overflow: hidden;
 }
 
+.marquee-container {
+  display: flex;
+  width: 800px;
+  align-items: center;
+  background: #5FCDD9;
+  overflow: hidden;
+}
+
+.marquee {
+
+  color: #027373;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+  white-space: nowrap;
+  animation: marquee 5s infinite linear;
+}
+.marquee:after {
+  content: "Журнал "Весёлые заметки"";
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(150%)
+  }
+  100% {
+    transform: translateX(-50%)
+  }
+}
 .header__button {
-  width: 100px;
+  text-decoration: none;
+  border: none;
+  color: #F2E3D5;;
+/*   width: 100px;
   height: 50px;
-  background-color: #88bff3;
+  background-color: #F2E3D5;
   border: 1px #06575a;
   border-radius: 10px;
   box-shadow: 5px 5px 5px#a0aaa7;
   margin: 10px;
-  font-size: 1em;
+  font-size: 1em; */
 }
 
 .header__button:hover {
@@ -40,58 +76,77 @@
   cursor: pointer;
 }
 
+.postlist__conteiner {
+  background-color: #F2E3D5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 50px;
+  margin-bottom: auto;
+  align-content: flex-start;
+}
+
 .card__conteiner {
-  color: rgb(135, 201, 180);
-  width: 380px;
-  height: 750px;
-  border: 1px #7ff2d2 solid;
-  margin: 20px 20px;
-  padding: 10px;
+  background-color: #fcfcfc;
+  color: #027373;
+  box-sizing: border-box;
+  width: 500px;
+  height: 850px;
+  margin: 20px;
+  padding: 10px 24px;
   display: grid;
   gap: 15px;
-  border-radius: 6px;
   flex-direction: column;
   grid-template-rows: 500px auto 1fr 30px;
   align-content: flex-start;
   position: relative;
+  box-shadow: 0 15px 25px#ebbb91;
+  cursor: pointer;
   overflow: hidden;
-  /* Скрыть, что не вмещается */
+  border-radius: 2px;
+  position: relative;
 }
 
-.card__conteiner img {
-  max-height: 100%;
-  width: 280px;
-  display: block;
+.card__conteiner img {            
   justify-self: center;
   padding-top: 50px;
-  position: absolute;
-  z-index: -1;
+  position: absolute;display: block;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-background-position: center;
+  background-position: center;
+  width: 100%;
+  height: calc(850px - 25%);
+  object-fit: cover;
 }
 
 .card__author {
-  font-size: 1.2em;
+  font-size: 1.3em;
   padding-top: 5px;
 }
 
 .card__logotip {
   width: 60px;
   height: 20px;
-  color: #7ff2d2;
+  color: #5FCDD9;
 }
 
 .card__titlle {
-  font-size: 1.2em;
-  margin-top: auto;
+  font-size: 1.3em;
+  font-weight: 600;
 }
 
 .card__info {
   display: flex;
-  flex-direction: row;
-  /* align-items: center; */
-  justify-content: space-evenly;
+  justify-content: space-around;
+  margin-top: calc(80px - 10%);
 }
-
+.card__time {
+  gap: 10px;
+}
 .card__like {
+  font-size: 2em;
   cursor: pointer;
   fill: none;
   stroke: red;
@@ -107,11 +162,18 @@
   fill: red;
   stroke: red;
 }
-
+@keyframes card__like {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .userpage__form {
   width: 500px;
   height: 950px;
-  border: 1px #7ff2d2 solid;
+  border: 1px #5FCDD9 solid;
   margin: 20px 20px;
   padding: 10px;
   display: flex;
@@ -140,7 +202,7 @@
   width: 200px;
   height: 200px;
   border-radius: 100px;
-  border: 1px #7ff2d2 solid;
+  border: 1px #5FCDD9 solid;
 }
 
 form {
@@ -160,7 +222,7 @@ label {
   color: rgb(135, 201, 180);
   width: 900px;
   height: 450px;
-  border: 1px #7ff2d2 solid;
+  border: 1px #5FCDD9 solid;
   margin: 20px 20px;
   padding: 10px;
   display: flex;
@@ -182,7 +244,7 @@ label {
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  border: 1px #7ff2d2 solid;
+  border: 1px #5FCDD9 solid;
 }
 .postpage__like {
   display: flex;
@@ -208,30 +270,14 @@ label {
 .userpage_submit {
   padding: 10px;
 }
-@keyframes logo-spn {
-  from {
-    transform: rotate(0deg);
-  }
 
-  to {
-    transform: rotate(360deg);
-  }
+.post__link {
+  text-decoration: none;
+  color: currentColor;
 }
 
-.postlist__conteiner {
-  /* display: flex;
-  flex-direction: row; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
-  /* flex-wrap: wrap; */
-  /* position: absolute; */
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding-bottom: 50px;
-  margin-bottom: auto;
-  align-content: flex-start;
+main~ {
+  display: none;
 }
 @media (max-width: 600px) {
   .postlist__container {

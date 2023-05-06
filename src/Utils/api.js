@@ -13,6 +13,12 @@ class Api {
       headers: this.headers,
     }).then(onResponse);
   }
+  getPostId(id) {
+    return fetch(`${this.baseUrl}/posts/${id}`, {
+      method: 'GET',
+      headers: this.headers,
+    }).then(onResponse);
+  }
 }
 
 const config = {
