@@ -14,7 +14,6 @@ import "./style.css";
 }; */
 
 export const PostList = ({ posts }) => {
-  console.log(posts);
   return (
     <div className="postlist__conteiner">
       {posts.map((post, i) => (

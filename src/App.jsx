@@ -16,7 +16,7 @@ import { api } from "./Utils/api";
 import { LIKEST, NEWEST } from "./sort/sort";
 
 function App() {
-  const [post, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [cards, setCards] = useState([]);
   const cardsValue = {
     cards: cards,
@@ -24,7 +24,11 @@ function App() {
   };
 
   const filteredPosts = (posts) => {
-    return posts.filter((e) => e.author._id === "64423c303291d790b3fc967c");
+    return posts.filter(
+      (e) =>
+        e.author._id === "64423c303291d790b3fc967c" ||
+        e.author._id === "644573ee3291d790b3073d8d"
+    );
   };
 
   /*   const onSort = (sortId) => {
@@ -43,7 +47,7 @@ function App() {
   }; */
 
   useEffect(() => {
-    api.getAllPosts().then((data) => setPost(filteredPosts(data)));
+    api.getAllPosts().then((data) => setPosts(filteredPosts(data)));
   }, []);
 
   return (
@@ -56,10 +60,10 @@ function App() {
 
       <>
         <Routes>
-          <Route path="/" element={<PostList posts={post} />} />
+          <Route path="/" element={<PostList posts={posts} />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="*" element={<CreatePostPage />} />
-          <Route path="*" element={<PostPage />} />
+          <Route path="/post/:id" element={<PostPage />} />
           <Route path="*" element={<UserPage />} />
         </Routes>
       </>
