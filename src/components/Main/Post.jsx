@@ -2,9 +2,8 @@ import React from 'react';
 import dayjs from 'dayjs';
 import './style.css';
 import { ReactComponent } from '../img/like.svg';
-import { Link, NavLink } from 'react-router-dom';
-import StyleIcon from '@mui/icons-material/Style';
-import { Badge, IconButton } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Badge } from '@mui/material';
 
 export const Post = ({
   post,

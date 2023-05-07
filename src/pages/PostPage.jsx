@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { api } from '../Utils/api';
 import { PostOfPage } from '../components/Main/PostOfPage';
+import './style.css';
 
 /* import { Button } from "@mui/material"; */
 

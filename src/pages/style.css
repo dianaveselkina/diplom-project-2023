@@ -12,3 +12,111 @@
   background-image: url('../components/img/err.jpeg');
   background-repeat: no-repeat;
 }
+
+.userpage__form {
+  width: 500px;
+  height: 950px;
+  border: 1px #5FCDD9 solid;
+  margin: 20px 20px;
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+  border-radius: 6px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  /* overflow: hidden; */
+}
+
+.userpage__profile {
+  width: 90%;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.close__icons {
+  width: 2rem;
+  height: 2rem;
+}
+
+.userpage__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: 1px #5FCDD9 solid;
+}
+
+form {
+  display: block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+}
+
+input {
+  font-size: 30px;
+  margin: 15px;
+  padding: 10px;
+}
+
+label {
+  display: block;
+}
+
+.postpage__infa {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.post__like {
+  padding-left: 50px;
+  padding-right: 30px;
+}
+
+.clicker__like {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px #5FCDD9 solid;
+}
+
+.postpage__like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userpage__close {
+  cursor: pointer;
+  fill: none;
+  stroke: none;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+}
+
+.userpage__button {
+  width: 25rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.userpage_submit {
+  padding: 10px;
+}
+
+.post__link {
+  text-decoration: none;
+  color: currentColor;
+}
