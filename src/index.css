@@ -5,9 +5,10 @@
   font-family: 'Nunito', sans-serif;
 }
 
-Link {
+Link,
+a {
   text-decoration: none;
-    border: none;
+    /* border: none; */
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

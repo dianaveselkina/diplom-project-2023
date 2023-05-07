@@ -1,11 +1,11 @@
-import { LIKEST } from "../../sort/sort";
-import { Post } from "./Post";
-import "./style.css";
+import { LIKEST } from '../../sort/sort';
+import { Post } from './Post';
+import './style.css';
 
 /* export const PostList = ({ posts }) => {
   console.log(goods);
   return (
-    <div className="postlist__conteiner">
+    <div className="postlist__container">
       {posts.map((post) => {
         return <Post key={post.name} {...post} posts={post} />;
       })}
@@ -15,7 +15,7 @@ import "./style.css";
 
 export const PostList = ({ posts }) => {
   return (
-    <div className="postlist__conteiner">
+    <div className='postlist__container'>
       {posts.map((post, i) => (
         <Post key={post.name} {...post} posts={post} />
       ))}
