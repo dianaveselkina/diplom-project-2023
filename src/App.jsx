@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import { Route, Routes, Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import { Route, Routes, Link } from 'react-router-dom';
 
-import { Footer } from "./components/Main/Footer";
-import { Header } from "./components/Main/Header";
-import { PostList } from "./components/Main/PostList";
+import { Footer } from './components/Main/Footer';
+import { Header } from './components/Main/Header';
+import { PostList } from './components/Main/PostList';
 // import data from './DB/data.json';
-import { PostPage } from "./pages/PostPage";
-import { UserPage } from "./pages/UserPost";
-import { CreatePostPage } from "./pages/CreatePostPage";
-import { ErrorPage } from "./pages/ErrorPage";
-import { Search } from "react-router";
-import { api } from "./Utils/api";
+import { PostPage } from './pages/PostPage';
+import { UserPage } from './pages/UserPage';
+import { CreatePostPage } from './pages/CreatePostPage';
+import { ErrorPage } from './pages/ErrorPage';
+import { Search } from 'react-router';
+import { api } from './Utils/api';
 /* import { DataArray } from "@mui/icons-material"; */
-import { LIKEST, NEWEST } from "./sort/sort";
+import { LIKEST, NEWEST } from './sort/sort';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -26,8 +26,8 @@ function App() {
   const filteredPosts = (posts) => {
     return posts.filter(
       (e) =>
-        e.author._id === "64423c303291d790b3fc967c" ||
-        e.author._id === "644573ee3291d790b3073d8d"
+        e.author._id === '64423c303291d790b3fc967c' ||
+        e.author._id === '644573ee3291d790b3073d8d'
     );
   };
 
@@ -62,9 +62,9 @@ function App() {
         <Routes>
           <Route path="/" element={<PostList posts={posts} />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="*" element={<CreatePostPage />} />
+          <Route path="/createpostpage" element={<CreatePostPage />} />
           <Route path="/post/:id" element={<PostPage />} />
-          <Route path="*" element={<UserPage />} />
+          <Route path="/userpage" element={<UserPage />} />
         </Routes>
       </>
 

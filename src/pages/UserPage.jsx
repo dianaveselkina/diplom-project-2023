@@ -1,13 +1,14 @@
-import React from "react";
-import { useState } from "react";
-import { FaRegWindowClose } from "react-icons/fa";
+import React from 'react';
+import { useState } from 'react';
+import { FaRegWindowClose } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const UserPage = () => {
   const [data, setData] = useState({
-    username: "",
-    email: "",
-    description: "",
-    link: "",
+    username: '',
+    email: '',
+    description: '',
+    link: '',
   });
 
   function handleFormSubmit(event) {
@@ -21,8 +22,10 @@ export const UserPage = () => {
       <div className="userpage__profile">
         <titlle>Профиль</titlle>
         <button className="userpage__close">
-          {" "}
-          <FaRegWindowClose className="close__icons" />
+          {' '}
+          <Link to="/">
+            <FaRegWindowClose className="close__icons" />
+          </Link>
         </button>
       </div>
       <form onSubmit={handleFormSubmit}>
@@ -31,7 +34,7 @@ export const UserPage = () => {
             type="url"
             value={data.link}
             placeholder="url вашей фотографии"
-            onChange={(e) => handleInputChange(e, "link")}
+            onChange={(e) => handleInputChange(e, 'link')}
           />
           <div className="userpage__defolt">
             <img src="./defoltimage.svg" />
@@ -41,7 +44,7 @@ export const UserPage = () => {
             type="text"
             value={data.username}
             placeholder="Иванов Иван Иванович"
-            onChange={(e) => handleInputChange(e, "username")}
+            onChange={(e) => handleInputChange(e, 'username')}
           />
         </label>
         <label>
@@ -49,7 +52,7 @@ export const UserPage = () => {
             type="email"
             value={data.email}
             placeholder="ivanov@mail.ru"
-            onChange={(e) => handleInputChange(e, "email")}
+            onChange={(e) => handleInputChange(e, 'email')}
           />
         </label>
         <label>
@@ -57,16 +60,20 @@ export const UserPage = () => {
             type="text"
             value={data.description}
             placeholder="Самый лучший человек на свете"
-            onChange={(e) => handleInputChange(e, "description")}
+            onChange={(e) => handleInputChange(e, 'description')}
           />
         </label>
         <div className="userpage__button">
-          <button className="userpage_submit" type="submit">
-            Создать
-          </button>
-          <button className="userpage_submit" type="submit">
-            Отмена
-          </button>
+          <Link to="/">
+            <button className="userpage_submit" type="submit">
+              Создать
+            </button>
+          </Link>
+          <Link to="/">
+            <button className="userpage_submit" type="submit">
+              Отмена
+            </button>
+          </Link>
         </div>
       </form>
     </div>

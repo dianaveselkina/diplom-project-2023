@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
 /* import { ReactComponent } from "../components/img/like.svg"; */
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
-import { api } from "../Utils/api";
-import { PostOfPage } from "../components/Main/PostOfPage";
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { api } from '../Utils/api';
+import { PostOfPage } from '../components/Main/PostOfPage';
 
 /* import { Button } from "@mui/material"; */
 
@@ -13,7 +12,7 @@ export const PostPage = () => {
   const { id } = useParams();
 
   const handleClick = (e) => {
-    e.currentTarget.classList.toggle("card__like_active");
+    e.currentTarget.classList.toggle('card__like_active');
   };
 
   useEffect(() => {
@@ -24,3 +23,4 @@ export const PostPage = () => {
 
   return <PostOfPage handleClick={handleClick} post={post} />;
 };
+console.log({ PostOfPage });

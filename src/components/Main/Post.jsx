@@ -1,12 +1,13 @@
-import React from "react";
-import dayjs from "dayjs";
-import "./style.css";
-import { ReactComponent } from "../img/like.svg";
-import { Link, NavLink } from "react-router-dom";
-import StyleIcon from "@mui/icons-material/Style";
-import { Badge, IconButton } from "@mui/material";
+import React from 'react';
+import dayjs from 'dayjs';
+import './style.css';
+import { ReactComponent } from '../img/like.svg';
+import { Link, NavLink } from 'react-router-dom';
+import StyleIcon from '@mui/icons-material/Style';
+import { Badge, IconButton } from '@mui/material';
 
 export const Post = ({
+  post,
   title,
   text,
   image,
@@ -18,7 +19,7 @@ export const Post = ({
   ...args
 }) => {
   const handleClick = (e) => {
-    e.currentTarget.classList.toggle("card__like_active");
+    e.currentTarget.classList.toggle('card__like_active');
   };
 
   return (
@@ -31,7 +32,7 @@ export const Post = ({
         <p>{text}</p>
         <div className="card__info">
           <div className="card__time">
-            {dayjs(created_at).format("HH:MM:s DD/MM/YYYY")}
+            {dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
           </div>
 
           {/*         <IconButton

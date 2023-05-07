@@ -1,0 +1,14 @@
+.err__conteiner {
+  width: 50vw;
+  height: 50vh;
+  font-size: 5rem;
+  border: 1px var(--main-bg-color) solid;
+  margin: 20px 20px;
+  padding: 10px;
+}
+.err__image {
+  width: 90%;
+  height: 90%;
+  background-image: url('../components/img/err.jpeg');
+  background-repeat: no-repeat;
+}
