@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { FaRegWindowClose } from 'react-icons/fa';
+/* import { FaRegWindowClose } from 'react-icons/fa'; */
 import { Link } from 'react-router-dom';
-import './style.css';
+import './index.css';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const UserPage = () => {
   const [data, setData] = useState({
@@ -18,17 +19,19 @@ export const UserPage = () => {
   function handleInputChange(e, name) {
     setData({ ...data, [name]: e.target.value });
   }
+
   return (
     <div className='userpage__form'>
       <div className='userpage__profile'>
         <titlle>Профиль</titlle>
-        <button className='userpage__close'>
-          {' '}
-          <Link to='/'>
-            <FaRegWindowClose className='close__icons' />
-          </Link>
-        </button>
+        <Link to='/'>
+          <button type='primary'>
+            {' '}
+            <CloseIcon />{' '}
+          </button>
+        </Link>
       </div>
+
       <form onSubmit={handleFormSubmit}>
         <label>
           <input
@@ -39,7 +42,7 @@ export const UserPage = () => {
           />
           <div className='userpage__defolt'>
             <img src='./defoltimage.svg' />
-            <p>no image available</p>
+            {/*  <p>no image available</p> */}
           </div>
           <input
             type='text'
@@ -52,7 +55,7 @@ export const UserPage = () => {
           <input
             type='email'
             value={data.email}
-            placeholder='ivanov@mail.ru'
+            placeholder='you@mail.ru'
             onChange={(e) => handleInputChange(e, 'email')}
           />
         </label>

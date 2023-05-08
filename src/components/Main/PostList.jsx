@@ -1,4 +1,4 @@
-import { LIKEST } from '../../sort/sort';
+import { NEWEST, LIKEST } from '../../sort/sort';
 import { Post } from './Post';
 import './style.css';
 
@@ -23,11 +23,11 @@ export const PostList = ({ posts }) => {
   );
 };
 
-/* const { cards, onSort, search } = useContext(CardsContext);
+/* const { cards, onSort, search } = useContext(CardsContext); */
 
 /* сортировка с переводом*/
 
-/* const sortedItems = [
-  { id: LIKEST, title: "Популярные" },
-  { id: NEWEST, title: "Новые" },
-]; */
+const sortedItems = [
+  { id: LIKEST, title: 'Популярные' },
+  { id: NEWEST, title: 'Новые' },
+];

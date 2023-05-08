@@ -104,8 +104,8 @@
   padding: 15px;
 }
 
-.card__container img {
-  justify-self: center;
+img {
+  /* justify-self: center; */
   padding: 20px 0 15px;
   /* position: absolute; */
   /* display: block; */

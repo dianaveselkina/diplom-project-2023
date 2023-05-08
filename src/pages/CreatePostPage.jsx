@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import './style.css';
+import './index.css';
 
 export const CreatePostPage = () => {
   const [data, setData] = useState({
