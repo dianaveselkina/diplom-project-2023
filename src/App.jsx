@@ -12,12 +12,11 @@ import { UserPage } from './pages/UserPage';
 import { CreatePostPage } from './pages/CreatePostPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { api } from './Utils/api';
-import { LIKEST, NEWEST } from './sort/sort';
+import { LIKEST, NEWEST } from './sort/Sort';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
-  const postValue = { onSort };
 
   const filteredPosts = (posts) => {
     return posts.filter(
@@ -45,7 +44,7 @@ function App() {
   useEffect(() => {
     api.getAllPosts().then((data) => setPosts(filteredPosts(data)));
   }, []);
-
+  const postValue = { onSort };
   return (
     <div className='App'>
       <Header />

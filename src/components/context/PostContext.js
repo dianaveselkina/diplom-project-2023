@@ -1,5 +1,5 @@
 /* 1 создание контекста */
 
-import React, {CreateContext} from 'react';
+import React from 'react';
 
-export const PostContext = CreateContext();
+export const PostContext = React.createContext();
