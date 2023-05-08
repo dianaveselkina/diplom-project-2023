@@ -57,10 +57,6 @@
   }
 }
 
-/* .header__button:hover {
-  box-shadow: none;
-  cursor: pointer;
-} */
 .postlist__container {
   width: 100%;
   background-color: #f2e3d5;
@@ -71,7 +67,7 @@
   margin-bottom: auto;
   align-content: flex-start;
 }
-.postpage__container {
+/* .postpage__container {
   color: rgb(135, 201, 180);
   width: 900px;
   height: 450px;
@@ -80,7 +76,7 @@
   padding: 10px;
   display: flex;
   flex-direction: row;
-}
+} */
 
 .card__container {
   background-color: #fcfcfc;
@@ -89,14 +85,9 @@
   width: 500px;
   height: 950px;
   margin: 20px;
-  /* padding: 10px 24px; */
   display: grid;
-  /* gap: 15px; */
-  /* flex-direction: column;
- */
-  grid-template-rows: 850px auto 1fr 30px;
+  grid-template-rows: 880px auto 1fr 30px;
   align-content: flex-start;
-  /* position: relative; */
   box-shadow: 0 15px 25px#ebbb91;
   cursor: pointer;
   overflow: hidden;
@@ -106,14 +97,8 @@
 }
 
 img {
-  /* justify-self: center; */
   padding: 20px 0 15px;
-  /* position: absolute; */
-  /* display: block; */
-  /* -webkit-background-size: cover; */
   background-size: cover;
-  /* background-repeat: no-repeat; */
-  /* -webkit-background-position: center; */
   background-position: center;
   width: 100%;
   height: calc(850px - 35%);
@@ -124,12 +109,6 @@ img {
   font-size: 1.3em;
   padding-top: 10px;
 }
-
-/* .card__logotip {
-  width: 60px;
-  height: 20px;
-  color: #105a63;
-} */
 
 .card__titlle {
   font-size: 1.4em;
@@ -151,10 +130,8 @@ img {
   font-size: 2em;
   cursor: pointer;
   fill: none;
-  /* stroke: red; */
   background: none;
   border: none;
-  /* padding: 0; */
   display: flex;
 }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-/* import { FaRegWindowClose } from 'react-icons/fa'; */
 import { Link } from 'react-router-dom';
 import './index.css';
 import CloseIcon from '@mui/icons-material/Close';
+import { Button } from '@mui/material';
 
 export const UserPage = () => {
   const [data, setData] = useState({
@@ -25,10 +25,7 @@ export const UserPage = () => {
       <div className='userpage__profile'>
         <titlle>Профиль</titlle>
         <Link to='/'>
-          <button type='primary'>
-            {' '}
-            <CloseIcon />{' '}
-          </button>
+          <CloseIcon />
         </Link>
       </div>
 
@@ -69,14 +66,22 @@ export const UserPage = () => {
         </label>
         <div className='userpage__button'>
           <Link to='/'>
-            <button className='userpage_submit' type='submit'>
+            <Button
+              variant='outlined'
+              className='userpage_submit'
+              type='submit'
+            >
               Создать
-            </button>
+            </Button>
           </Link>
           <Link to='/'>
-            <button className='userpage_submit' type='submit'>
+            <Button
+              variant='outlined'
+              className='userpage_submit'
+              type='submit'
+            >
               Отмена
-            </button>
+            </Button>
           </Link>
         </div>
       </form>

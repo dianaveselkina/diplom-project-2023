@@ -6,8 +6,6 @@ import { api } from '../Utils/api';
 import { PostOfPage } from '../components/Main/PostOfPage';
 import './index.css';
 
-/* import { Button } from "@mui/material"; */
-
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
