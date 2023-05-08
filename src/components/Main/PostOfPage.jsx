@@ -8,7 +8,12 @@ export const PostOfPage = ({ post, handleClick }) => {
     <div className='postlist__container'>
       {' '}
       {/* замена postpage__ */}
-      <img src={post.image} width={'400px'} height={'400px'} alt='картинка' />
+      <img
+        src={post.image}
+        width={'400px'}
+        height={'400px'}
+        alt='изображение'
+      />
       <div className='postpage__infa'>
         <p className='postpage__author'>Имя пользователя</p>
         <div className='postpage__like'>

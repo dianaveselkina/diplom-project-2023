@@ -1,8 +1,7 @@
 .err__container {
   width: 50vw;
   height: 50vh;
-  font-size: 5rem;
-  border: 1px var(--main-bg-color) solid;
+  font-size: 3rem;
   margin: 20px 20px;
   padding: 10px;
 }
@@ -21,11 +20,9 @@
   top: 0;
   left: 0;
   display: inline-flex;
-  /* color: #027373; */
   padding: 20px;
   border-radius: 3px;
   background-color: #f2e3d5;
-  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -37,17 +34,12 @@
 }
 
 .userpage__profile {
-  /* justify-content: space-between; */
+  justify-content: space-between;
   width: 90%;
   font-size: 1.5rem;
   /* display: flex; */
   /* flex-direction: row; */
 }
-
-/* .close__icons {
-  width: 2rem;
-  height: 2rem;
-} */
 
 .userpage__image {
   display: flex;
@@ -92,8 +84,8 @@ label {
   justify-content: center;
   width: 50px;
   height: 50px;
-  border-radius: 10px;
-  border: 1px #5fcdd9 solid;
+  border-radius: 4px;
+  border: 2px #5fcdd9 solid;
 }
 
 .postpage__like {
@@ -102,7 +94,7 @@ label {
   align-items: center;
 }
 
-.userpage__close {
+/* .userpage__close {
   cursor: pointer;
   fill: none;
   stroke: none;
@@ -112,19 +104,20 @@ label {
   right: 10px;
   padding: 0;
   display: flex;
-}
+} */
 
 .userpage__button {
   width: 25rem;
   height: 2rem;
+  margin: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.userpage_submit {
+/* .userpage_submit {
   padding: 10px;
-}
+} */
 
 .post__link {
   text-decoration: none;
