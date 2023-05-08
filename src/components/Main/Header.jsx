@@ -1,5 +1,6 @@
 import { ReactComponent } from '../img/logo.svg';
 import './style.css';
+import '../../sort/sort';
 import { Link } from 'react-router-dom';
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
@@ -8,8 +9,6 @@ import { Login } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const Header = () => {
-  /* const setUserPage = false; */
-
   return (
     <div className='header'>
       <ReactComponent className='header__logotip' />
@@ -21,12 +20,7 @@ export const Header = () => {
 
       <Stack spacing={2} direction='row'>
         <Link to='./userpage'>
-          <Button
-            type='primary'
-            /* onClick={() => {
-              setUserPage(true);
-            }} */
-          >
+          <Button type='primary'>
             <AccountCircleIcon />
             <Login className='card__favorite-icon' />
           </Button>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent } from './../img/like.svg';
 import { Button } from '@mui/material';
+import './style.css';
 
 export const PostOfPage = ({ post, handleClick }) => {
   return (

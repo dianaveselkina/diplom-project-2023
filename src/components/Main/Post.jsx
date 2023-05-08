@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import dayjs from 'dayjs';
 import './style.css';
 import { ReactComponent } from '../img/like.svg';
 import { Link } from 'react-router-dom';
 import { Badge } from '@mui/material';
+import { PostContext } from '../context/PostContext';
+import { UserContext } from '../context/UserContext';
 
 export const Post = ({
   post,
@@ -17,6 +19,9 @@ export const Post = ({
   created_at,
   ...args
 }) => {
+  const user = useContext(UserContext);
+  const { handleLike } = useContext(PostContext);
+
   const handleClick = (e) => {
     e.currentTarget.classList.toggle('card__like_active');
   };
