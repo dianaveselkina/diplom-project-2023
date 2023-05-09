@@ -63,12 +63,15 @@
   background-color: #f2e3d5;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 30px 30px;
   padding: 40px 40px 70px;
   margin-bottom: auto;
   align-content: flex-start;
 }
+
 .sort-posts {
+  margin: -25px 20px 0 40px;
+  position: fixed;
   display: flex;
   gap: 1rem;
 }
