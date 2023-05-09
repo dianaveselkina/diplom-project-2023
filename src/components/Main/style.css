@@ -19,7 +19,7 @@
 .marquee-text {
   color: #027373;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-style: italic;
   font-weight: 300;
 
@@ -31,7 +31,7 @@
 
 .marquee-container {
   display: flex;
-  width: 900px;
+  width: 800px;
   align-items: center;
   background: #5fcdd9;
   overflow: hidden;
@@ -41,7 +41,7 @@
 .marquee {
   color: #027373;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 600;
   white-space: nowrap;
   animation: marquee 5s infinite linear;
@@ -63,31 +63,21 @@
   background-color: #f2e3d5;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 40px 40px 80px;
+  gap: 20px;
+  padding: 30px 30px 60px;
   margin-bottom: auto;
   align-content: flex-start;
 }
-/* .postpage__container {
-  color: rgb(135, 201, 180);
-  width: 900px;
-  height: 450px;
-  border: 1px #5fcdd9 solid;
-  margin: 20px 20px;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-} */
 
 .card__container {
   background-color: #fcfcfc;
   color: #027373;
   box-sizing: border-box;
-  width: 500px;
-  height: 950px;
+  width: 400px;
+  height: 850px;
   margin: 20px;
   display: grid;
-  grid-template-rows: 880px auto 1fr 30px;
+  grid-template-rows: 790px auto 1fr 30px;
   align-content: flex-start;
   box-shadow: 0 15px 25px#ebbb91;
   cursor: pointer;
@@ -107,16 +97,16 @@ img {
 }
 
 .card__author {
-  font-size: 1.3em;
+  font-size: 1.2em;
   padding-top: 10px;
 }
 
 .card__titlle {
-  font-size: 1.4em;
+  font-size: 1.3em;
   font-weight: 600;
 }
 .card__text {
-  font-size: 1.1em;
+  font-size: 1em;
   margin: calc(60px - 10%);
 }
 .card__info {

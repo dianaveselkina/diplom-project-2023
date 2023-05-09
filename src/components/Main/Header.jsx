@@ -16,7 +16,7 @@ export const Header = () => {
 
       <div className='sort__btn'>
         <FormGroup>
-          <FormControlLabel control={<Switch defaultChecked />} label='Label' />
+          <FormControlLabel control={<Switch defaultChecked />} label='On' />
         </FormGroup>
       </div>
 

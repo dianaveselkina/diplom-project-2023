@@ -13,7 +13,7 @@ export const Footer = () => {
         position: 'fixed',
         bottom: '0',
         width: '100%',
-        height: '60px',
+        height: '45px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -24,18 +24,18 @@ export const Footer = () => {
     >
       <Typography
         noWrap={true}
-        sx={{ fontSize: '18px', color: '#0766be', marginRight: '350px' }}
+        sx={{ fontSize: '16px', color: '#0766be', marginRight: '350px' }}
       >
         Authors: Di & Lou
       </Typography>
       <Typography
         noWrap={true}
-        sx={{ fontSize: '18px', color: '#0766be', marginRight: '350px' }}
+        sx={{ fontSize: '16px', color: '#0766be', marginRight: '350px' }}
       >
         Ⓒ{new Date().getFullYear()}
       </Typography>
       <Link
-        href="Lel.: 8 888-999-99-99"
+        href='Lel.: 8 888-999-99-99'
         sx={{
           padding: '10px',
           opacity: 0.9,
@@ -48,7 +48,7 @@ export const Footer = () => {
       </Link>
 
       <Link
-        href="https://t.me/Diana" //напишите тут свой Телеграм-линк
+        href='https://t.me/Diana' //напишите тут свой Телеграм-линк
         sx={{
           padding: '10px',
           opacity: 0.9,
@@ -61,7 +61,7 @@ export const Footer = () => {
       </Link>
 
       <Link
-        href="mailto:lou8bus@gmail.com&subject=Сайт посты"
+        href='mailto:lou8bus@gmail.com&subject=Сайт посты'
         sx={{
           padding: '10px',
           opacity: 0.9,
@@ -74,7 +74,7 @@ export const Footer = () => {
       </Link>
 
       <Link
-        href="https://github.com/8Lou/posts_2023"
+        href='https://github.com/8Lou/posts_2023'
         sx={{
           padding: '10px',
           opacity: 0.9,
