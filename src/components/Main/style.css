@@ -19,7 +19,7 @@
 .marquee-text {
   color: #027373;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 30px;
+  font-size: 22px;
   font-style: italic;
   font-weight: 300;
 
@@ -31,10 +31,11 @@
 
 .marquee-container {
   display: flex;
-  width: 990px;
+  width: 900px;
   align-items: center;
   background: #5fcdd9;
   overflow: hidden;
+  top: 10px;
 }
 
 .marquee {
