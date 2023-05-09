@@ -8,47 +8,33 @@ import { Login } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FormControlLabel, FormGroup, Switch } from '@mui/material';
 
-const sortedItems = [
-  { id: 'Популярные', title: 'POPULAR' },
-  { id: 'Новые', title: 'NEWEST' },
-  { id: 'Все', title: 'ALL' },
-];
-
-export const Header = (onSort) => {
+export const Header = ({ onSort }) => {
   return (
-    <div className='header'>
-      <ReactComponent className='header__logotip' />
+    <div className="header">
+      <ReactComponent className="header__logotip" />
 
-      <div className='sort-posts'>
-        {sortedItems.map((e) => (
-          <span className='sort-item' key={e.id} onClick={() => onSort(e.id)}>
-            {e.id}
-          </span>
-        ))}
-      </div>
-
-      <div className='marquee-container'>
-        <span className='marquee'>
+      <div className="marquee-container">
+        <span className="marquee">
           <pre>Журнал "Весёлые заметки"</pre>
         </span>
       </div>
 
-      <Stack spacing={2} direction='row'>
-        <Link to='./userpage'>
-          <Button type='primary'>
+      <Stack spacing={2} direction="row">
+        <Link to="./userpage">
+          <Button type="primary">
             <AccountCircleIcon />
-            <Login className='card__favorite-icon' />
+            <Login className="card__favorite-icon" />
           </Button>
         </Link>
 
-        <Link to='/createpostpage' className='header__button'>
-          <Button variant='contained'>Прислать заметку</Button>
+        <Link to="/createpostpage" className="header__button">
+          <Button variant="contained">Прислать заметку</Button>
         </Link>
 
         {/* какая-нибудь кнопка для переключения темы или языка в дальнейшем */}
-        <div className=''>
+        <div className="">
           <FormGroup>
-            <FormControlLabel control={<Switch defaultChecked />} label='On' />
+            <FormControlLabel control={<Switch defaultChecked />} label="On" />
           </FormGroup>
         </div>
       </Stack>

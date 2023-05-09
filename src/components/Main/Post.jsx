@@ -19,34 +19,31 @@ export const Post = ({
   created_at,
   ...args
 }) => {
-  const user = useContext(UserContext);
-  const { handleLike } = useContext(PostContext);
-
-  const handleClick = (e) => {
-    e.currentTarget.classList.toggle('card__like_active');
-  };
+  // const handleClick = (e) => {
+  //   e.currentTarget.classList.toggle('card__like_active');
+  // };
 
   return (
-    <div className='card__container'>
-      <Link to={`/post/${_id}`} className='post__link'>
-        <p className='card__author'>Имя пользователя</p>
-        <img src={image} alt='Изображение' />
+    <div className="card__container">
+      <Link to={`/post/${_id}`} className="post__link">
+        <p className="card__author">Имя пользователя</p>
+        <img src={image} alt="Изображение" />
         {/* <div className='info__content'></div> */}
-        <span className='card__titlle'>{title}</span>
-        <p className='card__text'>{text}</p>
+        <span className="card__titlle">{title}</span>
+        <p className="card__text">{text}</p>
       </Link>
 
-      <div className='card__info'>
-        <div className='card__time'>
+      <div className="card__info">
+        <div className="card__time">
           {dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
         </div>
 
         <button
-          className='card__like card__like_active'
-          type='button'
-          onClick={handleClick}
+          className="card__like card__like_active"
+          type="button"
+          // onClick={handleClick}
         >
-          <Badge badgeContent={likes.length} color='primary'></Badge>
+          <Badge badgeContent={likes.length} color="primary"></Badge>
           <ReactComponent />
         </button>
       </div>

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { PostContext } from './components/context/PostContext';
-import { UserContext } from './components/context/UserContext';
 import { Footer } from './components/Main/Footer';
 import { Header } from './components/Main/Header';
 import { PostList } from './components/Main/PostList';
@@ -49,27 +47,16 @@ function App() {
     api.getAllPosts().then((data) => setPosts(filteredPosts(data)));
   }, []);
 
-  const postValue = { onSort };
-
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
-      <PostContext.Provider value={postValue}>
-        <UserContext.Provider value={user}>
-          <>
-            <Routes>
-              <Route
-                path='/'
-                element={<PostList onSort={onSort} posts={posts} />}
-              />
-              <Route path='*' element={<ErrorPage />} />
-              <Route path='/createpostpage' element={<CreatePostPage />} />
-              <Route path='/post/:id' element={<PostPage />} />
-              <Route path='/userpage' element={<UserPage />} />
-            </Routes>
-          </>
-        </UserContext.Provider>
-      </PostContext.Provider>
+      <Routes>
+        <Route path="/" element={<PostList onSort={onSort} posts={posts} />} />
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/createpostpage" element={<CreatePostPage />} />
+        <Route path="/post/:id" element={<PostPage />} />
+        <Route path="/userpage" element={<UserPage />} />
+      </Routes>
       <Footer />
     </div>
   );
