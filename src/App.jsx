@@ -48,14 +48,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <Routes>
-        <Route path="/" element={<PostList onSort={onSort} posts={posts} />} />
-        <Route path="*" element={<ErrorPage />} />
-        <Route path="/createpostpage" element={<CreatePostPage />} />
-        <Route path="/post/:id" element={<PostPage />} />
-        <Route path="/userpage" element={<UserPage />} />
+        <Route path='/' element={<PostList onSort={onSort} posts={posts} />} />
+        <Route path='*' element={<ErrorPage />} />
+        <Route path='/createpostpage' element={<CreatePostPage />} />
+        <Route path='/post/:id' element={<PostPage />} />
+        <Route path='/userpage' element={<UserPage />} />
       </Routes>
       <Footer />
     </div>

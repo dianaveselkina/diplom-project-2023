@@ -4,8 +4,6 @@ import './style.css';
 import { ReactComponent } from '../img/like.svg';
 import { Link } from 'react-router-dom';
 import { Badge } from '@mui/material';
-import { PostContext } from '../context/PostContext';
-import { UserContext } from '../context/UserContext';
 
 export const Post = ({
   post,
@@ -24,26 +22,26 @@ export const Post = ({
   // };
 
   return (
-    <div className="card__container">
-      <Link to={`/post/${_id}`} className="post__link">
-        <p className="card__author">Имя пользователя</p>
-        <img src={image} alt="Изображение" />
+    <div className='card__container'>
+      <Link to={`/post/${_id}`} className='post__link'>
+        <p className='card__author'>Имя пользователя</p>
+        <img src={image} alt='Изображение' />
         {/* <div className='info__content'></div> */}
-        <span className="card__titlle">{title}</span>
-        <p className="card__text">{text}</p>
+        <span className='card__titlle'>{title}</span>
+        <p className='card__text'>{text}</p>
       </Link>
 
-      <div className="card__info">
-        <div className="card__time">
+      <div className='card__info'>
+        <div className='card__time'>
           {dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
         </div>
 
         <button
-          className="card__like card__like_active"
-          type="button"
+          className='card__like card__like_active'
+          type='button'
           // onClick={handleClick}
         >
-          <Badge badgeContent={likes.length} color="primary"></Badge>
+          <Badge badgeContent={likes.length} color='primary'></Badge>
           <ReactComponent />
         </button>
       </div>

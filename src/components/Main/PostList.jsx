@@ -8,10 +8,10 @@ export const PostList = ({ posts, onSort }) => {
     { id: 'Все', title: 'ALL' },
   ];
   return (
-    <div className="postlist__container">
-      <div className="sort-posts">
+    <div className='postlist__container'>
+      <div className='sort-posts'>
         {sortedItems.map((e) => (
-          <span className="sort-item" key={e.id} onClick={() => onSort(e.id)}>
+          <span className='sort-item' key={e.id} onClick={() => onSort(e.id)}>
             {e.id}
           </span>
         ))}
