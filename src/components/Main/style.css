@@ -31,7 +31,7 @@
 
 .marquee-container {
   display: flex;
-  width: 800px;
+  width: 600px;
   align-items: center;
   background: #5fcdd9;
   overflow: hidden;
@@ -39,9 +39,9 @@
 }
 
 .marquee {
-  color: #027373;
+  color: #2b7ad4;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   white-space: nowrap;
   animation: marquee 5s infinite linear;
@@ -51,10 +51,10 @@
 }
 @keyframes marquee {
   0% {
-    transform: translateX(150%);
+    transform: translateX(250%);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
@@ -67,6 +67,21 @@
   padding: 30px 30px 60px;
   margin-bottom: auto;
   align-content: flex-start;
+}
+.sort-posts {
+  /* box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04),
+    0px 8px 16px rgba(96, 97, 112, 0.16);
+  border-radius: 6px; */
+  display: flex;
+  gap: 1rem;
+}
+.sort-item {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #027373;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .card__container {

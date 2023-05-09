@@ -12,11 +12,10 @@ import { UserPage } from './pages/UserPage';
 import { CreatePostPage } from './pages/CreatePostPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { api } from './Utils/api';
-import { LIKEST, NEWEST } from './sort/Sort';
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState({});
+  const [user] = useState({});
 
   const filteredPosts = (posts) => {
     return posts.filter(
@@ -27,15 +26,20 @@ function App() {
   };
 
   const onSort = (sortId) => {
-    if (sortId === LIKEST) {
-      const newCards = posts.sort((a, b) => b.likes.length - a.likes.length);
-      setPosts([...newCards]);
+    if (sortId === 'Популярные') {
+      const newPosts = posts.sort((a, b) => b.likes.length - a.likes.length);
+      setPosts([...newPosts]);
       return;
     }
-    if (sortId === NEWEST) {
+    if (sortId === 'Новые') {
       const newPosts = posts.sort(
         (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
+      setPosts([...newPosts]);
+      return;
+    }
+    if (sortId === 'Все') {
+      const newPosts = posts;
       setPosts([...newPosts]);
       return;
     }
@@ -44,7 +48,9 @@ function App() {
   useEffect(() => {
     api.getAllPosts().then((data) => setPosts(filteredPosts(data)));
   }, []);
+
   const postValue = { onSort };
+
   return (
     <div className='App'>
       <Header />
@@ -52,7 +58,10 @@ function App() {
         <UserContext.Provider value={user}>
           <>
             <Routes>
-              <Route path='/' element={<PostList posts={posts} />} />
+              <Route
+                path='/'
+                element={<PostList onSort={onSort} posts={posts} />}
+              />
               <Route path='*' element={<ErrorPage />} />
               <Route path='/createpostpage' element={<CreatePostPage />} />
               <Route path='/post/:id' element={<PostPage />} />

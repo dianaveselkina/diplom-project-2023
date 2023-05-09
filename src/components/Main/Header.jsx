@@ -1,23 +1,30 @@
 import { ReactComponent } from '../img/logo.svg';
 import './style.css';
-import '../../sort/Sort';
 import { Link } from 'react-router-dom';
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { Label, Login } from '@mui/icons-material';
+import { Login } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FormControlLabel, FormGroup, Switch } from '@mui/material';
 
-export const Header = () => {
+const sortedItems = [
+  { id: 'Популярные', title: 'POPULAR' },
+  { id: 'Новые', title: 'NEWEST' },
+  { id: 'Все', title: 'ALL' },
+];
+
+export const Header = (onSort) => {
   return (
     <div className='header'>
       <ReactComponent className='header__logotip' />
 
-      <div className='sort__btn'>
-        <FormGroup>
-          <FormControlLabel control={<Switch defaultChecked />} label='On' />
-        </FormGroup>
+      <div className='sort-posts'>
+        {sortedItems.map((e) => (
+          <span className='sort-item' key={e.id} onClick={() => onSort(e.id)}>
+            {e.id}
+          </span>
+        ))}
       </div>
 
       <div className='marquee-container'>
@@ -37,6 +44,13 @@ export const Header = () => {
         <Link to='/createpostpage' className='header__button'>
           <Button variant='contained'>Прислать заметку</Button>
         </Link>
+
+        {/* какая-нибудь кнопка для переключения темы или языка в дальнейшем */}
+        <div className=''>
+          <FormGroup>
+            <FormControlLabel control={<Switch defaultChecked />} label='On' />
+          </FormGroup>
+        </div>
       </Stack>
     </div>
   );

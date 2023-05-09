@@ -94,18 +94,6 @@ label {
   align-items: center;
 }
 
-/* .userpage__close {
-  cursor: pointer;
-  fill: none;
-  stroke: none;
-  background: none;
-  border: none;
-  top: 10px;
-  right: 10px;
-  padding: 0;
-  display: flex;
-} */
-
 .userpage__button {
   width: 25rem;
   height: 2rem;
@@ -114,10 +102,6 @@ label {
   flex-direction: row;
   justify-content: space-around;
 }
-
-/* .userpage_submit {
-  padding: 10px;
-} */
 
 .post__link {
   text-decoration: none;

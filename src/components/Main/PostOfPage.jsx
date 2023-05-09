@@ -8,7 +8,7 @@ export const PostOfPage = ({ post, handleClick }) => {
   return (
     <div className='postlist__container'>
       {' '}
-      {/* замена postpage__ */}
+      {/* здесь замена postpage__container */}
       <img
         src={post.image}
         width={'400px'}
