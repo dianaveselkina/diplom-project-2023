@@ -64,20 +64,17 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 30px 30px 60px;
+  padding: 40px 40px 70px;
   margin-bottom: auto;
   align-content: flex-start;
 }
 .sort-posts {
-  /* box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04),
-    0px 8px 16px rgba(96, 97, 112, 0.16);
-  border-radius: 6px; */
   display: flex;
   gap: 1rem;
 }
 .sort-item {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   color: #027373;
   padding: 5px;
@@ -89,21 +86,21 @@
   color: #027373;
   box-sizing: border-box;
   width: 400px;
-  height: 850px;
-  margin: 20px;
+  height: 820px;
   display: grid;
-  grid-template-rows: 790px auto 1fr 30px;
+  grid-template-rows: 770px auto 1fr 30px;
   align-content: flex-start;
   box-shadow: 0 15px 25px#ebbb91;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 4px;
   position: relative;
   padding: 15px;
+  margin: 15px;
 }
 
 img {
-  padding: 20px 0 15px;
+  padding: 10px 0 15px;
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -113,7 +110,7 @@ img {
 
 .card__author {
   font-size: 1.2em;
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .card__titlle {

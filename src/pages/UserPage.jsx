@@ -23,8 +23,8 @@ export const UserPage = () => {
   return (
     <div className='userpage__form'>
       <div className='userpage__profile'>
-        <titlle>Профиль</titlle>
-        <Link to='/'>
+        <titlle className='profile'>Профиль</titlle>
+        <Link to='/' className='closeI_icon'>
           <CloseIcon />
         </Link>
       </div>
@@ -39,7 +39,6 @@ export const UserPage = () => {
           />
           <div className='userpage__defolt'>
             <img src='./defoltimage.svg' />
-            {/*  <p>no image available</p> */}
           </div>
           <input
             type='text'
