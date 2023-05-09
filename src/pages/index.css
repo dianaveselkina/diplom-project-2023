@@ -1,8 +1,7 @@
 .err__container {
   width: 50vw;
   height: 50vh;
-  font-size: 5rem;
-  border: 1px var(--main-bg-color) solid;
+  font-size: 3rem;
   margin: 20px 20px;
   padding: 10px;
 }
@@ -15,36 +14,41 @@
 }
 
 .userpage__form {
-  background-color: #fcfcfc;
-  color: #027373;
-  width: 500px;
-  height: 950px;
-  box-sizing: border-box;
-  margin: 20px;
-  border: 1px #5fcdd9 solid;
-  padding: 15px;
-  display: flex;
-  gap: 15px;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  padding: 20px;
   border-radius: 3px;
-  align-items: center;
   flex-direction: column;
-  justify-content: space-around;
-  /* overflow: hidden; */
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.5);
+  transition: 0.5s all;
+}
+.userpage__form.active {
+  transform: scale(1.5);
 }
 
 .userpage__profile {
-  width: 90%;
-  font-size: 2rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  width: 90%;
+  font-size: 1.5rem;
+  display: flex;
 }
-
-.close__icons {
-  width: 2rem;
-  height: 2rem;
+.profile {
+  padding-right: 300px;
+  color: #027373;
+  font-size: 35px;
+  font-weight: 600;
 }
-
+.closeI_icon {
+  color: #027373;
+  font-size: 40px;
+}
 .userpage__image {
   display: flex;
   align-items: center;
@@ -56,14 +60,18 @@
 }
 
 form {
+  width: 600px;
   display: block;
   font-family: 'Courier New', Courier, monospace;
   font-size: 30px;
 }
 
 input {
+  width: 500px;
+  border: #5fcdd9 solid;
+  border-radius: 6px;
   font-size: 30px;
-  margin: 15px;
+  margin: 20px;
   padding: 10px;
 }
 
@@ -72,6 +80,8 @@ label {
 }
 
 .postpage__infa {
+  color: #027373;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -86,10 +96,10 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  border: 1px #5fcdd9 solid;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 2px #5fcdd9 solid;
 }
 
 .postpage__like {
@@ -97,27 +107,13 @@ label {
   flex-direction: row;
   align-items: center;
 }
-
-.userpage__close {
-  cursor: pointer;
-  fill: none;
-  stroke: none;
-  background: none;
-  border: none;
-  padding: 0;
-  display: flex;
-}
-
 .userpage__button {
-  width: 25rem;
-  height: 2rem;
+  width: 35rem;
+  height: 3rem;
+  margin: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-.userpage_submit {
-  padding: 10px;
 }
 
 .post__link {

@@ -6,13 +6,27 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Login } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { FormControlLabel, FormGroup, Switch } from '@mui/material';
 
-export const Header = () => {
-  /* const setUserPage = false; */
+const sortedItems = [
+  { id: 'Популярные', title: 'POPULAR' },
+  { id: 'Новые', title: 'NEWEST' },
+  { id: 'Все', title: 'ALL' },
+];
 
+export const Header = (onSort) => {
   return (
     <div className='header'>
       <ReactComponent className='header__logotip' />
+
+      <div className='sort-posts'>
+        {sortedItems.map((e) => (
+          <span className='sort-item' key={e.id} onClick={() => onSort(e.id)}>
+            {e.id}
+          </span>
+        ))}
+      </div>
+
       <div className='marquee-container'>
         <span className='marquee'>
           <pre>Журнал "Весёлые заметки"</pre>
@@ -21,12 +35,7 @@ export const Header = () => {
 
       <Stack spacing={2} direction='row'>
         <Link to='./userpage'>
-          <Button
-            type='primary'
-            /* onClick={() => {
-              setUserPage(true);
-            }} */
-          >
+          <Button type='primary'>
             <AccountCircleIcon />
             <Login className='card__favorite-icon' />
           </Button>
@@ -35,6 +44,13 @@ export const Header = () => {
         <Link to='/createpostpage' className='header__button'>
           <Button variant='contained'>Прислать заметку</Button>
         </Link>
+
+        {/* какая-нибудь кнопка для переключения темы или языка в дальнейшем */}
+        <div className=''>
+          <FormGroup>
+            <FormControlLabel control={<Switch defaultChecked />} label='On' />
+          </FormGroup>
+        </div>
       </Stack>
     </div>
   );

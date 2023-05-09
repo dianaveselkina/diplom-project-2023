@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { FaRegWindowClose } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './index.css';
+import { Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const CreatePostPage = () => {
   const [data, setData] = useState({
@@ -21,25 +22,21 @@ export const CreatePostPage = () => {
   return (
     <div className='userpage__form'>
       <div className='userpage__profile'>
-        <titlle>Создать пост</titlle>
-        <button className='userpage__close'>
-          {' '}
-          <Link to='/'>
-            <FaRegWindowClose className='close__icons' />
-          </Link>
-        </button>
+        <titlle className='profile'>Создать пост</titlle>
+        <Link to='/' className='closeI_icon'>
+          <CloseIcon />
+        </Link>
       </div>
       <form onSubmit={handleFormSubmit}>
         <label>
           <input
             type='url'
             value={data.link}
-            placeholder='url вашей картинки'
+            placeholder='url вашей фотографии'
             onChange={(e) => handleInputChange(e, 'link')}
           />
           <div className='userpage__defolt'>
             <img src='./defoltimage.svg' />
-            <p>no image available</p>
           </div>
           <input
             type='text'
@@ -66,14 +63,22 @@ export const CreatePostPage = () => {
         </label>
         <div className='userpage__button'>
           <Link to='/'>
-            <button className='userpage_submit' type='submit'>
+            <Button
+              variant='outlined'
+              className='userpage_submit'
+              type='submit'
+            >
               Создать
-            </button>
+            </Button>
           </Link>
           <Link to='/'>
-            <button className='userpage_submit' type='submit'>
+            <Button
+              variant='outlined'
+              className='userpage_submit'
+              type='submit'
+            >
               Отмена
-            </button>
+            </Button>
           </Link>
         </div>
       </form>

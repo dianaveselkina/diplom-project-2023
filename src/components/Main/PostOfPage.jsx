@@ -1,11 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent } from './../img/like.svg';
+import { Button } from '@mui/material';
+import './style.css';
 
 export const PostOfPage = ({ post, handleClick }) => {
   return (
-    <div className='postpage__container'>
-      <img src={post.image} width={'400px'} height={'400px'} alt='картинка' />
+    <div className='postlist__container'>
+      {' '}
+      {/* здесь замена postpage__container */}
+      <img
+        src={post.image}
+        width={'400px'}
+        height={'400px'}
+        alt='изображение'
+      />
       <div className='postpage__infa'>
         <p className='postpage__author'>Имя пользователя</p>
         <div className='postpage__like'>
@@ -25,9 +34,8 @@ export const PostOfPage = ({ post, handleClick }) => {
 
         <span>{post.tags}</span>
         <span>28 апреля 2023</span>
-        <Link to='/' className='btn__home'>
-          {/* <Button variant="contained">Вернуться на главную страницу</Button> */}
-          <button>Вернуться на главную страницу</button>
+        <Link to='/'>
+          {<Button variant='contained'>Вернуться на главную страницу</Button>}
         </Link>
       </div>
     </div>

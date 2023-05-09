@@ -1,17 +1,5 @@
-import { NEWEST, LIKEST } from '../../sort/sort';
 import { Post } from './Post';
 import './style.css';
-
-/* export const PostList = ({ posts }) => {
-  console.log(goods);
-  return (
-    <div className="postlist__container">
-      {posts.map((post) => {
-        return <Post key={post.name} {...post} posts={post} />;
-      })}
-    </div>
-  );
-}; */
 
 export const PostList = ({ posts }) => {
   return (
@@ -22,12 +10,3 @@ export const PostList = ({ posts }) => {
     </div>
   );
 };
-
-/* const { cards, onSort, search } = useContext(CardsContext); */
-
-/* сортировка с переводом*/
-
-const sortedItems = [
-  { id: LIKEST, title: 'Популярные' },
-  { id: NEWEST, title: 'Новые' },
-];
