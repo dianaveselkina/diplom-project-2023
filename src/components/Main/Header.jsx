@@ -12,7 +12,7 @@ import { UserContext } from "../../context/userContext";
 
 export const Header = ({ onSort }) => {
   const user = useContext(UserContext);
-  const { theme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <div className="header">
@@ -39,7 +39,12 @@ export const Header = ({ onSort }) => {
         {/* кнопка для переключения темы */}
         <div className="">
           <FormGroup>
-            <FormControlLabel control={<Switch defaultChecked />} label="On" />
+            <FormControlLabel
+              control={
+                <Switch onChange={() => setTheme(!theme)} defaultChecked />
+              }
+              label="On"
+            />
           </FormGroup>
         </div>
       </Stack>

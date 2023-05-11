@@ -13,19 +13,19 @@ export const PostList = ({ posts, onSort }) => {
   const theme = useContext(ThemeContext);
   const user = useContext(UserContext);
   return (
-    <div className={` card card__${theme ? "light" : "dark"} `}>
-      <div className="postlist__container">
-        <div className="sort-posts">
-          {sortedItems.map((e) => (
-            <span className="sort-item" key={e.id} onClick={() => onSort(e.id)}>
-              {e.id}
-            </span>
-          ))}
-        </div>
-        {posts.map((post, i) => (
-          <Post key={post.name} {...post} posts={post} />
+    <div
+      className={` postlist__container card card__${theme ? "light" : "dark"} `}
+    >
+      <div className="sort-posts">
+        {sortedItems.map((e) => (
+          <span className="sort-item" key={e.id} onClick={() => onSort(e.id)}>
+            {e.id}
+          </span>
         ))}
       </div>
+      {posts.map((post, i) => (
+        <Post key={post.name} {...post} posts={post} />
+      ))}
     </div>
   );
 };

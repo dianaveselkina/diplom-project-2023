@@ -12,7 +12,7 @@ import { ErrorPage } from "./pages/ErrorPage";
 import { api } from "./Utils/api";
 import { UserContext } from "./context/userContext";
 import { ThemeContext } from "./context/themeContext";
-import { Button, FormGroup } from "@mui/material";
+import { Button } from "@mui/material";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -59,18 +59,13 @@ function App() {
   return (
     <div className="App">
       <div className={`app__${theme ? "light" : "dark"} `}>
-        {/* смена темы */}
-        <ThemeContext.Provider value={{ theme }}>
+        <ThemeContext.Provider value={{ theme, setTheme }}>
           <UserContext.Provider value={user}>
             <main className="container content">
-              <Header>
-                <FormGroup onClick={() => setTheme(!theme)}></FormGroup>
-
-                {/* <Switch onClick={() => setTheme(!theme)}>change theme</Switch> */}
-              </Header>
-
-              <Button onClick={() => setTheme(!theme)}>Toggle theme</Button>
-
+              <Header />
+              <Button onClick={() => setTheme(!theme)}>
+                {/* Поменять тему */}
+              </Button>
               <Routes>
                 <Route
                   path="/"
