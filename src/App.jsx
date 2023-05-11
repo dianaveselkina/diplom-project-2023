@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className={`postlist__${theme ? "light" : "dark"} `}>
+      <div className={`theme__postlist__${theme ? "light" : "dark"} `}>
         <ThemeContext.Provider value={{ theme, setTheme }}>
           <UserContext.Provider value={user}>
             <main className="container content">

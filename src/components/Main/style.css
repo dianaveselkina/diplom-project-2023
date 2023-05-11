@@ -75,10 +75,10 @@
   gap: 1rem;
 }
 .sort-item {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  color: #027373;
+  color: #78adad;
   padding: 5px;
   cursor: pointer;
 }
@@ -147,23 +147,13 @@ img {
   fill: red;
   stroke: red;
 }
-.postlist__container .postlist__light {
-  background-color: #f2e3d5;
+
+.postlist__light {
+  background-color: #fdf4eb;
 }
-.card .postlist__light {
-  background-color: #f2e3d5;
-}
-.postlist__theme .postlist__light {
-  background-color: #f2e3d5;
-}
-.postlist__container .postlist__dark {
-  background-color: rgb(88, 88, 88);
-}
-.card .postlist__dark {
-  background-color: rgb(88, 88, 88);
-}
-.postlist__theme__dark {
-  background-color: rgb(88, 88, 88);
+.postlist__dark {
+  background-color: rgb(81, 86, 92);
+  color: #1bd1f1;
 }
 
 main ~ {

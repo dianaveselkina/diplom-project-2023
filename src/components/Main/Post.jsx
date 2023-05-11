@@ -4,8 +4,8 @@ import "./style.css";
 import { ReactComponent } from "../img/like.svg";
 import { Link } from "react-router-dom";
 import { Badge } from "@mui/material";
-/* import { UserContext } from "../../context/userContext";
-import { ThemeContext } from "../../context/themeContext"; */
+import { UserContext } from "../../context/userContext";
+import { ThemeContext } from "../../context/themeContext";
 
 export const Post = ({
   post,
@@ -22,11 +22,11 @@ export const Post = ({
   // const handleClick = (e) => {
   //   e.currentTarget.classList.toggle('card__like_active');
   // };
-  /*   const { theme } = useContext(ThemeContext);
-  const user = useContext(UserContext); */
+  const { theme } = useContext(ThemeContext);
+  const user = useContext(UserContext);
 
   return (
-    <div className="card__container">
+    <div className={`card__container postlist__${theme ? "light" : "dark"} `}>
       <Link to={`/post/${_id}`} className="post__link">
         <p className="card__author">Имя пользователя</p>
         <img src={image} alt="Изображение" />
