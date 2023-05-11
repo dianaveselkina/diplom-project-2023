@@ -19,8 +19,9 @@ function App() {
   const [user] = useState({});
   const [theme, setTheme] = useState(true);
 
-  const postValue = {
-    posts,
+  const themeValue = {
+    theme,
+    setTheme,
   };
 
   const filteredPosts = (posts) => {
@@ -59,7 +60,7 @@ function App() {
     <div className="App">
       <div className={`app__${theme ? "light" : "dark"} `}>
         {/* смена темы */}
-        <ThemeContext.Provider value={postValue}>
+        <ThemeContext.Provider value={{ theme }}>
           <UserContext.Provider value={user}>
             <main className="container content">
               <Header>
@@ -68,13 +69,7 @@ function App() {
                 {/* <Switch onClick={() => setTheme(!theme)}>change theme</Switch> */}
               </Header>
 
-              <Button
-                onClick={() => {
-                  setTheme(theme === "dark" ? "light" : "dark");
-                }}
-              >
-                Toggle theme
-              </Button>
+              <Button onClick={() => setTheme(!theme)}>Toggle theme</Button>
 
               <Routes>
                 <Route

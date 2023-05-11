@@ -27,7 +27,7 @@ export const PostOfPage = ({ post, handleClick }) => {
           </button>
           <div className='clicker__like'> 15</div>
         </div>
-        <titlle className='postpage__titlle'>{post.titlle}</titlle>
+        <title className='postpage__title'>{post.title}</title>
         <p>{post.text}</p>
 
         <div>Комментарии</div>

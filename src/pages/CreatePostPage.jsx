@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 export const CreatePostPage = () => {
   const [data, setData] = useState({
-    titlle: '',
+    title: '',
     post: '',
     text: '',
     link: '',
@@ -22,7 +22,7 @@ export const CreatePostPage = () => {
   return (
     <div className='userpage__form'>
       <div className='userpage__profile'>
-        <titlle className='profile'>Создать пост</titlle>
+        <title className='profile'>Создать пост</title>
         <Link to='/' className='closeI_icon'>
           <CloseIcon />
         </Link>
@@ -42,7 +42,7 @@ export const CreatePostPage = () => {
             type='text'
             value={data.username}
             placeholder='Заголовок поста'
-            onChange={(e) => handleInputChange(e, 'titlle')}
+            onChange={(e) => handleInputChange(e, 'title')}
           />
         </label>
         <label>

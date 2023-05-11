@@ -88,8 +88,8 @@
   background-color: #fcfcfc;
   color: #027373;
   box-sizing: border-box;
-  width: 400px;
-  height: 820px;
+  width: 350px;
+  height: 800px;
   display: grid;
   grid-template-rows: 770px auto 1fr 30px;
   align-content: flex-start;
@@ -116,7 +116,7 @@ img {
   padding-top: 5px;
 }
 
-.card__titlle {
+.card__title {
   font-size: 1.3em;
   font-weight: 600;
 }

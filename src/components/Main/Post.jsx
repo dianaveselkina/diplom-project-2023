@@ -22,7 +22,7 @@ export const Post = ({
   // const handleClick = (e) => {
   //   e.currentTarget.classList.toggle('card__like_active');
   // };
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const user = useContext(UserContext);
 
   return (
@@ -31,7 +31,7 @@ export const Post = ({
         <Link to={`/post/${_id}`} className="post__link">
           <p className="card__author">Имя пользователя</p>
           <img src={image} alt="Изображение" />
-          <span className="card__titlle">{title}</span>
+          <span className="card__title">{title}</span>
           <p className="card__text">{text}</p>
         </Link>
 

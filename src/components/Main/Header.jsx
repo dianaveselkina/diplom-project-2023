@@ -1,4 +1,4 @@
-import React /* , { useContext } */ from "react";
+import React, { useContext /* , { useContext } */ } from "react";
 import { ReactComponent } from "../img/logo.svg";
 import "./style.css";
 import { Link } from "react-router-dom";
@@ -7,12 +7,12 @@ import Button from "@mui/material/Button";
 import { Login } from "@mui/icons-material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
-/* import { ThemeContext } from "../../context/themeContext";
-import { UserContext } from "../../context/userContext"; */
+import { ThemeContext } from "../../context/themeContext";
+import { UserContext } from "../../context/userContext";
 
 export const Header = ({ onSort }) => {
-  /* const user = useContext(UserContext);
-  const theme = useContext(ThemeContext); */
+  const user = useContext(UserContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div className="header">
