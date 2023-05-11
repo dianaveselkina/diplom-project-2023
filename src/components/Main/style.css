@@ -18,7 +18,7 @@
 
 .marquee-text {
   color: #027373;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
   font-style: italic;
   font-weight: 300;
@@ -40,14 +40,14 @@
 
 .marquee {
   color: #2b7ad4;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 22px;
   font-weight: 600;
   white-space: nowrap;
   animation: marquee 5s infinite linear;
 }
 .marquee:after {
-  content: 'Журнал ' Весёлые заметки '';
+  content: "Журнал " Весёлые заметки "";
 }
 @keyframes marquee {
   0% {
@@ -144,8 +144,15 @@ img {
 .card__like_active {
   border: none;
   background: none;
-  fill: red;
+  fill: rgb(236, 117, 117);
   stroke: red;
+}
+.card__light {
+  background-color: rgb(241, 151, 151);
+}
+
+.card__dark {
+  background-color: darkgrey;
 }
 
 main ~ {

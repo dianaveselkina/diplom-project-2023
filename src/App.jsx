@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Main/Footer";
 import { Header } from "./components/Main/Header";
 import { PostList } from "./components/Main/PostList";
@@ -11,16 +11,16 @@ import { CreatePostPage } from "./pages/CreatePostPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { api } from "./Utils/api";
 import { UserContext } from "./context/userContext";
-import { CardsContext } from "./context/cardContext";
 import { ThemeContext } from "./context/themeContext";
+import { Button, FormGroup } from "@mui/material";
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [user] = useState({});
   const [theme, setTheme] = useState(true);
 
-  const postsValue = {
-    posts: posts,
+  const postValue = {
+    posts,
   };
 
   const filteredPosts = (posts) => {
@@ -59,12 +59,23 @@ function App() {
     <div className="App">
       <div className={`app__${theme ? "light" : "dark"} `}>
         {/* смена темы */}
-        <ThemeContext.Provider value={theme}>
-          <CardsContext.Provider value={postsValue}>
-            <UserContext.Provider value={user}>
+        <ThemeContext.Provider value={postValue}>
+          <UserContext.Provider value={user}>
+            <main className="container content">
               <Header>
-                <button onClick={() => setTheme(!theme)}>change theme</button>{" "}
+                <FormGroup onClick={() => setTheme(!theme)}></FormGroup>
+
+                {/* <Switch onClick={() => setTheme(!theme)}>change theme</Switch> */}
               </Header>
+
+              <Button
+                onClick={() => {
+                  setTheme(theme === "dark" ? "light" : "dark");
+                }}
+              >
+                Toggle theme
+              </Button>
+
               <Routes>
                 <Route
                   path="/"
@@ -76,8 +87,8 @@ function App() {
                 <Route path="/userpage" element={<UserPage />} />
               </Routes>
               <Footer />
-            </UserContext.Provider>
-          </CardsContext.Provider>
+            </main>
+          </UserContext.Provider>
         </ThemeContext.Provider>
       </div>
     </div>
