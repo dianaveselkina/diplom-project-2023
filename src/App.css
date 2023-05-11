@@ -1,9 +1,9 @@
-.app__light {
-  background-color: rgb(207, 226, 39);
+.postlist__light {
+  background-color: #f2e3d5;
 }
 
-.app__dark {
-  background-color: darkgray;
+.postlist__dark {
+  background-color: rgb(88, 88, 88);
 }
 
 /* .App {

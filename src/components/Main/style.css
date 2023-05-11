@@ -7,12 +7,12 @@
   justify-content: space-around;
   position: fixed;
   width: 100%;
-  height: 100px;
+  height: 80px;
   z-index: 2;
 }
 
 .header__logotip {
-  height: 85px;
+  height: 75px;
   width: 150px;
 }
 
@@ -64,8 +64,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px 30px;
-  padding: 40px 40px 70px;
-  margin-bottom: auto;
+  padding: 100px 40px 80px 40px;
   align-content: flex-start;
 }
 
@@ -89,11 +88,11 @@
   color: #027373;
   box-sizing: border-box;
   width: 350px;
-  height: 800px;
+  height: 700px;
   display: grid;
-  grid-template-rows: 770px auto 1fr 30px;
+  grid-template-rows: 650px auto 1fr 20px;
   align-content: flex-start;
-  box-shadow: 0 15px 25px#ebbb91;
+  box-shadow: 0 20px 30px#ebbb91;
   cursor: pointer;
   overflow: hidden;
   border-radius: 4px;
@@ -103,26 +102,27 @@
 }
 
 img {
-  padding: 10px 0 15px;
+  padding: 15px 0 15px;
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: calc(850px - 35%);
+  height: calc(650px - 35%);
   object-fit: cover;
 }
 
 .card__author {
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding-top: 5px;
 }
 
 .card__title {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 600;
+  padding: 10px;
 }
 .card__text {
   font-size: 1em;
-  margin: calc(60px - 10%);
+  padding: 10px;
 }
 .card__info {
   display: flex;
@@ -144,22 +144,26 @@ img {
 .card__like_active {
   border: none;
   background: none;
-  fill: rgb(236, 117, 117);
+  fill: red;
   stroke: red;
 }
-.card__light {
-  width: 100%;
+.postlist__container .postlist__light {
   background-color: #f2e3d5;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px 30px;
-  padding: 40px 40px 70px;
-  margin-bottom: auto;
-  align-content: flex-start;
 }
-
-.card__dark {
-  background-color: rgb(90, 83, 83);
+.card .postlist__light {
+  background-color: #f2e3d5;
+}
+.postlist__theme .postlist__light {
+  background-color: #f2e3d5;
+}
+.postlist__container .postlist__dark {
+  background-color: rgb(88, 88, 88);
+}
+.card .postlist__dark {
+  background-color: rgb(88, 88, 88);
+}
+.postlist__theme__dark {
+  background-color: rgb(88, 88, 88);
 }
 
 main ~ {

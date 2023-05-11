@@ -14,7 +14,9 @@ export const PostList = ({ posts, onSort }) => {
   const user = useContext(UserContext);
   return (
     <div
-      className={` postlist__container card card__${theme ? "light" : "dark"} `}
+      className={` postlist__container card postlist__${
+        theme ? "light" : "dark"
+      } `}
     >
       <div className="sort-posts">
         {sortedItems.map((e) => (

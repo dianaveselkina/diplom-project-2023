@@ -43,7 +43,7 @@ export const Header = ({ onSort }) => {
               control={
                 <Switch onChange={() => setTheme(!theme)} defaultChecked />
               }
-              label="On"
+              label="Тема"
             />
           </FormGroup>
         </div>

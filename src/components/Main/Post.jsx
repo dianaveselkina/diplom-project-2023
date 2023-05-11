@@ -4,8 +4,8 @@ import "./style.css";
 import { ReactComponent } from "../img/like.svg";
 import { Link } from "react-router-dom";
 import { Badge } from "@mui/material";
-import { UserContext } from "../../context/userContext";
-import { ThemeContext } from "../../context/themeContext";
+/* import { UserContext } from "../../context/userContext";
+import { ThemeContext } from "../../context/themeContext"; */
 
 export const Post = ({
   post,

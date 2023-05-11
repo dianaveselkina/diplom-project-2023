@@ -9,7 +9,7 @@
 .err__image {
   width: 90%;
   height: 90%;
-  background-image: url('../components/img/err.jpeg');
+  background-image: url("../components/img/err.jpeg");
   background-repeat: no-repeat;
 }
 
@@ -34,12 +34,15 @@
 
 .userpage__profile {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 90%;
   font-size: 1.5rem;
   display: flex;
 }
 .profile {
+  display: flex;
+  align-items: center;
   padding-right: 300px;
   color: #027373;
   font-size: 35px;
@@ -62,7 +65,7 @@
 form {
   width: 600px;
   display: block;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 30px;
 }
 
