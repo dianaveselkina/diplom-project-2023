@@ -1,16 +1,16 @@
-import React from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './index.css';
-import CloseIcon from '@mui/icons-material/Close';
-import { Button } from '@mui/material';
+import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./index.css";
+import CloseIcon from "@mui/icons-material/Close";
+import { Button } from "@mui/material";
 
 export const UserPage = () => {
   const [data, setData] = useState({
-    username: '',
-    email: '',
-    description: '',
-    link: '',
+    username: "",
+    email: "",
+    description: "",
+    link: "",
   });
 
   function handleFormSubmit(event) {
@@ -21,10 +21,10 @@ export const UserPage = () => {
   }
 
   return (
-    <div className='userpage__form'>
-      <div className='userpage__profile'>
-        <titlle className='profile'>Профиль</titlle>
-        <Link to='/' className='closeI_icon'>
+    <div className="userpage__form">
+      <div className="userpage__profile">
+        <title className="profile">Профиль</title>
+        <Link to="/" className="closeI_icon">
           <CloseIcon />
         </Link>
       </div>
@@ -32,52 +32,52 @@ export const UserPage = () => {
       <form onSubmit={handleFormSubmit}>
         <label>
           <input
-            type='url'
+            type="url"
             value={data.link}
-            placeholder='url вашей фотографии'
-            onChange={(e) => handleInputChange(e, 'link')}
+            placeholder="url вашей фотографии"
+            onChange={(e) => handleInputChange(e, "link")}
           />
-          <div className='userpage__defolt'>
-            <img src='./defoltimage.svg' />
+          <div className="userpage__defolt">
+            <img src="./defoltimage.svg" />
           </div>
           <input
-            type='text'
+            type="text"
             value={data.username}
-            placeholder='Иванов Иван Иванович'
-            onChange={(e) => handleInputChange(e, 'username')}
+            placeholder="Иванов Иван Иванович"
+            onChange={(e) => handleInputChange(e, "username")}
           />
         </label>
         <label>
           <input
-            type='email'
+            type="email"
             value={data.email}
-            placeholder='you@mail.ru'
-            onChange={(e) => handleInputChange(e, 'email')}
+            placeholder="you@mail.ru"
+            onChange={(e) => handleInputChange(e, "email")}
           />
         </label>
         <label>
           <input
-            type='text'
+            type="text"
             value={data.description}
-            placeholder='Самый лучший человек на свете'
-            onChange={(e) => handleInputChange(e, 'description')}
+            placeholder="Самый лучший человек на свете"
+            onChange={(e) => handleInputChange(e, "description")}
           />
         </label>
-        <div className='userpage__button'>
-          <Link to='/'>
+        <div className="userpage__button">
+          <Link to="/">
             <Button
-              variant='outlined'
-              className='userpage_submit'
-              type='submit'
+              variant="outlined"
+              className="userpage_submit"
+              type="submit"
             >
               Создать
             </Button>
           </Link>
-          <Link to='/'>
+          <Link to="/">
             <Button
-              variant='outlined'
-              className='userpage_submit'
-              type='submit'
+              variant="outlined"
+              className="userpage_submit"
+              type="submit"
             >
               Отмена
             </Button>
