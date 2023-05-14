@@ -3,13 +3,13 @@
   height: 50vh;
   font-size: 3rem;
   margin: 20px 20px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .err__image {
   width: 90%;
   height: 90%;
-  background-image: url("../components/img/err.jpeg");
+  background-image: url('../components/img/err.jpeg');
   background-repeat: no-repeat;
 }
 
@@ -65,7 +65,7 @@
 form {
   width: 600px;
   display: block;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 30px;
 }
 
@@ -80,14 +80,6 @@ input {
 
 label {
   display: block;
-}
-
-.postpage__infa {
-  color: #027373;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
 .post__like {

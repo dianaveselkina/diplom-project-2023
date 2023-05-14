@@ -1,14 +1,14 @@
-import React, { useContext /* , { useContext } */ } from "react";
-import { ReactComponent } from "../img/logo.svg";
-import "./style.css";
-import { Link } from "react-router-dom";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import { Login } from "@mui/icons-material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { FormControlLabel, FormGroup, Switch } from "@mui/material";
-import { ThemeContext } from "../../context/themeContext";
-import { UserContext } from "../../context/userContext";
+import React, { useContext /* , { useContext } */ } from 'react';
+import { ReactComponent } from '../img/logo.svg';
+import './style.css';
+import { Link } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import { Login } from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { FormControlLabel, FormGroup, Switch } from '@mui/material';
+import { ThemeContext } from '../../context/themeContext';
+import { UserContext } from '../../context/userContext';
 
 export const Header = ({ onSort }) => {
   const user = useContext(UserContext);
@@ -16,8 +16,11 @@ export const Header = ({ onSort }) => {
 
   return (
     <div className="header">
-      <ReactComponent className="header__logotip" />
-
+      <Link to="/">
+        <button type="button" className="header__logo">
+          <ReactComponent className="header__logotip" />
+        </button>
+      </Link>
       <div className="marquee-container">
         <span className="marquee">
           <pre>Журнал "Весёлые заметки"</pre>

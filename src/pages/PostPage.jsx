@@ -1,18 +1,16 @@
-import React from "react";
-/* import { ReactComponent } from "../components/img/like.svg"; */
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { api } from "../Utils/api";
-import { PostOfPage } from "../components/Main/PostOfPage";
-import "./index.css";
+import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { api } from '../Utils/api';
+import { PostOfPage } from '../components/Main/PostOfPage';
+import { PostContext } from '../context/postContext';
+import './index.css';
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
-
-  const handleClick = (e) => {
-    e.currentTarget.classList.toggle("card__like_active");
-  };
+  const { user, handleLike } = useContext(PostContext);
+  const location = useLocation();
 
   useEffect(() => {
     if (id) {
@@ -20,6 +18,24 @@ export const PostPage = () => {
     }
   }, [id]);
 
-  return <PostOfPage handleClick={handleClick} post={post} />;
+  const onPostLike = (item, isLikedPost) => {
+    handleLike(item, isLikedPost);
+    if (isLikedPost) {
+      const filteredLikes = item.likes.filter((e) => e !== user?._id);
+      setPost((s) => ({ ...s, likes: filteredLikes }));
+    } else {
+      const addLikes = [...item.likes, user?._id];
+      setPost((s) => ({ ...s, likes: addLikes }));
+    }
+  };
+
+  return (
+    <>
+      {!!Object.keys(post).length ? (
+        <PostOfPage post={post} onPostLike={onPostLike} />
+      ) : (
+        <div>Loading...</div>
+      )}
+    </>
+  );
 };
-/* console.log({ PostOfPage }); */
