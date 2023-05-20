@@ -1,14 +1,13 @@
-import React, { useContext /* , { useContext } */ } from 'react';
-import { ReactComponent } from '../img/logo.svg';
-import './style.css';
-import { Link } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { Login } from '@mui/icons-material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { FormControlLabel, FormGroup, Switch } from '@mui/material';
-import { ThemeContext } from '../../context/themeContext';
-import { UserContext } from '../../context/userContext';
+import React, { useContext } from "react";
+import { ReactComponent } from "../img/logo.svg";
+import "./style.css";
+import { Link } from "react-router-dom";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import { Login } from "@mui/icons-material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { FormControlLabel, FormGroup, Switch } from "@mui/material";
+import { UserContext, ThemeContext } from "../../context/context";
 
 export const Header = ({ onSort }) => {
   const user = useContext(UserContext);

@@ -1,5 +1,5 @@
 const onResponse = (res) => {
-  return res.json();
+  return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 };
 
 class Api {
@@ -10,49 +10,122 @@ class Api {
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   getAllPosts() {
     return fetch(`${this.baseUrl}/posts`, {
-      method: 'GET',
+      method: "GET",
       headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   getPostId(id) {
     return fetch(`${this.baseUrl}/posts/${id}`, {
-      method: 'GET',
+      method: "GET",
       headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   addLike(postId) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
-      method: 'PUT',
+      method: "PUT",
     }).then(onResponse);
   }
   deleteLike(postId) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
-      method: 'DELETE',
+      method: "DELETE",
     }).then(onResponse);
   }
   changePostLike(postId, isLiked) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
-      method: isLiked ? 'DELETE' : 'PUT',
+      method: isLiked ? "DELETE" : "PUT",
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+    }).then(onResponse);
+  }
+  addNewPost(post) {
+    return fetch(`${this.baseUrl}/posts`, {
+      method: "POST",
+      body: JSON.stringify(post),
+      headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+    }).then(onResponse);
+  }
+  changePost(post, postId) {
+    return fetch(`${this.baseUrl}/posts/${postId}`, {
+      method: "PATCH",
+      body: JSON.stringify(post),
+      headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+    }).then(onResponse);
+  }
+  deletePostById(idPost) {
+    return fetch(`${this.baseUrl}/posts/${idPost}`, {
+      method: "DELETE",
+      headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+    }).then(onResponse);
+  }
+  getPostComments(postid) {
+    return fetch(`${this.baseUrl}/posts/comments/${postid}`, {
+      headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+    }).then(onResponse);
+  }
+  addNewComments(comment, postId) {
+    return fetch(`${this.baseUrl}/posts/comments/${postId}`, {
+      method: "POST",
+      body: JSON.stringify(comment),
+      headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+    }).then(onResponse);
+  }
+  deleteComments(commentId, postId) {
+    return fetch(`${this.baseUrl}/posts/comments/${postId}/${commentId}`, {
+      method: "DELETE",
+      headers: this.headers,
+      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+    }).then(onResponse);
+  }
+
+  singInUser(user) {
+    return fetch(`${this.baseUrl}/signin`, {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify(user),
+    }).then(onResponse);
+  }
+  singUpUser(user) {
+    return fetch(`${this.baseUrl}/signup`, {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify(user),
+    }).then(onResponse);
+  }
+  getUserInfoById(userId) {
+    return fetch(`${this.baseUrl}/users/${userId}`, {
+      method: "POST",
+      body: JSON.stringify(userId),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      },
     }).then(onResponse);
   }
 }
 
 const config = {
   baseUrl:
-    'https://api.react-learning.ru/v2/group-12' ||
-    'https://api.react-learning.ru/v2/12',
+    "https://api.react-learning.ru/v2/group-12" ||
+    "https://api.react-learning.ru/v2/12",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
     authorization:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQyM2MzMDMyOTFkNzkwYjNmYzk2N2MiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyMDY1MDgwLCJleHAiOjE3MTM2MDEwODB9.podOuWY9CAovzjgr22aT8s3D__ihq20XmXXT06INvUA' ||
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao',
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQyM2MzMDMyOTFkNzkwYjNmYzk2N2MiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyMDY1MDgwLCJleHAiOjE3MTM2MDEwODB9.podOuWY9CAovzjgr22aT8s3D__ihq20XmXXT06INvUA" ||
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao",
   },
 };
 

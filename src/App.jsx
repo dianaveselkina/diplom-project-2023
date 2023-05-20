@@ -10,9 +10,7 @@ import { UserPage } from './pages/UserPage';
 import { CreatePostPage } from './pages/CreatePostPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { api } from './Utils/api';
-import { UserContext } from './context/userContext';
-import { ThemeContext } from './context/themeContext';
-import { PostContext } from './context/postContext';
+import { UserContext, ThemeContext, PostContext} from './context/context';
 import { Button } from '@mui/material';
 
 function App() {

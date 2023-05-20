@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
-import dayjs from 'dayjs';
-import './style.css';
-import { ReactComponent as Like } from '../img/like.svg';
-import { Link } from 'react-router-dom';
-import { Badge } from '@mui/material';
-import { UserContext } from '../../context/userContext';
-import { ThemeContext } from '../../context/themeContext';
-import { PostContext } from '../../context/postContext';
-
+import React, { useContext } from "react";
+import dayjs from "dayjs";
+import "./style.css";
+import { ReactComponent as Like } from "../img/like.svg";
+import { Link } from "react-router-dom";
+import { Badge } from "@mui/material";
+import { UserContext, ThemeContext, PostContext } from "../../context/context";
 export const Post = ({
   post,
   title,
@@ -29,7 +26,7 @@ export const Post = ({
   };
   const isLiked = likes.some((e) => e === user._id);
   return (
-    <div className={`card__container postlist__${theme ? 'light' : 'dark'} `}>
+    <div className={`card__container postlist__${theme ? "light" : "dark"} `}>
       <Link to={`/post/${_id}`} className="post__link">
         <p className="card__author">Имя пользователя</p>
         <img className="card__img" src={image} alt="Изображение" />
@@ -38,12 +35,12 @@ export const Post = ({
       </Link>
       <div className="card__info">
         <div className="card__time">
-          {dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
+          {dayjs(created_at).format("HH:MM:s DD/MM/YYYY")}
         </div>
 
         <button
           onClick={handleClick}
-          className={`card__like ${isLiked ? 'card__like_active' : ''}`}
+          className={`card__like ${isLiked ? "card__like_active" : ""}`}
         >
           <Badge badgeContent={likes.length} color="primary"></Badge>
           <Like />
