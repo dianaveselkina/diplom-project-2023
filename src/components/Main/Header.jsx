@@ -8,10 +8,13 @@ import { Login } from "@mui/icons-material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { UserContext, ThemeContext } from "../../context/context";
+import { useState } from "react";
 
 export const Header = ({ onSort }) => {
   const user = useContext(UserContext);
   const { theme, setTheme } = useContext(ThemeContext);
+  const { userData: userInfo, logOut } = useContext({ ...UserContext });
+  const [onpenUserModal, setOpenUserModal] = useState(false);
 
   return (
     <div className="header">
@@ -29,8 +32,10 @@ export const Header = ({ onSort }) => {
       <Stack spacing={2} direction="row">
         <Link to="./userpage">
           <Button type="primary">
-            <AccountCircleIcon />
-            <Login className="card__favorite-icon" />
+            <AccountCircleIcon
+              onClick={() => setOpenUserModal(!onpenUserModal)}
+            />
+            <Login className="" onClick={() => logOut()} />
           </Button>
         </Link>
 
