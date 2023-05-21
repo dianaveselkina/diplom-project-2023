@@ -9,41 +9,44 @@ class Api {
   }
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
+      method: "GET",
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   getAllPosts() {
     return fetch(`${this.baseUrl}/posts`, {
       method: "GET",
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   getPostId(id) {
     return fetch(`${this.baseUrl}/posts/${id}`, {
       method: "GET",
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   addLike(postId) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
       method: "PUT",
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   deleteLike(postId) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
       method: "DELETE",
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   changePostLike(postId, isLiked) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
       method: isLiked ? "DELETE" : "PUT",
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   addNewPost(post) {
@@ -51,7 +54,7 @@ class Api {
       method: "POST",
       body: JSON.stringify(post),
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   changePost(post, postId) {
@@ -59,35 +62,36 @@ class Api {
       method: "PATCH",
       body: JSON.stringify(post),
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   deletePostById(idPost) {
     return fetch(`${this.baseUrl}/posts/${idPost}`, {
       method: "DELETE",
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  getPostComments(postid) {
-    return fetch(`${this.baseUrl}/posts/comments/${postid}`, {
+  getPostComments(postId) {
+    return fetch(`${this.baseUrl}/posts/comments/${postId}`, {
+      method: "GET",
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  addNewComments(comment, postId) {
+  addNewComments(comments, postId) {
     return fetch(`${this.baseUrl}/posts/comments/${postId}`, {
       method: "POST",
-      body: JSON.stringify(comment),
+      body: JSON.stringify(comments),
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
   deleteComments(commentId, postId) {
     return fetch(`${this.baseUrl}/posts/comments/${postId}/${commentId}`, {
       method: "DELETE",
       headers: this.headers,
-      Authorization: `Bearer ${localStorage.getItem("postApi")}`,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
 
@@ -109,10 +113,8 @@ class Api {
     return fetch(`${this.baseUrl}/users/${userId}`, {
       method: "POST",
       body: JSON.stringify(userId),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("postApi")}`,
-      },
+      headers: this.headers,
+      authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
 }
@@ -121,6 +123,7 @@ const config = {
   baseUrl:
     "https://api.react-learning.ru/v2/group-12" ||
     "https://api.react-learning.ru/v2/12",
+  baseUsersUrl: `https://api.react-learning.ru/users`,
   headers: {
     "Content-Type": "application/json",
     authorization:

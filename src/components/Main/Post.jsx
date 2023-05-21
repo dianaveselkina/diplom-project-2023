@@ -3,13 +3,18 @@ import dayjs from "dayjs";
 import "./style.css";
 import { ReactComponent as Like } from "../img/like.svg";
 import { Link } from "react-router-dom";
-import { Badge } from "@mui/material";
+import { Badge, IconButton } from "@mui/material";
 import { UserContext, ThemeContext, PostContext } from "../../context/context";
+import CommentIcon from "@mui/icons-material/Comment";
+
 export const Post = ({
+  image,
+  comments,
+  author,
+  updated_at,
   post,
   title,
   text,
-  image,
   likes,
   userId,
   tags,
@@ -45,6 +50,16 @@ export const Post = ({
           <Badge badgeContent={likes.length} color="primary"></Badge>
           <Like />
         </button>
+
+        <div className="post__sticky">
+          <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments">
+              <Badge badgeContent={comments.length} color="primary">
+                <CommentIcon color="gray" />
+              </Badge>
+            </IconButton>
+          </Link>
+        </div>
       </div>
     </div>
   );

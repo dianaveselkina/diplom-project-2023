@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ReactComponent as Like } from "./../img/like.svg";
 import { Button } from "@mui/material";
 import { PostContext } from "../../context/context";
 import "./style.css";
+import { PostComment } from "../PostComment/PostComment";
+import BasicModal from "../Modal/modal";
 
 export const PostOfPage = ({ post, onPostLike }) => {
   const [isLikedPost, setIsPostLike] = useState(false);
   const { user, handleLike } = useContext(PostContext);
+  const { _id, comments } = post;
+  const urlpage = useParams();
 
   useEffect(() => {
     const isLiked = post.likes.some((e) => e === user?._id);
@@ -43,8 +47,13 @@ export const PostOfPage = ({ post, onPostLike }) => {
         <title className="postpage__title">{post.title}</title>
         <p>{post.text}</p>
 
-        <div>Комментарии</div>
-
+        <div>
+          {comments?.length ? (
+            <PostComment comments={comments} id={_id} />
+          ) : null}
+          Комментарии
+        </div>
+        <BasicModal urlpage={urlpage} singlePost={post} />
         <span>{post.tags}</span>
         <span>28 апреля 2023</span>
         <Link to="/">

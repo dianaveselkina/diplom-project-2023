@@ -5,11 +5,13 @@ import { api } from "../Utils/api";
 import { PostOfPage } from "../components/Main/PostOfPage";
 import { PostContext } from "../context/context";
 import "./index.css";
+import { PostComment } from "../components/PostComment/PostComment";
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const { user, handleLike } = useContext(PostContext);
+  const { _id, comments } = post;
 
   useEffect(() => {
     if (id) {
@@ -35,6 +37,10 @@ export const PostPage = () => {
       ) : (
         <div>Loading...</div>
       )}
+
+      <div>
+        {comments?.length ? <PostComment comments={comments} id={_id} /> : null}
+      </div>
     </>
   );
 };

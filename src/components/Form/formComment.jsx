@@ -24,6 +24,7 @@ export const FormComment = ({ handleClose2, comments, _id, ...rest }) => {
   const cbSubmit = (data) => {
     api.addNewComments(data, _id).then((newPost) => {
       updatePostState(newPost);
+      console.log(data)
     });
 
     handleClose2();

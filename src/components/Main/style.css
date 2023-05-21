@@ -144,7 +144,6 @@
 .card__info {
   display: flex;
   justify-content: space-around;
-  align-items: end;
 }
 .card__time {
   gap: 10px;
@@ -188,6 +187,13 @@
   filter: drop-shadow(0 0 10px white);
   transition: 0.3s;
 }
+.post__sticky {
+  right: 10px;
+  bottom: 3px;
+  position: absolute;
+  cursor: pointer;
+}
+
 main ~ {
   display: none;
 }

@@ -66,6 +66,14 @@ function App() {
       return;
     }
   };
+
+  function updatePostState(likedPost) {
+    let updatedPostData = posts.map((el) => {
+      return el._id !== likedPost._id ? el : likedPost;
+    });
+    setPosts(updatedPostData);
+  }
+
   useEffect(() => {
     if (
       localStorage.getItem("postApi") !== "" &&
