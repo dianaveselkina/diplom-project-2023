@@ -14,16 +14,15 @@ import { UserContext, ThemeContext, PostContext } from "./context/context";
 import { Button } from "@mui/material";
 import { Authorisation } from "./components/Auth/Authorisation";
 import { AuthError } from "./components/Auth/AuthError";
-import { FormAuth } from "./components/Form/FormAuth";
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
   const [theme, setTheme] = useState(true);
   const [favorites, setFavorites] = useState([]);
-  const [userData, setUserData] = useState([]);
   const [autorozation, SetAutorization] = useState(false); // Стейт авторизации
   const [authErr, setAuthErr] = useState(""); // стейт ошибок авторизации
+  const themeValue = { theme, setTheme };
 
   const handlePostLike = async (post, wasLiked) => {
     const updatedPost = await api.changePostLike(post._id, wasLiked);
@@ -38,11 +37,6 @@ function App() {
     wasLiked
       ? setFavorites((state) => state.filter((f) => f._id !== updatedPost._id))
       : setFavorites((state) => [updatedPost, ...state]);
-  };
-
-  const themeValue = {
-    theme,
-    setTheme,
   };
 
   const filteredPosts = (posts) => {
@@ -72,19 +66,32 @@ function App() {
       return;
     }
   };
+  useEffect(() => {
+    if (
+      localStorage.getItem("postApi") !== "" &&
+      localStorage.getItem("postApi")
+    ) {
+      SetAutorization(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (autorozation) {
+      api.getUserInfo().then((data) => setUser(data));
+    }
+  }, [autorozation]);
 
   useEffect(() => {
     api.getAllPosts().then((data) => setPosts(filteredPosts(data)));
   }, []);
 
   useEffect(() => {
-    api.getUserInfo().then((userData) => {
-      console.log(userData);
-      setUser(userData);
+    api.getUserInfo().then((user) => {
+      setUser(user);
     });
   }, []);
 
-  const cardsValue = {
+  const postsValue = {
     handleLike: handlePostLike,
     posts: posts,
     favorites,
@@ -94,18 +101,18 @@ function App() {
 
   ///////////////////////////// Блок авторизации и регистрации /////////////////////////////
 
-  function singIn(userData) {
+  function singIn(user) {
     api
-      .singInUser(userData)
+      .singInUser(user)
       .then((data) => authIsTru(data))
       .catch((err) => setAuthErr(err.message));
   }
 
-  function singUp(userData) {
-    const { email: userEmail, password: userPassword } = { ...userData };
-    console.log(userEmail, userPassword, userData);
+  function singUp(user) {
+    const { email: userEmail, password: userPassword } = { ...user };
+    console.log(userEmail, userPassword, user);
     api
-      .singUpUser(userData)
+      .singUpUser(user)
       .then((res) => {
         console.log(res);
         singIn({ email: userEmail, password: userPassword });
@@ -115,11 +122,12 @@ function App() {
   }
 
   function authIsTru(data) {
-    setUserData(data.data);
+    setUser(data.data);
     localStorage.setItem("postApi", data.token);
     localStorage.setItem("group", data.data.group);
     SetAutorization(true);
   }
+
   function logOut() {
     const result = window.confirm("Уже уходите?");
 
@@ -127,7 +135,7 @@ function App() {
       localStorage.removeItem("postApi");
       localStorage.removeItem("group");
       SetAutorization(false);
-      setUserData({});
+      setUser({});
     }
   }
 
@@ -135,21 +143,19 @@ function App() {
     <div className="App">
       <div className={`theme__postlist__${theme ? "light" : "dark"} `}>
         <ThemeContext.Provider value={themeValue}>
-          <PostContext.Provider value={cardsValue}>
+          <PostContext.Provider value={postsValue}>
             <UserContext.Provider
               value={{
                 user,
-                userData,
                 autorozation,
                 singIn,
                 singUp,
                 logOut,
-                setUserData,
+                setUser,
               }}
             >
               <main className="container content">
                 <Header />
-
                 {/* {autorozation ? (
                   <main className="main">
                     <Routes>
@@ -158,15 +164,14 @@ function App() {
                     </Routes>
                   </main>
                 ) : (
-                  <FormAuth />
+                  <Authorisation />
                 )} */}
 
                 {authErr !== "" ? (
                   <AuthError authErr={authErr} setAuthErr={setAuthErr} />
                 ) : null}
-                <Button onClick={() => setTheme(!theme)}>
-                  {/* Поменять тему */}
-                </Button>
+                <Button onClick={() => setTheme(!theme)}></Button>
+
                 <Routes>
                   <Route
                     path="/"
@@ -174,8 +179,9 @@ function App() {
                   />
                   <Route path="*" element={<ErrorPage />} />
                   <Route path="/createpostpage" element={<CreatePostPage />} />
+
                   <Route path="/post/:id" element={<PostPage />} />
-                  {/* <Route path="/userpage" element={<UserPage />} /> */}
+                  <Route path="/userpage" element={<Authorisation />} />
                 </Routes>
                 <Footer />
               </main>

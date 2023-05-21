@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { Post } from "./Post";
 import "./style.css";
 import { UserContext, ThemeContext } from "../../context/context";
+import { ErrorPage } from "../../pages/ErrorPage";
+import { Sort } from "@mui/icons-material";
 
-export const PostList = ({ posts, onSort }) => {
+export const PostList = ({ posts, post, onSort }) => {
   const sortedItems = [
     { id: "Популярные", title: "POPULAR" },
     { id: "Новые", title: "NEWEST" },

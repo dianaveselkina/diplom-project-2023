@@ -1,10 +1,10 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
-/* import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'; */
 import { useContext } from "react";
 import { UserContext } from "../../context/context";
 import "./form.css";
+import { Link } from "react-router-dom";
 
 export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
   const { singIn } = useContext({ ...UserContext });
@@ -50,10 +50,6 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
               value: true,
               message: " обязательное поле",
             },
-            // minLength: {
-            //     value: 7,
-            //     message: 'очень коротко'
-            // },
             pattern: {
               message: " неверный емаил",
             },
@@ -101,15 +97,17 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
           Регистрация
         </Button>
 
-        <Button
-          type="submit"
-          variant="contained"
-          size="small"
-          color="success"
-          disabled={!isValid}
-        >
-          Войти
-        </Button>
+        <Link to="/">
+          <Button
+            type="submit"
+            variant="contained"
+            size="small"
+            color="success"
+            disabled={!isValid}
+          >
+            Войти
+          </Button>
+        </Link>
       </div>
     </form>
   );

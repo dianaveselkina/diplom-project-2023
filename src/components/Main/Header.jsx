@@ -13,7 +13,7 @@ import { useState } from "react";
 export const Header = ({ onSort }) => {
   const user = useContext(UserContext);
   const { theme, setTheme } = useContext(ThemeContext);
-  const { userData: userInfo, logOut } = useContext({ ...UserContext });
+  const { user: userInfo, logOut } = useContext({ ...UserContext });
   const [onpenUserModal, setOpenUserModal] = useState(false);
 
   return (
