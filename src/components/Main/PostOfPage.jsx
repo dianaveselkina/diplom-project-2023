@@ -4,10 +4,10 @@ import { ReactComponent as Like } from "./../img/like.svg";
 import { Button } from "@mui/material";
 import { PostContext } from "../../context/context";
 import "./style.css";
-import { PostComment } from "../PostComment/PostComment";
 import BasicModal from "../Modal/modal";
+import PostComments from "../PostComment/PostComments";
 
-export const PostOfPage = ({ post, onPostLike }) => {
+export const PostOfPage = ({ post, onPostLike, setPost }) => {
   const [isLikedPost, setIsPostLike] = useState(false);
   const { user, handleLike } = useContext(PostContext);
   const { _id, comments } = post;
@@ -47,19 +47,19 @@ export const PostOfPage = ({ post, onPostLike }) => {
         <title className="postpage__title">{post.title}</title>
         <p>{post.text}</p>
 
-        <div>
-          {comments?.length ? (
-            <PostComment comments={comments} id={_id} />
-          ) : null}
-          Комментарии
-        </div>
-        <BasicModal urlpage={urlpage} singlePost={post} />
+        <BasicModal urlpage={urlpage} post={post} setPost={setPost} />
         <span>{post.tags}</span>
         <span>28 апреля 2023</span>
         <Link to="/">
           {<Button variant="contained">Вернуться на главную страницу</Button>}
         </Link>
       </div>
+      {/* <div>
+        {comments?.length ? (
+          <PostComments comments={comments} id={_id} />
+        ) : null}
+        Комментарии
+      </div> */}
     </div>
   );
 };

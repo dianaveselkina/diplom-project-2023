@@ -10,7 +10,7 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import { UserContext } from "../../context/context";
 import { FormComment } from "../Form/FormComment";
 
-export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
+export default function BasicModal({ urlpage, post, setPost }) {
   const user = React.useContext({ ...UserContext });
 
   const [open, setOpen] = React.useState(false);
@@ -51,7 +51,7 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
           sx={style}
           // className='modalstule'
         >
-          {/* <Form handleClose={handleClose} {...singlePost} /> */}
+          {/* <Form handleClose={handleClose} {...post} /> */}
         </Box>
       </Modal>
 
@@ -59,8 +59,8 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
         <Box className="modalstule">
           <FormComment
             handleClose2={handleClose2}
-            {...singlePost}
-            setSinglePost={setSinglePost}
+            {...post}
+            setPost={setPost}
           />
         </Box>
       </Modal>

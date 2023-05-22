@@ -7,10 +7,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Badge } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
-import api from "../../Utils/api";
-import { PostComments } from "../PostComments/PostComments";
+import { api } from "../../Utils/api";
+import { PostComment } from "./PostComment";
 
-export default function PostComment({ comments, id }) {
+export default function PostComments({ comments, id, setPost }) {
   const [postCommentState, setPostCommentState] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,12 @@ export default function PostComment({ comments, id }) {
 
         <AccordionDetails>
           {postCommentState.map((e) => (
-            <PostComments key={e._id} postId={id} {...e} />
+            <PostComment
+              key={e._id}
+              postId={id}
+              comment={e}
+              setPost={setPost}
+            />
           ))}
         </AccordionDetails>
       </Accordion>

@@ -4,11 +4,11 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { UserContext } from "../../context/context";
 import "./form.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
   const { singIn } = useContext({ ...UserContext });
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,6 +24,7 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
   const cbSubmit = (data) => {
     singIn(data);
     handleClose();
+    navigate("/");
   };
 
   return (
@@ -97,17 +98,17 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
           Регистрация
         </Button>
 
-        <Link to="/">
-          <Button
-            type="submit"
-            variant="contained"
-            size="small"
-            color="success"
-            disabled={!isValid}
-          >
-            Войти
-          </Button>
-        </Link>
+        {/* <Link to="/"> */}
+        <Button
+          type="submit"
+          variant="contained"
+          size="small"
+          color="success"
+          disabled={!isValid}
+        >
+          Войти
+        </Button>
+        {/* </Link> */}
       </div>
     </form>
   );

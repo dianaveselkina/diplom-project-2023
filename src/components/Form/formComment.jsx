@@ -2,14 +2,19 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../Utils/api";
-import { UserContext } from "../../context/context";
+import { PostContext } from "../../context/context";
 import "./form.css";
 
-export const FormComment = ({ handleClose2, comments, _id, ...rest }) => {
-  const data = useContext(UserContext);
+export const FormComment = ({
+  handleClose2,
+  comments,
+  _id,
+  setPost,
+  ...rest
+}) => {
+  const { updatePostState } = useContext(PostContext);
 
-  const updatePostState = data[4];
-
+  console.log({ _id });
   const {
     register,
     handleSubmit,
@@ -22,12 +27,16 @@ export const FormComment = ({ handleClose2, comments, _id, ...rest }) => {
   });
 
   const cbSubmit = (data) => {
-    api.addNewComments(data, _id).then((newPost) => {
-      updatePostState(newPost);
-      console.log(data)
-    });
-
-    handleClose2();
+    console.log(data);
+    api
+      .addNewComments(data, _id)
+      .then((newPost) => {
+        updatePostState(newPost);
+        console.log(data);
+        handleClose2();
+        setPost(newPost);
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -57,9 +66,7 @@ export const FormComment = ({ handleClose2, comments, _id, ...rest }) => {
         </label>
 
         <Button type="submit" variant="contained">
-          {Object.entries(rest).length
-            ? "Сохранить изменения"
-            : "Опубликовать пост"}
+          Отправить комментарий
         </Button>
       </form>
     </>

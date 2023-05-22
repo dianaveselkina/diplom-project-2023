@@ -71,7 +71,7 @@ function App() {
     let updatedPostData = posts.map((el) => {
       return el._id !== likedPost._id ? el : likedPost;
     });
-    setPosts(updatedPostData);
+    setPosts([...updatedPostData]);
   }
 
   useEffect(() => {
@@ -100,6 +100,7 @@ function App() {
   }, []);
 
   const postsValue = {
+    updatePostState,
     handleLike: handlePostLike,
     posts: posts,
     favorites,
@@ -135,7 +136,7 @@ function App() {
     localStorage.setItem("group", data.data.group);
     SetAutorization(true);
   }
-
+  console.log(localStorage.getItem("postApi"));
   function logOut() {
     const result = window.confirm("Уже уходите?");
 
