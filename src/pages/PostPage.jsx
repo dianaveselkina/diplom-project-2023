@@ -1,17 +1,18 @@
-import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
-import { api } from '../Utils/api';
-import { PostOfPage } from '../components/Main/PostOfPage';
-import { PostContext } from '../context/postContext';
-import './index.css';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { api } from "../Utils/api";
+import { PostOfPage } from "../components/Main/PostOfPage";
+import { PostContext } from "../context/context";
+import "./index.css";
+import { PostComment } from "../components/PostComment/PostComment";
+import PostComments from "../components/PostComment/PostComments";
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const { user, handleLike } = useContext(PostContext);
-  const location = useLocation();
-
+  const { _id, comments } = post;
   useEffect(() => {
     if (id) {
       api.getPostId(id).then((data) => setPost(data));
@@ -32,10 +33,16 @@ export const PostPage = () => {
   return (
     <>
       {!!Object.keys(post).length ? (
-        <PostOfPage post={post} onPostLike={onPostLike} />
+        <PostOfPage post={post} onPostLike={onPostLike} setPost={setPost} />
       ) : (
         <div>Loading...</div>
       )}
+
+      <div>
+        {comments?.length ? (
+          <PostComments comments={comments} id={_id} setPost={setPost} />
+        ) : null}
+      </div>
     </>
   );
 };

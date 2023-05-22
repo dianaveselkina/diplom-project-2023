@@ -1,0 +1,22 @@
+.post-comment {
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    padding: 4px;
+}
+.comment-text {
+    display: flex;
+    background: whitesmoke;
+    margin: 2px 2px;
+    padding: 2px 4px;
+    border-radius: 5px;
+    align-items: center;
+    flex: 1;
+}
+.comment-deleteBtn-icon {
+    height: 100%;
+    align-self: center;
+}
+.comment-deleteBtn-icon:hover .comment-delete-icon {
+color: red;
+}

@@ -1,0 +1,157 @@
+.paragrafor::before {
+  display: inline;
+  content: "⚠ ";
+}
+.authRegForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authRegForm__header {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  filter: drop-shadow(0 0 5px rgb(100, 176, 239));
+  font-size: medium;
+  color: rgb(7, 58, 120);
+}
+.authRegForm__header_text {
+  font-style: italic;
+  font-size: small;
+  margin: 10px 0;
+}
+
+.authRegForm__leble {
+  text-align: left;
+  font-size: smaller;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+}
+.authRegForm__leble_error {
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+.authRegForm__leble_error::before {
+  content: "⚠ ";
+}
+.authRegForm__input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid rgb(75, 135, 207);
+  font-size: small;
+}
+
+.authRegForm__BtnBlock {
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.authRegForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authRegForm__header {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  filter: drop-shadow(0 0 5px rgb(100, 176, 239));
+  font-size: medium;
+  color: rgb(7, 58, 120);
+}
+.authRegForm__header_text {
+  font-style: italic;
+  font-size: small;
+  margin: 10px 0;
+}
+
+.authRegForm__leble {
+  text-align: left;
+  font-size: smaller;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+}
+.authRegForm__leble_error {
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+.authRegForm__leble_error::before {
+  content: "⚠ ";
+}
+.authRegForm__input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid rgb(75, 135, 207);
+  font-size: small;
+}
+
+.authRegForm__BtnBlock {
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.form {
+  /* margin: 0 auto; */
+  /* text-align: center; */
+  background: #fffffff3;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.paragrafor {
+  color: #df1d61;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  line-height: 2;
+  font-size: 16px;
+  text-align: center;
+}
+
+.paragrafor::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+.inputfor {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 300px;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.labelfor {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  color: black;
+  font-size: 16px;
+  font-weight: 200;
+}
