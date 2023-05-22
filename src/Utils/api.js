@@ -87,7 +87,7 @@ class Api {
       authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  deleteComments(commentId, postId) {
+  deleteComment(postId, commentId) {
     return fetch(`${this.baseUrl}/posts/comments/${postId}/${commentId}`, {
       method: "DELETE",
       headers: this.headers,
