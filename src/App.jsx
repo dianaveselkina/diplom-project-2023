@@ -6,17 +6,20 @@ import { Header } from "./components/Main/Header";
 import { PostList } from "./components/Main/PostList";
 // import data from './DB/data.json';
 import { PostPage } from "./pages/PostPage";
-import { UserPage } from "./pages/UserPage";
-import { CreatePostPage } from "./pages/CreatePostPage";
+/* import { UserPage } from "./pages/UserPage";
+import { CreatePostPage } from "./pages/CreatePostPage"; */
 import { ErrorPage } from "./pages/ErrorPage";
 import { api } from "./Utils/api";
 import { UserContext, ThemeContext, PostContext } from "./context/context";
 import { Button } from "@mui/material";
 import { Authorisation } from "./components/Auth/Authorisation";
 import { AuthError } from "./components/Auth/AuthError";
+/* import { Modal } from "@mui/base"; */
+import { Form } from "./FormPost/form";
 
 function App() {
   const [posts, setPosts] = useState([]);
+  /* const [postData, setPostData] = useState([]); // Стейт постов */
   const [user, setUser] = useState({});
   const [theme, setTheme] = useState(true);
   const [favorites, setFavorites] = useState([]);
@@ -68,10 +71,10 @@ function App() {
   };
 
   function updatePostState(likedPost) {
-    let updatedPostData = posts.map((el) => {
+    let updatedPost = posts.map((el) => {
       return el._id !== likedPost._id ? el : likedPost;
     });
-    setPosts([...updatedPostData]);
+    setPosts([...updatedPost]);
   }
 
   useEffect(() => {
@@ -101,8 +104,11 @@ function App() {
 
   const postsValue = {
     updatePostState,
+    deletePost,
+    addNewPostInState,
     handleLike: handlePostLike,
     posts: posts,
+    setPosts,
     favorites,
     onSort,
     user,
@@ -136,7 +142,7 @@ function App() {
     localStorage.setItem("group", data.data.group);
     SetAutorization(true);
   }
-  console.log(localStorage.getItem("postApi"));
+
   function logOut() {
     const result = window.confirm("Уже уходите?");
 
@@ -145,6 +151,28 @@ function App() {
       localStorage.removeItem("group");
       SetAutorization(false);
       setUser({});
+    }
+  }
+
+  //////////////////Oбновлениe стейта постов, после добавления нового поста ///////////////
+
+  function addNewPostInState(newPost) {
+    let updatedPost = [...posts, newPost];
+    setPosts([...updatedPost]);
+  }
+
+  function deletePost(author, _id) {
+    author._id !== user._id ? alert("Атата!") : delPost(_id);
+
+    function delPost(_id) {
+      const result = window.confirm("Вы уверены?");
+      if (result) {
+        api.deletePostById(_id);
+        let updatedPost = posts.filter((e) => {
+          return e._id !== _id;
+        });
+        setPosts([...updatedPost]);
+      }
     }
   }
 
@@ -187,7 +215,7 @@ function App() {
                     element={<PostList onSort={onSort} posts={posts} />}
                   />
                   <Route path="*" element={<ErrorPage />} />
-                  <Route path="/createpostpage" element={<CreatePostPage />} />
+                  <Route path="/createpostpage" element={<Form />} />
 
                   <Route path="/post/:id" element={<PostPage />} />
                   <Route path="/userpage" element={<Authorisation />} />

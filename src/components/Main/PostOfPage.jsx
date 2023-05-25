@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as Like } from "./../img/like.svg";
 import { Button } from "@mui/material";
 import { PostContext } from "../../context/context";
@@ -12,6 +12,7 @@ export const PostOfPage = ({ post, onPostLike, setPost }) => {
   const { user, handleLike } = useContext(PostContext);
   const { _id, comments } = post;
   const urlpage = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const isLiked = post.likes.some((e) => e === user?._id);

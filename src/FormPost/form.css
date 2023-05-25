@@ -1,0 +1,9 @@
+
+
+.paragrafor::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+
+

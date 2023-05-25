@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ReactComponent } from "../img/logo.svg";
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Login } from "@mui/icons-material";
@@ -9,12 +9,14 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { UserContext, ThemeContext } from "../../context/context";
 import { useState } from "react";
+import BasicModal from "../Modal/modal";
 
 export const Header = ({ onSort }) => {
   const user = useContext(UserContext);
   const { theme, setTheme } = useContext(ThemeContext);
   const { user: userInfo, logOut } = useContext({ ...UserContext });
   const [onpenUserModal, setOpenUserModal] = useState(false);
+  const urlpage = useParams();
 
   return (
     <div className="header">
@@ -40,7 +42,8 @@ export const Header = ({ onSort }) => {
         </Link>
 
         <Link to="/createpostpage" className="header__button">
-          <Button variant="contained">Прислать заметку</Button>
+          <BasicModal urlpage={urlpage} />
+          {/* <Button variant="contained">Прислать заметку</Button> */}
         </Link>
 
         {/* кнопка для переключения темы */}

@@ -1,14 +1,14 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
-/* import { Form } from "../Form/form"; */
-import PostAddIcon from "@mui/icons-material/PostAdd";
-import "./modal.css";
-import { IconButton } from "@mui/material";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import { UserContext } from "../../context/context";
-import { FormComment } from "../Form/FormComment";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import { Form } from '../../FormPost/form';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import './modal.css';
+import { IconButton } from '@mui/material';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import { UserContext } from '../../context/context';
+import { FormComment } from '../Form/FormComment';
 
 export default function BasicModal({ urlpage, post, setPost }) {
   const user = React.useContext({ ...UserContext });
@@ -23,35 +23,57 @@ export default function BasicModal({ urlpage, post, setPost }) {
   const handleClose2 = () => setOpen2(false);
 
   const style = {
-    position: "absolute",
-    top: "38%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    position: 'absolute',
+    top: '38%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-    borderRadius: "10px",
+    borderRadius: '10px',
   };
 
   return (
     <div>
-      <IconButton
-        aria-label="добавить коммент"
-        onClick={handleOpen2}
-        className="post_addComment_btn"
-      >
-        <PostAddIcon />
-        <div style={{ fontSize: "15px" }}>добавить комментарий...</div>
-      </IconButton>
+      {!urlpage.postId ? (
+        <Button
+          variant="contained"
+          onClick={handleOpen}
+          startIcon={<PostAddIcon />}
+        >
+          добавить пост
+        </Button>
+      ) : user?.userData._id === post?.author?._id ? (
+        <IconButton
+          aria-label="Отредакировать пост"
+          onClick={handleOpen}
+          className="post_addComment_btn"
+        >
+          <div style={{ fontSize: '15px' }}>редактировать пост...</div>
+          <DriveFileRenameOutlineIcon />
+        </IconButton>
+      ) : null}
+
+      {urlpage.postId ? (
+        <IconButton
+          aria-label="добавить коммент"
+          onClick={handleOpen2}
+          className="post_addComment_btn"
+        >
+          <PostAddIcon />
+          <div style={{ fontSize: '15px' }}>добавить комментарий...</div>
+        </IconButton>
+      ) : null}
+
+      {/* <Modal open={open} onClose={handleClose}>
+        <Box sx={style}></Box>
+      </Modal> */}
 
       <Modal open={open} onClose={handleClose}>
-        <Box
-          sx={style}
-          // className='modalstule'
-        >
-          {/* <Form handleClose={handleClose} {...post} /> */}
+        <Box sx={style}>
+          <Form handleClose={handleClose} {...post} />
         </Box>
       </Modal>
 
