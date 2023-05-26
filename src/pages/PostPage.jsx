@@ -1,12 +1,11 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import { api } from "../Utils/api";
-import { PostOfPage } from "../components/Main/PostOfPage";
-import { PostContext } from "../context/context";
-import "./index.css";
-import { PostComment } from "../components/PostComment/PostComment";
-import PostComments from "../components/PostComment/PostComments";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { api } from '../Utils/api';
+import { PostOfPage } from '../components/Main/PostOfPage';
+import { PostContext } from '../context/context';
+import './index.css';
+import PostComments from '../components/PostComment/PostComments';
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
