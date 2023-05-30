@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Form } from '../../FormPost/form';
+import { Form } from '../Form/FormAddPost';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import './modal.css';
 import { IconButton } from '@mui/material';
@@ -43,7 +43,6 @@ export default function BasicModal({ urlpage, post, setPost }) {
           onClick={handleOpen}
           startIcon={<PostAddIcon />}
         >
-          добавить пост
         </Button>
        : user?.user._id === post?.author?._id ? 
         <IconButton

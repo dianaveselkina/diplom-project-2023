@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { api } from "../../Utils/api";
 import { PostComment } from "./PostComment";
 
-export default function PostComments({ comments, id, setPost }) {
+export default function PostComments({ comments, id }) {
   const [postCommentState, setPostCommentState] = useState([]);
 
   useEffect(() => {
@@ -28,14 +28,13 @@ export default function PostComments({ comments, id, setPost }) {
         </AccordionSummary>
 
         <AccordionDetails>
-          {postCommentState.map((e) => (
+          {postCommentState.map((e) => 
             <PostComment
               key={e._id}
               postId={id}
-              comment={e}
-              setPost={setPost}
+               {...e}
             />
-          ))}
+          )}
         </AccordionDetails>
       </Accordion>
     </div>

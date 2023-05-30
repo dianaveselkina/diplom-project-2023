@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import { ReactComponent } from "../img/logo.svg";
 import "./style.css";
 import { Link, useParams } from "react-router-dom";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Login } from "@mui/icons-material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Avatar, CardHeader, FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { AllContextData, ThemeContext } from "../../context/context";
 import { useState } from "react";
@@ -33,16 +31,6 @@ export const Header = ({ onSort }) => {
         </span>
       </div>
 
-      {/* <Stack spacing={2} direction="row">
-        <Link to="./userpage">
-          <Button type="primary">
-            <AccountCircleIcon
-              onClick={() => setOpenUserModal(!onpenUserModal)}
-            />
-            <Login className="" onClick={() => logOut()} />
-          </Button>
-        </Link> */}
-
 {
         Object.entries(userInfo).length > 0
             ? <div style={{
@@ -68,11 +56,7 @@ export const Header = ({ onSort }) => {
             : null
     }
 
-
-        {/* <Link to="/createpostpage" className="header__button"> */}
           <BasicModal urlpage={urlpage} />
-          {/* <Button variant="contained">Прислать заметку</Button> */}
-        {/* </Link> */}
 
         {/* кнопка для переключения темы */}
         <div className="">

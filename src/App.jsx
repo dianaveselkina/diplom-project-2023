@@ -12,7 +12,7 @@ import { ThemeContext, AllContextData } from './context/context';
 import { Button, Modal } from '@mui/material';
 import { Authorisation } from './components/Auth/Authorisation';
 import { AuthError } from './components/Auth/AuthError';
-import { Form } from './FormPost/form';
+import { FormAddPost } from './components/Form/FormAddPost';
 
 function App() {
   const [post, setPost] = useState([]);
@@ -234,7 +234,7 @@ export default App;
               //       element={<PostList onSort={onSort} post={post} />}
               //     />
               //     <Route path="*" element={<ErrorPage />} />
-              //     {<Route path="/createpostpage" element={<Form />} />}
+              //     {<Route path="/createpostpage" element={<FormAddPost />} />}
 
               //     <Route path="/post/:id" element={<PostPage />} />
               //     <Route path="/userpage" element={<Authorisation />} />

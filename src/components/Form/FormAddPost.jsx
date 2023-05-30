@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { api } from '../Utils/api';
-import { AllContextData } from '../context/context';
+import { api } from '../../Utils/api';
+import { AllContextData } from '../../context/context';
 import './form.css';
 
 export const Form = ({
@@ -14,7 +14,7 @@ export const Form = ({
   tags,
   ...rest
 }) => {
-  const {data, post} = useContext(AllContextData);
+  const data = useContext(AllContextData);
   const addNewPostInState = data;
   const updatePostState = data;
 
@@ -39,7 +39,7 @@ export const Form = ({
     } else {
       data.tags = data.tags.split(',');
     }
-console.log('i am here');
+/* console.log('i am here'); */
     Object.entries(rest).length
       ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
       : api.addNewPost(data).then((newPost) => addNewPostInState(newPost));
@@ -72,8 +72,8 @@ console.log('i am here');
                 message: 'Поле обязательно для заполнения',
               },
               minLength: {
-                value: 7,
-                message: 'url адрес должен состоять не менее чем из 7 символов',
+                value: 3,
+                message: 'url адрес должен состоять не менее чем из 3 символов',
               },
               pattern: {
                 value: 'https://',
@@ -123,8 +123,8 @@ console.log('i am here');
                 message: 'Поле обязательно для заполнения',
               },
               minLength: {
-                value: 10,
-                message: 'Имя должно состоять не менее чем из 10 символов',
+                value: 3,
+                message: 'Имя должно состоять не менее чем из 3 символов',
               },
             })}
             type="text"
@@ -136,7 +136,7 @@ console.log('i am here');
           {errors?.tags?.message ? 
             <p className="authRegForm__leble">{errors?.tags?.message}</p>
            : 
-            'Список тегов. Если их несаколько, то указывать через запятую'
+            'Список тегов через запятую'
           }
           <input
             className="authRegForm__input"

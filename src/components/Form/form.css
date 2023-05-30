@@ -155,3 +155,7 @@
   font-size: 16px;
   font-weight: 200;
 }
+.paragrafor::before {
+  display: inline;
+  content: "⚠ ";
+}
