@@ -2,8 +2,6 @@ import { useContext } from "react";
 import { Post } from "./Post";
 import "./style.css";
 import { AllContextData, ThemeContext } from "../../context/context";
-import { ErrorPage } from "../../pages/ErrorPage";
-import { Sort } from "@mui/icons-material";
 
 export const PostList = ({ post, onSort }) => {
   const sortedItems = [

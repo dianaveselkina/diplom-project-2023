@@ -21,7 +21,7 @@ class Api {
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  getPostsId(id) {
+  getPostById(id) {
     return fetch(`${this.baseUrl}/posts/${id}`, {
       method: "GET",
       headers: this.headers,

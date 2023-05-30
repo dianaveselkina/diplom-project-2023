@@ -12,7 +12,9 @@ import CheckAvatar from "../../Utils/avatar";
 
 export const PostComment = ({ postId, author, created_at, text, ...rest }) => {
 
-  const { data, updatePostState } = useContext(AllContextData);
+  const data = useContext(AllContextData)
+
+  const updatePostState = data
   /* const { author, text, created_at, post, _id } = comment; */
 
   function delComment() {

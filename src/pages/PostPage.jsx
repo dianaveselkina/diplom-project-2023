@@ -10,11 +10,11 @@ import PostComments from '../components/PostComment/PostComments';
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
-  const { user, handleLike } = useContext(AllContextData);
+    const { user, handleLike } = useContext(AllContextData);
   const { _id, comments } = post;
   useEffect(() => {
     if (id) {
-      api.getPostsId(id).then((data) => setPost(data));
+      api.getPostById(id).then((data) => setPost(data));
     }
   }, [id]);
 
@@ -30,7 +30,7 @@ export const PostPage = () => {
   };
 
   return (
-    <>
+        <>
       {!!Object.keys(post).length ? (
         <PostOfPage post={post} onPostLike={onPostLike} setPost={setPost} />
       ) : (

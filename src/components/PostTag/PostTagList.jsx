@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
-import { PostComments } from "../PostComment/PostComments";
 import { PostTag } from "./PostTag";
 
 export const PostTagList = ({ tags, id }) => {
