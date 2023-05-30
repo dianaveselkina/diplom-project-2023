@@ -2,12 +2,12 @@ import { Button } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { UserContext } from "../../context/context";
+import { AllContextData } from "../../context/context";
 import "./form.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
-  const { singIn } = useContext({ ...UserContext });
+  const { singIn } = useContext({ ...AllContextData });
   const navigate = useNavigate();
   const {
     register,
@@ -38,12 +38,11 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
       </h5>
 
       <label className="authRegForm__leble">
-        {" "}
-        {errors?.email?.message ? (
+        {errors?.email?.message ? 
           <p className="authRegForm__leble_error">{errors?.email?.message}</p>
-        ) : (
+         : 
           "Ваш Email"
-        )}
+        }
         <input
           className="authRegForm__input"
           {...register("email", {
@@ -61,14 +60,13 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
       </label>
 
       <label className="authRegForm__leble">
-        {" "}
-        {errors?.password?.message ? (
+        {errors?.password?.message ? 
           <p className="authRegForm__leble_error">
             {errors?.password?.message}
           </p>
-        ) : (
+         : 
           "Введите пароль"
-        )}
+        }
         <input
           className="authRegForm__input"
           {...register("password", {

@@ -3,18 +3,18 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { api } from '../Utils/api';
 import { PostOfPage } from '../components/Main/PostOfPage';
-import { PostContext } from '../context/context';
+import { AllContextData } from '../context/context';
 import './index.css';
 import PostComments from '../components/PostComment/PostComments';
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
-  const { user, handleLike } = useContext(PostContext);
+  const { user, handleLike } = useContext(AllContextData);
   const { _id, comments } = post;
   useEffect(() => {
     if (id) {
-      api.getPostId(id).then((data) => setPost(data));
+      api.getPostsId(id).then((data) => setPost(data));
     }
   }, [id]);
 

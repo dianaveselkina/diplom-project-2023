@@ -2,11 +2,11 @@ import { Button } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { UserContext } from "../../context/context";
+import { AllContextData } from "../../context/context";
 import "./form.css";
 
 export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
-  const { singUp } = useContext({ ...UserContext });
+  const { singUp } = useContext({ ...AllContextData });
 
   const {
     register,
@@ -35,12 +35,11 @@ export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
       </h5>
 
       <label className="authRegForm__leble">
-        {" "}
-        {errors?.email?.message ? (
+        {errors?.email?.message ? 
           <p className="authRegForm__leble_error">{errors?.email?.message}</p>
-        ) : (
+         : 
           "Ваш Email"
-        )}
+        }
         <input
           className="authRegForm__input"
           {...register("email", {
@@ -59,14 +58,13 @@ export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
       </label>
 
       <label className="authRegForm__leble">
-        {" "}
-        {errors?.password?.message ? (
+        {errors?.password?.message ? 
           <p className="authRegForm__leble_error">
             {errors?.password?.message}
           </p>
-        ) : (
+         : 
           "Введите пароль"
-        )}
+        }
         <input
           className="authRegForm__input"
           {...register("password", {
@@ -86,14 +84,13 @@ export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
       </label>
 
       <label className="authRegForm__leble">
-        {" "}
-        {errors?.password?.message ? (
+        {errors?.password?.message ? 
           <p className="authRegForm__leble_error">
             {errors?.password?.message}
           </p>
-        ) : (
+         : 
           "Укажите группу"
-        )}
+        }
         <input
           className="authRegForm__input"
           {...register("group", {

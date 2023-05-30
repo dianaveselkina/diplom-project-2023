@@ -21,7 +21,7 @@ class Api {
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  getPostId(id) {
+  getPostsId(id) {
     return fetch(`${this.baseUrl}/posts/${id}`, {
       method: "GET",
       headers: this.headers,
@@ -72,7 +72,7 @@ class Api {
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  getPostComments(postId) {
+  getPostsComments(postId) {
     return fetch(`${this.baseUrl}/posts/comments/${postId}`, {
       method: "GET",
       headers: this.headers,

@@ -7,10 +7,10 @@ import dayjs from "dayjs";
 /* import checkAvatar from "../../utils/avatar"; */
 import "./index.css";
 import { api } from "../../Utils/api";
-import { PostContext } from "../../context/context";
+import { AllContextData } from "../../context/context";
 
 export const PostComment = ({ comment, setPost }) => {
-  const { updatePostState } = useContext(PostContext);
+  const { updatePostState } = useContext(AllContextData);
   const { author, text, created_at, post, _id } = comment;
   console.log(comment);
 

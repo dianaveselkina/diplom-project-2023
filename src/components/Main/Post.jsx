@@ -4,7 +4,7 @@ import "./style.css";
 import { ReactComponent as Like } from "../img/like.svg";
 import { Link } from "react-router-dom";
 import { Badge, IconButton } from "@mui/material";
-import { UserContext, ThemeContext, PostContext } from "../../context/context";
+import { ThemeContext, AllContextData } from "../../context/context";
 import CommentIcon from "@mui/icons-material/Comment";
 
 export const Post = ({
@@ -23,8 +23,8 @@ export const Post = ({
   ...args
 }) => {
   const { theme } = useContext(ThemeContext);
-  const user = useContext(UserContext);
-  const { handleLike } = useContext(PostContext);
+  const user = useContext(AllContextData);
+  const { handleLike } = useContext(AllContextData);
 
   const handleClick = () => {
     handleLike(post, isLiked);

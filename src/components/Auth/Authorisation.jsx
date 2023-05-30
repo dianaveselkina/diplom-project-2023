@@ -68,19 +68,19 @@ export const Authorisation = () => {
         >
           <Fade in={open}>
             <Box sx={style}>
-              {authReg ? (
+              {authReg ? 
                 <FormAuth
                   authReg={authReg}
                   handleClose={handleClose}
                   setAuthReg={setAuthReg}
                 />
-              ) : (
+               : 
                 <FormReg
                   authReg={authReg}
                   handleClose={handleClose}
                   setAuthReg={setAuthReg}
                 />
-              )}
+              }
             </Box>
           </Fade>
         </Modal>
