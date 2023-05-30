@@ -4,7 +4,6 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Avatar from "@mui/material/Avatar";
 import dayjs from "dayjs";
-/* import checkAvatar from "../../utils/avatar"; */
 import "./index.css";
 import { api } from "../../Utils/api";
 import { AllContextData } from "../../context/context";
@@ -15,7 +14,6 @@ export const PostComment = ({ postId, author, created_at, text, ...rest }) => {
   const data = useContext(AllContextData)
 
   const updatePostState = data
-  /* const { author, text, created_at, post, _id } = comment; */
 
   function delComment() {
     api.deleteComment(rest._id, postId).then((data) => updatePostState(data));

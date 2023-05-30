@@ -5,13 +5,11 @@ import { api } from '../Utils/api';
 import { PostOfPage } from '../components/Main/PostOfPage';
 import { AllContextData } from '../context/context';
 import './index.css';
-import PostComments from '../components/PostComment/PostComments';
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
     const { user, handleLike } = useContext(AllContextData);
-  const { _id, comments } = post;
   useEffect(() => {
     if (id) {
       api.getPostById(id).then((data) => setPost(data));
@@ -36,12 +34,6 @@ export const PostPage = () => {
       ) : (
         <div>Loading...</div>
       )}
-
-      <div>
-        {comments?.length ? (
-          <PostComments comments={comments} id={_id} setPost={setPost} />
-        ) : null}
-      </div>
     </>
   );
 };

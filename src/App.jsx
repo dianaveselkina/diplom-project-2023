@@ -182,8 +182,6 @@ function App() {
       <div className={`theme__postlist__${theme ? 'light' : 'dark'} `}>
         <ThemeContext.Provider value={themeValue}>
           <AllContextData.Provider value={postValue}>
-
-
 <Routes>
             <Route path="*" element={<Header />} />
           </Routes>
@@ -208,9 +206,7 @@ function App() {
           ) : null}
           <Routes>
             <Route path="*" element={<Footer />} />
-          </Routes>
-
-              
+          </Routes>              
           </AllContextData.Provider>
         </ThemeContext.Provider>
       </div>
@@ -220,24 +216,5 @@ function App() {
 
 export default App;
 
-//<main className="container content">
-//                <Header />
-
-              //   {authErr !== '' ? (
-              //     <AuthError authErr={authErr} setAuthErr={setAuthErr} />
-              //   ) : null}
-              //   {/* <Button onClick={() => setTheme(!theme)}></Button> */}
-
-              //   <Routes>
-              //     <Route
-              //       path="/"
-              //       element={<PostList onSort={onSort} post={post} />}
-              //     />
-              //     <Route path="*" element={<ErrorPage />} />
               //     {<Route path="/createpostpage" element={<FormAddPost />} />}
-
-              //     <Route path="/post/:id" element={<PostPage />} />
               //     <Route path="/userpage" element={<Authorisation />} />
-              //   </Routes>
-              //   <Footer />
-              // </main>

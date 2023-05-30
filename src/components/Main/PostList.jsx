@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Post } from "./Post";
 import "./style.css";
-import { AllContextData, ThemeContext } from "../../context/context";
+import { ThemeContext } from "../../context/context";
 
 export const PostList = ({ post, onSort }) => {
   const sortedItems = [
@@ -10,7 +10,7 @@ export const PostList = ({ post, onSort }) => {
     { id: "Все", title: "ALL" },
   ];
   const theme = useContext(ThemeContext);
-  const user = useContext(AllContextData);
+  
   return (
     <div
       className={`postlist__container postlist__${theme ? "light" : "dark"} `}
