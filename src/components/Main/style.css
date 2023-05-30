@@ -176,6 +176,11 @@
 .card__text {
   font-size: 1em;
   padding: 10px;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
 }
 .card__info {
   display: flex;

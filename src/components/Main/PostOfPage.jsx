@@ -42,7 +42,8 @@ export const PostOfPage = ({ post, onPostLike, setPost }) => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '20px',
+            padding: '20px',            
+            margin: '50px',
         }} >
     <div /* className="postlist__container" */>     
      <CardHeader 
@@ -102,7 +103,9 @@ export const PostOfPage = ({ post, onPostLike, setPost }) => {
         <BasicModal urlpage={urlpage} post={post} setPost={setPost} />
         
         <Link to="/">
-          {<Button variant="contained"  /* onClick={() => navigate(-1)} */>Вернуться на главную страницу</Button>}
+          {<Button variant="contained"  /* onClick={() => navigate(-1)} */sx={{ 
+            margin: '50px',  
+          }}>Вернуться на главную страницу</Button>}
         </Link>
     </div>
     </Card>

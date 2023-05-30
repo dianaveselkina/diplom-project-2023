@@ -38,13 +38,13 @@ function App() {
       : setFavorites((state) => [updatedPost, ...state]);
   };
 
-  const filteredPost = (post) => {
+  /* const filteredPost = (post) => {
     return post.filter(
       (e) =>
         e.author._id === '64423c303291d790b3fc967c' ||
         e.author._id === '644573ee3291d790b3073d8d'
     );
-  };
+  }; */
 
   const onSort = (sortId) => {
     if (sortId === 'Популярные') {
@@ -89,7 +89,7 @@ function App() {
   }, [autorozation]);
 
   useEffect(() => {
-    api.getAllPosts().then((data) => setPost(filteredPost(data)));
+    api.getAllPosts().then((data) => setPost(data));
   }, []);
 
   useEffect(() => {
