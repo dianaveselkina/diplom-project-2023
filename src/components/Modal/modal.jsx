@@ -2,16 +2,16 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Form } from '../../FormPost/form';
+import { Form } from '../Form/FormAddPost';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import './modal.css';
 import { IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import { UserContext } from '../../context/context';
+import { AllContextData } from '../../context/context';
 import { FormComment } from '../Form/FormComment';
 
 export default function BasicModal({ urlpage, post, setPost }) {
-  const user = React.useContext({ ...UserContext });
+  const user = React.useContext({ ...AllContextData });
 
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
@@ -37,15 +37,14 @@ export default function BasicModal({ urlpage, post, setPost }) {
 
   return (
     <div>
-      {!urlpage.postId ? (
+      {!urlpage.postId ? 
         <Button
           variant="contained"
           onClick={handleOpen}
           startIcon={<PostAddIcon />}
         >
-          добавить пост
         </Button>
-      ) : user?.userData._id === post?.author?._id ? (
+       : user?.user._id === post?.author?._id ? 
         <IconButton
           aria-label="Отредакировать пост"
           onClick={handleOpen}
@@ -54,9 +53,9 @@ export default function BasicModal({ urlpage, post, setPost }) {
           <div style={{ fontSize: '15px' }}>редактировать пост...</div>
           <DriveFileRenameOutlineIcon />
         </IconButton>
-      ) : null}
+       : null}
 
-      {urlpage.postId ? (
+      {urlpage.postId ? 
         <IconButton
           aria-label="добавить коммент"
           onClick={handleOpen2}
@@ -65,11 +64,7 @@ export default function BasicModal({ urlpage, post, setPost }) {
           <PostAddIcon />
           <div style={{ fontSize: '15px' }}>добавить комментарий...</div>
         </IconButton>
-      ) : null}
-
-      {/* <Modal open={open} onClose={handleClose}>
-        <Box sx={style}></Box>
-      </Modal> */}
+       : null}
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

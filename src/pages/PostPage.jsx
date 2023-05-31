@@ -3,18 +3,16 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { api } from '../Utils/api';
 import { PostOfPage } from '../components/Main/PostOfPage';
-import { PostContext } from '../context/context';
+import { AllContextData } from '../context/context';
 import './index.css';
-import PostComments from '../components/PostComment/PostComments';
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
-  const { user, handleLike } = useContext(PostContext);
-  const { _id, comments } = post;
+    const { user, handleLike } = useContext(AllContextData);
   useEffect(() => {
     if (id) {
-      api.getPostId(id).then((data) => setPost(data));
+      api.getPostById(id).then((data) => setPost(data));
     }
   }, [id]);
 
@@ -30,18 +28,12 @@ export const PostPage = () => {
   };
 
   return (
-    <>
+        <>
       {!!Object.keys(post).length ? (
         <PostOfPage post={post} onPostLike={onPostLike} setPost={setPost} />
       ) : (
         <div>Loading...</div>
       )}
-
-      <div>
-        {comments?.length ? (
-          <PostComments comments={comments} id={_id} setPost={setPost} />
-        ) : null}
-      </div>
     </>
   );
 };

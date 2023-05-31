@@ -74,7 +74,7 @@ export const Footer = () => {
       </Link>
 
       <Link
-        href='https://github.com/8Lou/posts_2023'
+        href='https://github.com/8Lou/diplom-project-2023.git'
         sx={{
           padding: '10px',
           opacity: 0.9,

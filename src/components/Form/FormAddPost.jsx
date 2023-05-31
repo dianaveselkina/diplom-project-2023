@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { api } from '../Utils/api';
-import { AllContextData, PostContext } from '../context/context';
+import { api } from '../../Utils/api';
+import { AllContextData } from '../../context/context';
 import './form.css';
 
 export const Form = ({
@@ -15,7 +15,6 @@ export const Form = ({
   ...rest
 }) => {
   const data = useContext(AllContextData);
-  const post = useContext(PostContext);
   const addNewPostInState = data;
   const updatePostState = data;
 
@@ -34,12 +33,13 @@ export const Form = ({
   });
 
   const cbSubmit = (data) => {
+    console.log(data);
     if (data.tags === '' || data.tags === ' ' || data.tags.length === 0) {
       data.tags = [];
     } else {
       data.tags = data.tags.split(',');
     }
-
+/* console.log('i am here'); */
     Object.entries(rest).length
       ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
       : api.addNewPost(data).then((newPost) => addNewPostInState(newPost));
@@ -59,12 +59,11 @@ export const Form = ({
         </h5>
 
         <label className="authRegForm__leble">
-          {' '}
-          {errors?.url?.message ? (
+          {errors?.url?.message ? 
             <p className="authRegForm__leble_error">{errors?.url?.message}</p>
-          ) : (
+           : 
             'Введите URL изображения'
-          )}
+          }
           <input
             className="authRegForm__input"
             {...register('image', {
@@ -73,8 +72,8 @@ export const Form = ({
                 message: 'Поле обязательно для заполнения',
               },
               minLength: {
-                value: 7,
-                message: 'url адрес должен состоять не менее чем из 7 символов',
+                value: 3,
+                message: 'url адрес должен состоять не менее чем из 3 символов',
               },
               pattern: {
                 value: 'https://',
@@ -87,12 +86,11 @@ export const Form = ({
         </label>
 
         <label className="authRegForm__leble">
-          {' '}
-          {errors?.head?.message ? (
+          {errors?.head?.message ? 
             <p className="authRegForm__leble">{errors?.head?.message}</p>
-          ) : (
+           : 
             'Введите заголовок поста'
-          )}
+          }
           <input
             className="authRegForm__input"
             {...register('title', {
@@ -112,12 +110,11 @@ export const Form = ({
         </label>
 
         <label className="authRegForm__leble">
-          {' '}
-          {errors?.body?.message ? (
+          {errors?.body?.message ? 
             <p className="authRegForm__leble">{errors?.body?.message}</p>
-          ) : (
+           : 
             'Введите текст поста'
-          )}
+          }
           <input
             className="authRegForm__input"
             {...register('text', {
@@ -126,8 +123,8 @@ export const Form = ({
                 message: 'Поле обязательно для заполнения',
               },
               minLength: {
-                value: 10,
-                message: 'Имя должно состоять не менее чем из 10 символов',
+                value: 3,
+                message: 'Имя должно состоять не менее чем из 3 символов',
               },
             })}
             type="text"
@@ -136,12 +133,11 @@ export const Form = ({
         </label>
 
         <label className="authRegForm__leble">
-          {' '}
-          {errors?.tags?.message ? (
+          {errors?.tags?.message ? 
             <p className="authRegForm__leble">{errors?.tags?.message}</p>
-          ) : (
-            'Список тегов. Если их несаколько, то указывать через запятую'
-          )}
+           : 
+            'Список тегов через запятую'
+          }
           <input
             className="authRegForm__input"
             {...register('tags', {})}
