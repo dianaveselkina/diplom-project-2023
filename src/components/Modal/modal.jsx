@@ -37,14 +37,13 @@ export default function BasicModal({ urlpage, post, setPost }) {
 
   return (
     <div>
-      {!urlpage.postId ? 
+      {!urlpage.postId ? (
         <Button
           variant="contained"
           onClick={handleOpen}
           startIcon={<PostAddIcon />}
-        >
-        </Button>
-       : user?.user._id === post?.author?._id ? 
+        ></Button>
+      ) : user?.user._id === post?.author?._id ? (
         <IconButton
           aria-label="Отредакировать пост"
           onClick={handleOpen}
@@ -53,9 +52,9 @@ export default function BasicModal({ urlpage, post, setPost }) {
           <div style={{ fontSize: '15px' }}>редактировать пост...</div>
           <DriveFileRenameOutlineIcon />
         </IconButton>
-       : null}
+      ) : null}
 
-      {urlpage.postId ? 
+      {urlpage.postId ? (
         <IconButton
           aria-label="добавить коммент"
           onClick={handleOpen2}
@@ -64,11 +63,11 @@ export default function BasicModal({ urlpage, post, setPost }) {
           <PostAddIcon />
           <div style={{ fontSize: '15px' }}>добавить комментарий...</div>
         </IconButton>
-       : null}
+      ) : null}
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Form handleClose={handleClose} {...post} />
+          <Form handleClose={handleClose} {...post} setPost={setPost} />
         </Box>
       </Modal>
 

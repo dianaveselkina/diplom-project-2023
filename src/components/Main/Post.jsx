@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import dayjs from "dayjs";
-import "./style.css";
-import { ReactComponent as Like } from "../img/like.svg";
-import { Link } from "react-router-dom";
-import { Avatar, Badge, CardHeader, IconButton } from "@mui/material";
-import { ThemeContext, AllContextData } from "../../context/context";
-import CommentIcon from "@mui/icons-material/Comment";
-import CheckAvatar from "../../Utils/avatar";
+import React, { useContext } from 'react';
+import dayjs from 'dayjs';
+import './style.css';
+import { ReactComponent as Like } from '../img/like.svg';
+import { Link } from 'react-router-dom';
+import { Avatar, Badge, CardHeader, IconButton } from '@mui/material';
+import { ThemeContext, AllContextData } from '../../context/context';
+import CommentIcon from '@mui/icons-material/Comment';
+import CheckAvatar from '../../Utils/avatar';
 
 export const Post = ({
   image,
@@ -24,7 +24,7 @@ export const Post = ({
   ...args
 }) => {
   const { theme } = useContext(ThemeContext);
-  const user = useContext({...AllContextData});
+  const user = useContext({ ...AllContextData });
   const { handleLike } = useContext(AllContextData);
   /* const deletePost = data */
 
@@ -33,25 +33,26 @@ export const Post = ({
   };
   const isLiked = likes.some((e) => e === user._id);
 
-let dataAuthor
+  let dataAuthor;
 
   if (user._id === author._id) {
-    dataAuthor = user.user
+    dataAuthor = user.user;
   } else {
-    dataAuthor = author
+    dataAuthor = author;
   }
 
   return (
-    <div className={`card__container postlist__${theme ? "light" : "dark"} `}>
+    <div className={`card__container postlist__${theme ? 'light' : 'dark'} `}>
       <Link to={`/post/${_id}`} className="post__link">
         <CardHeader
           avatar={
-
-            author && <Avatar aria-label="recipe" src={CheckAvatar}>
-              {CheckAvatar}
-            </Avatar>
-
-          } title={dataAuthor.about + ' ' + dataAuthor.name}
+            author && (
+              <Avatar aria-label="recipe" src={CheckAvatar}>
+                {CheckAvatar}
+              </Avatar>
+            )
+          }
+          title={dataAuthor.about + ' ' + dataAuthor.name}
         />
         <img className="card__img" src={image} alt="Изображение" />
         <span className="card__title">{title}</span>
@@ -59,12 +60,12 @@ let dataAuthor
       </Link>
       <div className="card__info">
         <div className="card__time">
-          {dayjs(created_at).format("HH:MM:s DD/MM/YYYY")}
+          {dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
         </div>
 
         <button
           onClick={handleClick}
-          className={`card__like ${isLiked ? "card__like_active" : ""}`}
+          className={`card__like ${isLiked ? 'card__like_active' : ''}`}
         >
           <Badge badgeContent={likes.length} color="primary"></Badge>
           <Like />
