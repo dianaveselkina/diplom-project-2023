@@ -9,13 +9,11 @@ import { PostPage } from './pages/PostPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { api } from './Utils/api';
 import { ThemeContext, AllContextData } from './context/context';
-import { Button, Modal } from '@mui/material';
 import { Authorisation } from './components/Auth/Authorisation';
 import { AuthError } from './components/Auth/AuthError';
-import { FormAddPost } from './components/Form/FormAddPost';
 
 function App() {
-  const [post, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
   const [theme, setTheme] = useState(true);
   const [favorites, setFavorites] = useState([]);
@@ -27,7 +25,7 @@ function App() {
     const updatedPost = await api.changePostLike(post._id, wasLiked);
     const index = post.findIndex((e) => e._id === updatedPost?._id);
     if (index !== -1) {
-      setPost((state) => [
+      setPosts((state) => [
         ...state.slice(0, index),
         updatedPost,
         ...state.slice(index + 1),
@@ -48,29 +46,29 @@ function App() {
 
   const onSort = (sortId) => {
     if (sortId === 'Популярные') {
-      const newPost = post.sort((a, b) => b.likes.length - a.likes.length);
-      setPost([...newPost]);
+      const newPost = posts.sort((a, b) => b.likes.length - a.likes.length);
+      setPosts([...newPost]);
       return;
     }
     if (sortId === 'Новые') {
-      const newPost = post.sort(
+      const newPost = posts.sort(
         (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
-      setPost([...newPost]);
+      setPosts([...newPost]);
       return;
     }
     if (sortId === 'Все') {
-      const newPost = post;
-      setPost([...newPost]);
+      const newPost = posts;
+      setPosts([...newPost]);
       return;
     }
   };
 
   function updatePostState(likedPost) {
-    let updatedPost = post.map((el) => {
+    let updatedPost = posts.map((el) => {
       return el._id !== likedPost._id ? el : likedPost;
     });
-    setPost([...updatedPost]);
+    setPosts([...updatedPost]);
   }
 
   useEffect(() => {
@@ -89,7 +87,7 @@ function App() {
   }, [autorozation]);
 
   useEffect(() => {
-    api.getAllPosts().then((data) => setPost(data));
+    api.getAllPosts().then((data) => setPosts(data));
   }, []);
 
   useEffect(() => {
@@ -103,8 +101,8 @@ function App() {
     deletePost,
     addNewPostInState,
     handleLike: handlePostLike,
-    post: post,
-    setPost,
+    posts: posts,
+    setPosts,
     favorites,
     onSort,
     user,
@@ -158,8 +156,8 @@ function App() {
   //////////////////Oбновлениe стейта постов, после добавления нового поста ///////////////
 
   function addNewPostInState(newPost) {
-    let updatedPost = [...post, newPost];
-    setPost(updatedPost);
+    let updatedPost = [newPost, ...posts];
+    setPosts(updatedPost);
   }
 
   function deletePost(author, _id) {
@@ -169,10 +167,10 @@ function App() {
       const result = window.confirm('Вы уверены?');
       if (result) {
         api.deletePostById(_id);
-        let updatedPost = post.filter((e) => {
+        let updatedPost = posts.filter((e) => {
           return e._id !== _id;
         });
-        setPost(updatedPost);
+        setPosts(updatedPost);
       }
     }
   }
@@ -182,31 +180,31 @@ function App() {
       <div className={`theme__postlist__${theme ? 'light' : 'dark'} `}>
         <ThemeContext.Provider value={themeValue}>
           <AllContextData.Provider value={postValue}>
-<Routes>
-            <Route path="*" element={<Header />} />
-          </Routes>
-          {autorozation ? (
-            <main className="main">
-              <Routes>
-                <Route
-                  index
-                  element={<PostList onSort={onSort} post={post} />}
-                />
-                {/* <Route path="/post/:postId" element={<PostPage />} /> */}
-                <Route path="/post/:id" element={<PostPage />} />
-                <Route path="*" element={<ErrorPage />} />
-              </Routes>
-            </main>
-          ) : (
-            <Authorisation />
-          )}
+            <Routes>
+              <Route path="*" element={<Header />} />
+            </Routes>
+            {autorozation ? (
+              <main className="main">
+                <Routes>
+                  <Route
+                    index
+                    element={<PostList onSort={onSort} posts={posts} />}
+                  />
+                  {/* <Route path="/post/:postId" element={<PostPage />} /> */}
+                  <Route path="/post/:id" element={<PostPage />} />
+                  <Route path="*" element={<ErrorPage />} />
+                </Routes>
+              </main>
+            ) : (
+              <Authorisation />
+            )}
 
-          {authErr !== "" ? (
-            <AuthError authErr={authErr} setAuthErr={setAuthErr} />
-          ) : null}
-          <Routes>
-            <Route path="*" element={<Footer />} />
-          </Routes>              
+            {authErr !== '' ? (
+              <AuthError authErr={authErr} setAuthErr={setAuthErr} />
+            ) : null}
+            <Routes>
+              <Route path="*" element={<Footer />} />
+            </Routes>
           </AllContextData.Provider>
         </ThemeContext.Provider>
       </div>
@@ -216,5 +214,5 @@ function App() {
 
 export default App;
 
-              //     {<Route path="/createpostpage" element={<FormAddPost />} />}
-              //     <Route path="/userpage" element={<Authorisation />} />
+//     {<Route path="/createpostpage" element={<FormAddPost />} />}
+//     <Route path="/userpage" element={<Authorisation />} />
