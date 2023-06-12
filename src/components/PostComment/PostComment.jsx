@@ -16,7 +16,7 @@ export const PostComment = ({ postId, author, created_at, text, ...rest }) => {
   const updatePostState = data
 
   function delComment() {
-    api.deleteComment(rest._id, postId).then((data) => updatePostState(data));
+    api.deleteComments(rest._id, postId).then((data) => updatePostState(data));
   }
 
   return (

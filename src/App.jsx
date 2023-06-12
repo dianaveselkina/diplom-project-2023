@@ -26,7 +26,7 @@ function App() {
 
   const handlePostLike = async (post, wasLiked) => {
     const updatedPost = await api.changePostLike(post._id, wasLiked);
-    const index = post.findIndex((e) => e._id === updatedPost?._id);
+    const index = posts.findIndex((e) => e._id === updatedPost?._id);
     if (index !== -1) {
       setPosts((state) => [
         ...state.slice(0, index),
@@ -39,6 +39,7 @@ function App() {
       : setFavorites((state) => [updatedPost, ...state]);
   };
 
+  ///////////////////////////// фильтрация по токену //////////////////////////
   /* const filteredPost = (post) => {
     return post.filter(
       (e) =>
@@ -66,6 +67,7 @@ function App() {
       return;
     }
   };
+
 
   function updatePostState(likedPost) {
     let updatedPost = posts.map((el) => {
@@ -125,7 +127,7 @@ function App() {
     deletePost,
     addNewPostInState,
     handleLike: handlePostLike,
-    posts: posts,
+    posts,
     setPosts,
     favorites,
     onSort,
@@ -180,7 +182,7 @@ function App() {
   //////////////////Oбновлениe стейта постов, после добавления нового поста ///////////////
 
   function addNewPostInState(newPost) {
-    let updatedPost = [newPost, ...posts];
+    let updatedPost = [...posts, newPost];
     setPosts(updatedPost);
   }
 

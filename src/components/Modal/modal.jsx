@@ -54,7 +54,7 @@ export default function BasicModal({ urlpage, post, setPost }) {
         </IconButton>
       ) : null}
 
-      {urlpage.postId ? (
+      {urlpage.postId ? 
         <IconButton
           aria-label="добавить коммент"
           onClick={handleOpen2}
@@ -63,7 +63,7 @@ export default function BasicModal({ urlpage, post, setPost }) {
           <PostAddIcon />
           <div style={{ fontSize: '15px' }}>добавить комментарий...</div>
         </IconButton>
-      ) : null}
+       : null}
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

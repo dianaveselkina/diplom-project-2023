@@ -14,7 +14,7 @@ export default function PostComments({ comments, id }) {
   const [postCommentState, setPostCommentState] = useState([]);
 
   useEffect(() => {
-    if (id) api.getPostsComments(id).then((data) => setPostCommentState(data));
+    if (id) api.getPostComments(id).then((data) => setPostCommentState(data));
   }, [id, comments]);
 
   return (
@@ -28,11 +28,11 @@ export default function PostComments({ comments, id }) {
         </AccordionSummary>
 
         <AccordionDetails>
-          {postCommentState.map((e) => 
+          {postCommentState.map((e) =>
             <PostComment
               key={e._id}
               postId={id}
-               {...e}
+              {...e}
             />
           )}
         </AccordionDetails>

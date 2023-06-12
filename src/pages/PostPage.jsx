@@ -4,12 +4,12 @@ import { useState, useEffect, useContext } from 'react';
 import { api } from '../Utils/api';
 import { PostOfPage } from '../components/Main/PostOfPage';
 import { AllContextData } from '../context/context';
-import './index.css';
+import './pages.module.css';
 
 export const PostPage = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
-    const { user, handleLike } = useContext(AllContextData);
+  const { user, handleLike } = useContext(AllContextData);
   useEffect(() => {
     if (id) {
       api.getPostById(id).then((data) => setPost(data));
@@ -28,7 +28,7 @@ export const PostPage = () => {
   };
 
   return (
-        <>
+    <>
       {!!Object.keys(post).length ? (
         <PostOfPage post={post} onPostLike={onPostLike} setPost={setPost} />
       ) : (
