@@ -20,6 +20,9 @@ function App() {
   const [autorozation, SetAutorization] = useState(false); // Стейт авторизации
   const [authErr, setAuthErr] = useState(''); // стейт ошибок авторизации
   const themeValue = { theme, setTheme };
+  const [postCount, setPostCount] = useState([]); //  состояние количества постов
+  const [pageNum, setPageNum] = useState(1); // состояние пагинации
+  const quantity = 12; //кол-во постов на стр.
 
   const handlePostLike = async (post, wasLiked) => {
     const updatedPost = await api.changePostLike(post._id, wasLiked);
@@ -83,8 +86,29 @@ function App() {
   useEffect(() => {
     if (autorozation) {
       api.getUserInfo().then((data) => setUser(data));
+    } if (autorozation) {
+      paginate(1);
     }
   }, [autorozation]);
+
+
+  let pagePostCount = Math.ceil(postCount / 12); // Количество страниц пагинации
+
+  function paginate(currentPage = 1, search = "") {
+    let postQuantity = quantity; // переменная определяющая количество постов на странице
+    api
+      .getPaginate(currentPage, postQuantity)
+      .then(
+        (
+          data // апи запрос на получение постов с сервера.
+        ) => {
+          setPosts(data.posts);
+          setPostCount(data.total);
+          setPageNum(currentPage);
+        }
+      )
+      .catch((err) => console.log("ошибка при запросе постов:", err.message));
+  }
 
   useEffect(() => {
     api.getAllPosts().then((data) => setPosts(data));
@@ -188,7 +212,9 @@ function App() {
                 <Routes>
                   <Route
                     index
-                    element={<PostList onSort={onSort} posts={posts} />}
+                    element={<PostList onSort={onSort} posts={posts} pagePostCount={pagePostCount}
+                      pageNum={pageNum}
+                      paginate={paginate} />}
                   />
                   {/* <Route path="/post/:postId" element={<PostPage />} /> */}
                   <Route path="/post/:id" element={<PostPage />} />

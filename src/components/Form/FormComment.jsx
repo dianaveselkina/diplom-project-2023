@@ -33,21 +33,20 @@ export const FormComment = ({
     api
       .addNewComments(data, _id)
       .then((newPost) => {
-        updatePostState(newPost);
-        /* console.log(data); */
-        handleClose2();
-        /* setPost(newPost); */
+        updatePostState(newPost)
       })
-      .catch((e) => console.log(e));
+    /* console.log(data); */
+    handleClose2();
+    /* .catch((e) => console.log(e)); */
   };
 
   return (
     <>
       <form onSubmit={handleSubmit(cbSubmit)} className="form">
         <label className="labelfor">
-          {errors?.url?.message ? 
+          {errors?.url?.message ?
             <p className="paragrafor">{errors?.url?.message}</p>
-           : 
+            :
             "Ваш комметарий"
           }
           <input
@@ -68,7 +67,7 @@ export const FormComment = ({
         </label>
 
         <Button type="submit" variant="contained">{Object.entries(rest).length ? 'Сохранить изменения' : 'Опубликовать пост'}</Button>
-          
+
       </form>
     </>
   );

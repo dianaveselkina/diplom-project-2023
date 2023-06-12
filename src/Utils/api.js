@@ -28,6 +28,11 @@ class Api {
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
+  getPaginate(page, number, query = '') {
+        return fetch(`${this.baseUrl}/posts/paginate?page=${page}&limit=${number}&query=${query}`, {
+            headers: this.headers,
+        }).then(onResponse)
+    }
   addLike(postId) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
