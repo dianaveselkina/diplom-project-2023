@@ -47,10 +47,10 @@ class Api {
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  changePostLike(postId, isLike) {
+  changePostLike(postId, isLikedPost) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
-      method: isLike ? "DELETE" : "PUT",
+      method: isLikedPost ? "DELETE" : "PUT",
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }

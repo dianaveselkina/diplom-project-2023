@@ -7,12 +7,12 @@ import { AllContextData } from '../context/context';
 import './pages.module.css';
 
 export const PostPage = () => {
-  const [post, setPost] = useState({});
+  const [post, setPosts] = useState({});
   const { id } = useParams();
   const { user, handleLike } = useContext(AllContextData);
   useEffect(() => {
     if (id) {
-      api.getPostById(id).then((data) => setPost(data));
+      api.getPostById(id).then((data) => setPosts(data));
     }
   }, [id]);
 
@@ -20,17 +20,17 @@ export const PostPage = () => {
     handleLike(item, isLikedPost);
     if (isLikedPost) {
       const filteredLikes = item.likes.filter((e) => e !== user?._id);
-      setPost((s) => ({ ...s, likes: filteredLikes }));
+      setPosts((s) => ({ ...s, likes: filteredLikes }));
     } else {
       const addLikes = [...item.likes, user?._id];
-      setPost((s) => ({ ...s, likes: addLikes }));
+      setPosts((s) => ({ ...s, likes: addLikes }));
     }
   };
 
   return (
     <>
       {!!Object.keys(post).length ? (
-        <PostOfPage post={post} onPostLike={onPostLike} setPost={setPost} />
+        <PostOfPage post={post} onPostLike={onPostLike} setPosts={setPosts} />
       ) : (
         <div>Loading...</div>
       )}

@@ -9,7 +9,7 @@ export const FormComment = ({
   handleClose2,
   comments,
   _id,
-  setPost,
+  setPosts,
   ...rest
 }) => {
   const data = useContext(AllContextData)

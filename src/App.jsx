@@ -38,6 +38,11 @@ function App() {
       ? setFavorites((state) => state.filter((f) => f._id !== updatedPost._id))
       : setFavorites((state) => [updatedPost, ...state]);
   };
+  function changeStateLikedPost(likesArr, postId) {
+    api
+      .changePostLike(postId(likesArr, user._id))
+      .then((res) => updatePostState(res));
+  }
 
   ///////////////////////////// фильтрация по токену //////////////////////////
   /* const filteredPost = (post) => {
@@ -130,6 +135,7 @@ function App() {
     posts,
     setPosts,
     favorites,
+    changeStateLikedPost,
     onSort,
     user,
     autorozation,

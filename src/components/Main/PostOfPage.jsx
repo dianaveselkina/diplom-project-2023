@@ -18,7 +18,7 @@ import CheckAvatar from '../../Utils/avatar';
 import dayjs from 'dayjs';
 import { PostTagList } from '../PostTag/PostTagList';
 
-export const PostOfPage = ({ post, onPostLike, setPost }) => {
+export const PostOfPage = ({ post, onPostLike, setPosts }) => {
   const [isLikedPost, setIsPostLike] = useState(false);
   const { user } = useContext({ ...AllContextData });
 
@@ -27,13 +27,13 @@ export const PostOfPage = ({ post, onPostLike, setPost }) => {
   const urlpage = useParams();
   // const navigate = useNavigate();
 
-  /* useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setPost(data) }) }, [postIdFromUrl.postId]) */
+  /* useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setPosts(data) }) }, [postIdFromUrl.postId]) */
 
   const { _id, author, created_at, image, title, text, comments, tags } = post;
 
   useEffect(() => {
-    const isLiked = post.likes.some((e) => e === user?._id);
-    setIsPostLike(isLiked);
+    const isLikedPost = post.likes.some((e) => e === user?._id);
+    setIsPostLike(isLikedPost);
   }, [post.likes, user]);
 
   const handleClick = () => {
@@ -100,7 +100,7 @@ export const PostOfPage = ({ post, onPostLike, setPost }) => {
             <span>{isLikedPost ? 'Мне нравится' : 'Не нравится'}</span>
           </button>
         </div>
-        <BasicModal urlpage={urlpage} post={post} setPost={setPost} />
+        <BasicModal urlpage={urlpage} post={post} setPosts={setPosts} />
 
         <Link to="/">
           {

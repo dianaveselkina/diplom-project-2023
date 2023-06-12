@@ -7,6 +7,8 @@ import { Avatar, Badge, CardHeader, IconButton } from '@mui/material';
 import { ThemeContext, AllContextData } from '../../context/context';
 import CommentIcon from '@mui/icons-material/Comment';
 import CheckAvatar from '../../Utils/avatar';
+import { DeleteForever, Favorite, QuestionAnswer, Style } from '@mui/icons-material';
+import cN from "classnames";
 
 export const Post = ({
   image,
@@ -25,13 +27,13 @@ export const Post = ({
 }) => {
   const { theme } = useContext(ThemeContext);
   const user = useContext({ ...AllContextData });
-  const { handleLike } = useContext(AllContextData);
-  /* const deletePost = data */
+  const { handleLike, data } = useContext(AllContextData);
+  const deletePost = data
 
   const handleClick = () => {
-    handleLike(post, isLiked);
+    handleLike(post, isLikedPost);
   };
-  const isLiked = likes.some((e) => e === user._id);
+  const isLikedPost = likes.some((e) => e === user._id);
 
   let dataAuthor;
 
@@ -65,20 +67,50 @@ export const Post = ({
 
         <button
           onClick={handleClick}
-          className={`card__like ${isLiked ? 'card__like_active' : ''}`}
+          className={`card__like ${isLikedPost ? 'card__like_active' : ''}`}
         >
           <Badge badgeContent={likes.length} color="primary"></Badge>
           <Like />
         </button>
 
-        <div className="post__sticky">
+        {comments.length ?
           <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={comments.length} color='primary'  >
+                <QuestionAnswer color='gray' />
+              </Badge>
+            </IconButton>
+          </Link>
+          : null}
+
+        {/* {tags.length ?
+          <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={tags.length} color='primary'  >
+                <Style color='gray' />
+              </Badge>
+            </IconButton>
+          </Link>
+          : null} */}
+
+        <div className="post__sticky post__sticky_type_bottom-right">
+
+          {
+            user.user._id === author._id
+              ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
+                <DeleteForever className='comment-delete-icon' />
+              </IconButton>
+              : null
+          }
+
+
+          {/* <Link to={`/post/${_id}`}>
             <IconButton aria-label="go to comments">
               <Badge badgeContent={comments.length} color="primary">
                 <CommentIcon color="gray" />
               </Badge>
             </IconButton>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

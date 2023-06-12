@@ -10,7 +10,7 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import { AllContextData } from '../../context/context';
 import { FormComment } from '../Form/FormComment';
 
-export default function BasicModal({ urlpage, post, setPost }) {
+export default function BasicModal({ urlpage, post, setPosts }) {
   const user = React.useContext({ ...AllContextData });
 
   const [open, setOpen] = React.useState(false);
@@ -37,24 +37,24 @@ export default function BasicModal({ urlpage, post, setPost }) {
 
   return (
     <div>
-      {!urlpage.postId ? (
+      {!urlpage.postId ?
         <Button
           variant="contained"
           onClick={handleOpen}
           startIcon={<PostAddIcon />}
-        ></Button>
-      ) : user?.user._id === post?.author?._id ? (
-        <IconButton
-          aria-label="Отредакировать пост"
-          onClick={handleOpen}
-          className="post_addComment_btn"
-        >
-          <div style={{ fontSize: '15px' }}>редактировать пост...</div>
-          <DriveFileRenameOutlineIcon />
-        </IconButton>
-      ) : null}
+        >Добавить заметку</Button>
+        : user?.user._id === post?.author?._id ?
+          <IconButton
+            aria-label="Редакировать"
+            onClick={handleOpen}
+            className="post_addComment_btn"
+          >
+            <div style={{ fontSize: '15px' }}>Редактировать...</div>
+            <DriveFileRenameOutlineIcon />
+          </IconButton>
+          : null}
 
-      {urlpage.postId ? 
+      {urlpage.postId ?
         <IconButton
           aria-label="добавить коммент"
           onClick={handleOpen2}
@@ -63,11 +63,11 @@ export default function BasicModal({ urlpage, post, setPost }) {
           <PostAddIcon />
           <div style={{ fontSize: '15px' }}>добавить комментарий...</div>
         </IconButton>
-       : null}
+        : null}
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Form handleClose={handleClose} {...post} setPost={setPost} />
+          <Form handleClose={handleClose} {...post} setPosts={setPosts} />
         </Box>
       </Modal>
 
@@ -76,7 +76,7 @@ export default function BasicModal({ urlpage, post, setPost }) {
           <FormComment
             handleClose2={handleClose2}
             {...post}
-            setPost={setPost}
+            setPosts={setPosts}
           />
         </Box>
       </Modal>

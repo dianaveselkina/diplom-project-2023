@@ -10,7 +10,7 @@ export const Form = ({
   image,
   title,
   text,
-  setPost,
+  setPosts,
   _id,
   tags,
   ...rest
@@ -45,18 +45,18 @@ export const Form = ({
     // /* console.log('i am here'); */
     Object.entries(rest).length
       ? api
-          .changePost({ ...data, tags: newTags(data.tags) }, _id)
-          .then((res) => {
-            setPost(res);
-            updatePostState(res);
-            handleClose();
-          })
+        .changePost({ ...data, tags: newTags(data.tags) }, _id)
+        .then((res) => {
+          setPosts(res);
+          updatePostState(res);
+          handleClose();
+        })
       : api
-          .addNewPost({ ...data, tags: newTags(data.tags) })
-          .then((newPost) => {
-            addNewPostInState(newPost);
-            handleClose();
-          });
+        .addNewPost({ ...data, tags: newTags(data.tags) })
+        .then((newPost) => {
+          addNewPostInState(newPost);
+          handleClose();
+        });
     // handleClose();
   };
 
