@@ -10,7 +10,7 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import { AllContextData } from '../../context/context';
 import { FormComment } from '../Form/FormComment';
 
-export default function BasicModal({ urlpage, post, setPosts }) {
+export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
   const user = React.useContext({ ...AllContextData });
 
   const [open, setOpen] = React.useState(false);
@@ -43,7 +43,7 @@ export default function BasicModal({ urlpage, post, setPosts }) {
           onClick={handleOpen}
           startIcon={<PostAddIcon />}
         >Добавить заметку</Button>
-        : user?.user._id === post?.author?._id ?
+        : user?.userData._id === singlePost?.author?._id ?
           <IconButton
             aria-label="Редакировать"
             onClick={handleOpen}
@@ -67,7 +67,7 @@ export default function BasicModal({ urlpage, post, setPosts }) {
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Form handleClose={handleClose} {...post} setPosts={setPosts} />
+          <Form handleClose={handleClose} {...singlePost} />
         </Box>
       </Modal>
 
@@ -75,8 +75,8 @@ export default function BasicModal({ urlpage, post, setPosts }) {
         <Box className="modalstule">
           <FormComment
             handleClose2={handleClose2}
-            {...post}
-            setPosts={setPosts}
+            {...singlePost}
+            setSinglePost={setSinglePost}
           />
         </Box>
       </Modal>

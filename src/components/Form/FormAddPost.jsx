@@ -10,7 +10,6 @@ export const Form = ({
   image,
   title,
   text,
-  setPosts,
   _id,
   tags,
   ...rest
@@ -24,41 +23,28 @@ export const Form = ({
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      image: image,
-      title: title,
-      text: text,
-      tags: tags?.join(','),
+      image,
+      title,
+      text,
+      tags,
     },
   });
-  const newTags = (tags) => {
-    return tags.trim().split(',');
-  };
 
   const cbSubmit = (data) => {
-    console.log({ data });
-    console.log(data.tags);
-    // if (data.tags === '' || data.tags === ' ' || data.tags.length === 0) {
-    //   data.tags = [];
-    // } else {
-    //   data.tags = data.tags.split(',');
-    // }
-    // /* console.log('i am here'); */
+
+    if (data.tags === '' || data.tags === ' ' || data.tags.length === 0) {
+      data.tags = []
+    } else {
+      data.tags = data.tags.split(',')
+    }
+
+    // console.log(data.tags)
     Object.entries(rest).length
-      ? api
-        .changePost({ ...data, tags: newTags(data.tags) }, _id)
-        .then((res) => {
-          setPosts(res);
-          updatePostState(res);
-          handleClose();
-        })
-      : api
-        .addNewPost({ ...data, tags: newTags(data.tags) })
-        .then((newPost) => {
-          addNewPostInState(newPost);
-          handleClose();
-        });
-    // handleClose();
-  };
+      ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
+      : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+
+    handleClose()
+  }
 
   return (
     <>
@@ -72,11 +58,11 @@ export const Form = ({
         </h5>
 
         <label className="authRegForm__leble">
-          {errors?.url?.message ? (
+          {errors?.url?.message ?
             <p className="authRegForm__leble_error">{errors?.url?.message}</p>
-          ) : (
+            :
             'Введите URL изображения'
-          )}
+          }
           <input
             className="authRegForm__input"
             {...register('image', {
@@ -99,11 +85,11 @@ export const Form = ({
         </label>
 
         <label className="authRegForm__leble">
-          {errors?.head?.message ? (
+          {errors?.head?.message ?
             <p className="authRegForm__leble">{errors?.head?.message}</p>
-          ) : (
+            :
             'Введите заголовок поста'
-          )}
+          }
           <input
             className="authRegForm__input"
             {...register('title', {
@@ -123,11 +109,11 @@ export const Form = ({
         </label>
 
         <label className="authRegForm__leble">
-          {errors?.body?.message ? (
+          {errors?.body?.message ?
             <p className="authRegForm__leble">{errors?.body?.message}</p>
-          ) : (
+            :
             'Введите текст поста'
-          )}
+          }
           <input
             className="authRegForm__input"
             {...register('text', {
@@ -146,16 +132,16 @@ export const Form = ({
         </label>
 
         <label className="authRegForm__leble">
-          {errors?.tags?.message ? (
+          {errors?.tags?.message ?
             <p className="authRegForm__leble">{errors?.tags?.message}</p>
-          ) : (
+            :
             'Список тегов через запятую'
-          )}
+          }
           <input
             className="authRegForm__input"
             {...register('tags', {})}
             type="text"
-            placeholder="tag1, tag2, tag3...."
+            placeholder="tag1, tag2..."
           ></input>
         </label>
 

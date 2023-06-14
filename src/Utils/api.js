@@ -14,6 +14,7 @@ class Api {
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
+
   getAllPosts() {
     return fetch(`${this.baseUrl}/posts`, {
       method: "GET",
@@ -77,8 +78,8 @@ class Api {
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,
     }).then(onResponse);
   }
-  getPostComments(postId) {
-    return fetch(`${this.baseUrl}/posts/comments/${postId}`, {
+  getPostComments(postid) {
+    return fetch(`${this.baseUrl}/posts/comments/${postid}`, {
       method: "GET",
       headers: this.headers,
       // authorization: `Bearer ${localStorage.getItem("postApi")}`,

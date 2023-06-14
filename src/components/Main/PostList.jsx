@@ -1,19 +1,57 @@
 import { useContext } from 'react';
 import { Post } from './Post';
-import './style.css';
-import { ThemeContext } from '../../context/context';
-import { Container, Pagination, Stack } from '@mui/material';
+import './style.module.css';
+/* import { ThemeContext } from '../../context/context'; */
+/* import { Container, Pagination } from '@mui/material'; */
+import { ErrorPage } from "../../pages/ErrorPage";
+import { AllContextData } from "../../context/context";
 
-export const PostList = ({ pagePostCount, pageNum, paginate, posts, onSort }) => {
+
+/* export const PostList = ({ pagePostCount, pageNum, paginate, posts, onSort }) => {
   const sortedItems = [
     { id: 'Популярные', title: 'POPULAR' },
     { id: 'Новые', title: 'NEWEST' },
     { id: 'Все', title: 'ALL' },
   ];
   const theme = useContext(ThemeContext);
-  const displayPaginate = pagePostCount > 2
+  const displayPaginate = pagePostCount > 2 */
 
 
+export const PostList = ({ onSort }) => {
+
+  const countedPost = useContext(AllContextData)
+
+  let post = (!!countedPost[0]) ? countedPost[0] : [];
+
+  const sortedItems = [
+    { id: 'Популярные', title: 'POPULAR' },
+    { id: 'Новые', title: 'NEWEST' },
+    { id: 'Все', title: 'ALL' },
+  ];
+
+  return (
+    <>
+      {
+        sortedItems.map((e) => (
+          <span className="sort-item" key={e.id} onClick={() => onSort(e.id)}>
+            {e.id}
+          </span>
+        ))
+      }
+
+      {
+        !!post.length
+          ? post.map(el => <Post key={el._id} {...el} />)
+          : <ErrorPage />
+
+      }
+
+
+    </>
+  )
+}
+
+/* 
   return (
     <div
       className={`postlist__container postlist__${theme ? 'light' : 'dark'} `}
@@ -39,9 +77,9 @@ export const PostList = ({ pagePostCount, pageNum, paginate, posts, onSort }) =>
           }
         </Container>
       </div>
-      {posts.map((post) => {
-        return <Post key={post.updated_at} {...post} post={post} />;
+      {posts.map(el => {
+        return <Post key={el._id} {...el} />;
       })}
     </div>
   );
-};
+}; */

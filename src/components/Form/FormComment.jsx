@@ -9,23 +9,17 @@ export const FormComment = ({
   handleClose2,
   comments,
   _id,
-  setPosts,
   ...rest
 }) => {
   const data = useContext(AllContextData)
   const updatePostState = data[4]
 
-  /* const { updatePostState } = useContext(AllContextData); */
-  /* console.log({ _id }); */
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    mode: "onBlur",
+
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    mode: 'onBlur',
     defaultValues: {
-      text: "",
-    },
+      text: '',
+    }
   });
 
   const cbSubmit = (data) => {

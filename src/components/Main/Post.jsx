@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
 import dayjs from 'dayjs';
-import './style.css';
-import { ReactComponent as Like } from '../img/like.svg';
+import './style.module.css';
 import { Link } from 'react-router-dom';
-import { Avatar, Badge, CardHeader, IconButton } from '@mui/material';
-import { ThemeContext, AllContextData } from '../../context/context';
-import CommentIcon from '@mui/icons-material/Comment';
+import { Avatar, Badge, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
+import { AllContextData } from '../../context/context';
 import CheckAvatar from '../../Utils/avatar';
 import { DeleteForever, Favorite, QuestionAnswer, Style } from '@mui/icons-material';
 import cN from "classnames";
@@ -25,35 +23,111 @@ export const Post = ({
   created_at,
   ...args
 }) => {
-  const { theme } = useContext(ThemeContext);
-  const user = useContext({ ...AllContextData });
-  const { handleLike, data } = useContext(AllContextData);
-  const deletePost = data
+  /* const { theme } = useContext(ThemeContext); */
+  const { user, data } = useContext({ ...AllContextData });
+  const changeStateLikedPost = data[1]
+  const deletePost = data[2]
 
-  const handleClick = () => {
+  /* const handleClick = () => {
     handleLike(post, isLikedPost);
   };
-  const isLikedPost = likes.some((e) => e === user._id);
+  const isLikedPost = likes.some((e) => e === user._id); */
 
   let dataAuthor;
 
-  if (user._id === author._id) {
-    dataAuthor = user.user;
+  if (user.userData._id === author._id) {
+    dataAuthor = user.userData
   } else {
-    dataAuthor = author;
+    dataAuthor = author
   }
 
   return (
-    <div className={`card__container postlist__${theme ? 'light' : 'dark'} `}>
+
+    < Card className="post" sx={{
+      maxWidth: 345,
+      minWidth: 345,
+      paddingBottom: 4,
+
+    }
+    } >
+
       <Link to={`/post/${_id}`} className="post__link">
         <CardHeader
           avatar={
-            author && (
-              <Avatar aria-label="recipe" src={CheckAvatar}>
-                {CheckAvatar}
-              </Avatar>
-            )
-          }
+            author &&
+            <Avatar aria-label="recipe" src={CheckAvatar(dataAuthor)}>
+              {CheckAvatar(dataAuthor)}
+            </Avatar>
+
+          } sx={{ minHeight: '7em' }}
+
+          title={dataAuthor.about + ' ' + dataAuthor.name}
+
+          subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
+        />
+        <CardMedia
+          component="img"
+          height="200"
+          src={image}
+          alt="Изображение"
+        >
+        </CardMedia>
+
+        <CardContent sx={{ flex: 1, }}>
+          <Typography variant="h5" color="text.secondary">
+            {title}
+          </Typography>
+          <div dangerouslySetInnerHTML={{ __html: text }} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }} className="post__text__fild" />
+        </CardContent>
+      </Link >
+      <div className="post__sticky post__sticky_type_bottom-left" >
+        <IconButton aria-label="add to favorites" color={cN({ 'gray': !likes.length }, { 'warning': likes.length })} onClick={() => changeStateLikedPost(likes, _id)} >
+          <Badge badgeContent={likes.length} color="primary" >
+            <Favorite />
+          </Badge>
+        </IconButton>
+        {comments.length ?
+          <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={comments.length} color='primary'  >
+                <QuestionAnswer color='gray' />
+              </Badge>
+            </IconButton>
+          </Link>
+          : null}
+
+        {tags.length ?
+          <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={tags.length} color='primary'  >
+                <Style color='gray' />
+              </Badge>
+            </IconButton>
+          </Link>
+          : null}
+
+
+
+
+      </div>
+      <div className="post__sticky post__sticky_type_bottom-right" >
+
+        {
+          user.userData._id === author._id
+            ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
+              <DeleteForever className='comment-delete-icon' />
+            </IconButton>
+            : null
+        }
+      </div>
+
+    </Card >
+
+  );
+}
+
+/* {/* <div className={`card__container postlist__${theme ? 'light' : 'dark'} `}>
+
           title={dataAuthor.about + ' ' + dataAuthor.name}
         />
         <img className="card__img" src={image} alt="Изображение" />
@@ -81,9 +155,9 @@ export const Post = ({
               </Badge>
             </IconButton>
           </Link>
-          : null}
+          : null} */
 
-        {/* {tags.length ?
+{/* {tags.length ?
           <Link to={`/post/${_id}`}>
             <IconButton aria-label="go to comments" >
               <Badge badgeContent={tags.length} color='primary'  >
@@ -93,26 +167,26 @@ export const Post = ({
           </Link>
           : null} */}
 
-        <div className="post__sticky post__sticky_type_bottom-right">
+/* <div className="post__sticky post__sticky_type_bottom-right">
 
-          {
-            user.user._id === author._id
-              ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
-                <DeleteForever className='comment-delete-icon' />
-              </IconButton>
-              : null
-          }
+  {
+    user.userData._id === author._id
+      ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
+        <DeleteForever className='comment-delete-icon' />
+      </IconButton>
+      : null
+  } */
 
 
-          {/* <Link to={`/post/${_id}`}>
+{/* <Link to={`/post/${_id}`}>
             <IconButton aria-label="go to comments">
               <Badge badgeContent={comments.length} color="primary">
                 <CommentIcon color="gray" />
               </Badge>
             </IconButton>
           </Link> */}
-        </div>
-      </div>
-    </div>
+/* </div>
+</div> */
+{/* </div > */ }/* 
   );
-};
+}; */
