@@ -3,7 +3,6 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Main/Footer';
 import { Header } from './components/Main/Header';
-import { PostList } from './components/Main/PostList';
 // import data from './DB/data.json';
 import { PostOfPage } from './pages/PostOfPage';
 import { ErrorPage } from './pages/ErrorPage';
@@ -11,7 +10,6 @@ import { api } from './Utils/api';
 import { /* ThemeContext,  */AllContextData } from './context/context';
 import { Authorisation } from './components/Auth/Authorisation';
 import { AuthError } from './components/Auth/AuthError';
-import { CssBaseline } from '@mui/material';
 import AllPostPage from './pages/AllPostPage';
 
 
@@ -104,15 +102,15 @@ const App = () => {
     } else {
       console.log('i not work');
     }
-    /* 
-        if (autorozation) {
-          paginatePage(1);
-        } */
+
+    if (autorozation) {
+      paginatePage(1);
+    }
   }, [autorozation]); // Хук useEffect (зависимость стейт авторизации) апи запрос на получение с сервера данных пользователя и массива с постами
 
   ////////////////////////// Пагинация ////////////////////
 
-  /* let pagePostCount = Math.ceil(allPostCount / 12); // Количество страниц пагинации
+  let pagePostCount = Math.ceil(allPostCount / 12); // Количество страниц пагинации
   const POST_QUANTITY = 12;
 
   function paginatePage(currentPage = 1) {
@@ -129,7 +127,7 @@ const App = () => {
         }
       )
       .catch((err) => console.log("ошибка при запросе постов:", err.message));
-  } */
+  }
 
   //////////// Изменение лайка ////////////////////////
 
@@ -186,7 +184,8 @@ const App = () => {
           deletePost,
           addNewPostInState,
           updatePostState,
-          /* paginatePage, */
+          paginatePage,
+          onSort,
           userData,
           autorozation,
           singIn,
@@ -205,9 +204,9 @@ const App = () => {
                 element={
                   <AllPostPage
                     onSort={onSort}
-                    /* pagePostCount={pagePostCount} */
+                    pagePostCount={pagePostCount}
                     pageNumber={pageNumber}
-                  /* paginatePage={paginatePage} */
+                    paginatePage={paginatePage}
                   />
                 }
               />

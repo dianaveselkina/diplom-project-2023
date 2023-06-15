@@ -26,11 +26,12 @@ class Api {
       headers: this.headers,
     }).then(onResponse);
   }
-/*   getPaginate(page, number, query = '') {
+  getPaginate(page, number, query = '') {
         return fetch(`${this.baseUrl}/v2/group-12/posts/paginate?page=${page}&limit=${number}&query=${query}`, {
+          method: "GET",
             headers: this.headers,
         }).then(onResponse)
-    } */
+    }
 
 changePostLike(postId, isLikedPost) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
