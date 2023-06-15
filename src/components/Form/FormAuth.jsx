@@ -16,8 +16,8 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
   } = useForm({
     mode: "all",
     defaultValues: {
-      email: "test@fakepost.com",
-      password: "qwer1234",
+      email: "lou8@mail.ru",
+      password: "123321",
     },
   });
 
@@ -38,9 +38,9 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
       </h5>
 
       <label className="authRegForm__leble">
-        {errors?.email?.message ? 
+        {errors?.email?.message ?
           <p className="authRegForm__leble_error">{errors?.email?.message}</p>
-         : 
+          :
           "Ваш Email"
         }
         <input
@@ -60,11 +60,11 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
       </label>
 
       <label className="authRegForm__leble">
-        {errors?.password?.message ? 
+        {errors?.password?.message ?
           <p className="authRegForm__leble_error">
             {errors?.password?.message}
           </p>
-         : 
+          :
           "Введите пароль"
         }
         <input

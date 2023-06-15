@@ -11,24 +11,23 @@ import { api } from './Utils/api';
 import { /* ThemeContext,  */AllContextData } from './context/context';
 import { Authorisation } from './components/Auth/Authorisation';
 import { AuthError } from './components/Auth/AuthError';
+import { CssBaseline } from '@mui/material';
+import AllPostPage from './pages/AllPostPage';
 
 
 const App = () => {
 
-  const [autorozation, SetAutorization] = useState(true); // Стейт авторизации
-  const [authErr, setAuthErr] = useState(""); // стейт ошибок авторизации
-  console.log(!!localStorage.getItem("postApi") !== "" &&
-    !!localStorage.getItem("postApi"));
+  const [autorozation, SetAutorization] = useState(false);
+  const [authErr, setAuthErr] = useState("");
+
   useEffect(() => {
     if (
-      localStorage.getItem("postApi") !== "" &&
-      localStorage.getItem("postApi")
+      localStorage.getItem("") !== "" &&
+      localStorage.getItem("")
     ) {
       SetAutorization(true);
     }
   }, []);
-
-
 
   /////////////////////////////////////////////////
 
@@ -54,11 +53,8 @@ const App = () => {
     }
   };
 
-  ///////////////////////////// Блок авторизации и регистрации /////////////////////////////
-
+  ///////////////////////////////////////////////
   function singIn(userData) {
-    // авторизация
-
     api
       .singInUser(userData)
       .then((data) => authIsTru(data))
@@ -66,9 +62,7 @@ const App = () => {
   }
 
   function singUp(userData) {
-    // регистрация
-
-    alert("Данный функционал находится в разработке");
+    alert("Готово!");
     const { email: userEmail, password: userPassword } = { ...userData };
     console.log(userEmail, userPassword, userData);
     api
@@ -77,30 +71,26 @@ const App = () => {
         console.log(res);
         singIn({ email: userEmail, password: userPassword });
       })
-
       .catch((err) => setAuthErr(err.message));
   }
 
   function authIsTru(data) {
-    // вход в приложение при успешной регистрации/авторизации
     setUserData(data.data);
-    localStorage.setItem("postApi", data.token);
-    localStorage.setItem("group", data.data.group);
+    localStorage.setItem("", data.token);
+    localStorage.setItem("group-12", data.data.group);
     SetAutorization(true);
   }
   function logOut() {
-    // Выход из учётной записи приложения.
-
     const result = window.confirm("Уже уходите?");
 
     if (result) {
-      localStorage.removeItem("postApi");
-      localStorage.removeItem("group");
+      localStorage.removeItem("");
+      localStorage.removeItem("group-12");
       SetAutorization(false);
       setUserData({});
     }
   }
-  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////
 
   const [userData, setUserData] = useState([]); // Стейт данных пользователя
   const [postData, setPostData] = useState([]); // Стейт постов
@@ -114,19 +104,19 @@ const App = () => {
     } else {
       console.log('i not work');
     }
-
-    if (autorozation) {
-      paginatePage(1);
-    }
+    /* 
+        if (autorozation) {
+          paginatePage(1);
+        } */
   }, [autorozation]); // Хук useEffect (зависимость стейт авторизации) апи запрос на получение с сервера данных пользователя и массива с постами
 
-  //////////////////////////////////////////////  блок пагинации //////////////////////////////////////////////
+  ////////////////////////// Пагинация ////////////////////
 
-  let pagePostCount = Math.ceil(allPostCount / 12); // Количество страниц пагинации
+  /* let pagePostCount = Math.ceil(allPostCount / 12); // Количество страниц пагинации
   const POST_QUANTITY = 12;
 
   function paginatePage(currentPage = 1) {
-    let postQuantity = POST_QUANTITY; // Константа определяющая количество постов на странице
+    let postQuantity = POST_QUANTITY; // Переменная определяющая количество постов на странице
     api
       .getPaginate(currentPage, postQuantity)
       .then(
@@ -139,11 +129,9 @@ const App = () => {
         }
       )
       .catch((err) => console.log("ошибка при запросе постов:", err.message));
-  }
+  } */
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //////////////////////////////////////////// функция изменения лайка ////////////////////////////////////
+  //////////// Изменение лайка ////////////////////////
 
   const likeIsHer = (likesArr, userDataid) => {
     return likesArr.some(e => e === userDataid)
@@ -160,13 +148,13 @@ const App = () => {
     });
     setPostData(updatedPostData);
   }
-  //////////////////////////// функция обновления стейта постов, после добавления нового поста ////////////////////
+  ////////// Обновление постов после добавления нового
 
   function addNewPostInState(newPost) {
     let updatedPostData = [...postData, newPost];
     setPostData(updatedPostData);
   }
-  /////////////////////////////////////////// Функция удаления поста /////////////////////////////////////////
+  ////////// Удаления поста ////////////////////////////
 
   function deletePost(author, _id) {
     author._id !== userData._id
@@ -184,22 +172,21 @@ const App = () => {
       }
     }
   }
-  ////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////
 
   return (
     <>
-      {/* <CssBaseline /> */} {/* сбросить CSS стилий от MaterialUI */}
       <AllContextData.Provider
         value={{
           // Контекс для работы с постами
-          posts,
-          setPosts,
+          /* posts,
+          setPosts, */
           postData,
           changeStateLikedPost,
           deletePost,
           addNewPostInState,
           updatePostState,
-          paginatePage,
+          /* paginatePage, */
           userData,
           autorozation,
           singIn,
@@ -216,11 +203,11 @@ const App = () => {
               <Route
                 index
                 element={
-                  <PostList
+                  <AllPostPage
                     onSort={onSort}
-                    pagePostCount={pagePostCount}
+                    /* pagePostCount={pagePostCount} */
                     pageNumber={pageNumber}
-                    paginatePage={paginatePage}
+                  /* paginatePage={paginatePage} */
                   />
                 }
               />
@@ -313,8 +300,8 @@ export default App;
 
   useEffect(() => {
     if (
-      localStorage.getItem('postApi') !== '' &&
-      localStorage.getItem('postApi')
+      localStorage.getItem('') !== '' &&
+      localStorage.getItem('')
     ) {
       SetAutorization(true);
     }
@@ -394,7 +381,7 @@ export default App;
 
   function authIsTru(data) {
     setUserData(data.data);
-    localStorage.setItem('postApi', data.token);
+    localStorage.setItem('', data.token);
     localStorage.setItem('group', data.data.group);
     SetAutorization(true);
   }
@@ -403,7 +390,7 @@ export default App;
     const result = window.confirm('Уже уходите?');
 
     if (result) {
-      localStorage.removeItem('postApi');
+      localStorage.removeItem('');
       localStorage.removeItem('group');
       SetAutorization(false);
       setUserData({});

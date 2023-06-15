@@ -31,7 +31,7 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
           mb: '1%',
         }}>
 
-          {displayPaginate
+          {/* {displayPaginate
             ? <Pagination
               page={pageNumber}
               count={pagePostCount} color="primary" onChange={(event, num) =>
@@ -41,7 +41,7 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
                 borderRadius: '10px'
               }} />
             : null
-          }
+          } */}
 
         </Container>
         <Container sx={{
@@ -65,7 +65,7 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
           mb: '10%',
         }}>
 
-          {displayPaginate
+          {/* {displayPaginate
             ? <Pagination
               page={pageNumber}
               count={pagePostCount} color="primary" onChange={(event, num) =>
@@ -75,7 +75,7 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
                 borderRadius: '10px'
               }} />
             : null
-          }
+          } */}
 
         </Container >
 
