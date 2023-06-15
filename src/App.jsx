@@ -110,8 +110,8 @@ const App = () => {
 
   ////////////////////////// Пагинация ////////////////////
 
-  let pagePostCount = Math.ceil(allPostCount / 12); // Количество страниц пагинации
-  const POST_QUANTITY = 12;
+  let pagePostCount = Math.ceil(allPostCount / 9); // Количество страниц пагинации
+  const POST_QUANTITY = 9;
 
   function paginatePage(currentPage = 1) {
     let postQuantity = POST_QUANTITY; // Переменная определяющая количество постов на странице
@@ -121,6 +121,7 @@ const App = () => {
         (
           data // апи запрос на получение постов с сервера.
         ) => {
+          console.log(data)
           setPostData(data.posts);
           setAllPostcount(data.total);
           setPageNumber(currentPage);

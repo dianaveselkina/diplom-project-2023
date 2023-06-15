@@ -11,8 +11,7 @@ export const FormComment = ({
   _id,
   ...rest
 }) => {
-  const data = useContext(AllContextData)
-  const updatePostState = data[4]
+  const { updatePostState } = useContext(AllContextData)
 
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -24,6 +23,7 @@ export const FormComment = ({
 
   const cbSubmit = (data) => {
     /* console.log(data); */
+    console.log(data);
     api
       .addNewComments(data, _id)
       .then((newPost) => {
@@ -38,8 +38,8 @@ export const FormComment = ({
     <>
       <form onSubmit={handleSubmit(cbSubmit)} className="form">
         <label className="labelfor">
-          {errors?.url?.message ?
-            <p className="paragrafor">{errors?.url?.message}</p>
+          {errors.text.message ?
+            <p className="paragrafor">{errors.text.message}</p>
             :
             "Ваш комметарий"
           }
@@ -51,8 +51,9 @@ export const FormComment = ({
                 message: "Поле обязательно для заполнения",
               },
               minLength: {
-                value: 5,
-                message: "Вы не правы",
+                value: 3,
+                message:
+                  'Текст должен состоять не менее чем из 3х символов',
               },
             })}
             type="text"

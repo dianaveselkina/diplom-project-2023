@@ -5,8 +5,8 @@ import { PostList } from '../components/Main/PostList';
 
 export default function AllPostPage({ pagePostCount, pageNumber, paginatePage }) {
 
-
-  const displayPaginate = pagePostCount > 2
+  console.log(pagePostCount);
+  const displayPaginate = pagePostCount > 1
 
 
   return (
@@ -22,64 +22,65 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
 
         }} maxWidth='xl'>
 
-        </Container>
-        <Container sx={{
-          display: "flex",
-          flexWrap: 'wrap',
-          justifyContent: "center",
-          padding: '15px',
-          mb: '1%',
-        }}>
 
-          {
-            displayPaginate
+          <Container sx={{
+            display: "flex",
+            flexWrap: 'wrap',
+            justifyContent: "center",
+            padding: '15px',
+            mb: '1%',
+          }}>
+
+            {
+              displayPaginate
+                ? <Pagination
+                  page={pageNumber}
+                  count={pagePostCount} color="primary" onChange={
+                    (event, num) =>
+                      paginatePage(num)
+                  } sx={{
+                    background: 'white',
+                    borderRadius: '10px'
+                  }} />
+                : null
+            }
+
+          </Container>
+          <Container sx={{
+            display: "flex",
+            flexWrap: 'wrap',
+            justifyContent: "center",
+            padding: '15px',
+            mb: '10%',
+          }}>
+
+            {displayPaginate
               ? <Pagination
                 page={pageNumber}
-                count={pagePostCount} color="primary" onChange={
-                  (event, num) =>
-                    paginatePage(num)
+                count={pagePostCount} color="primary" onChange={(event, num) =>
+                  paginatePage(num)
                 } sx={{
                   background: 'white',
                   borderRadius: '10px'
                 }} />
               : null
-          }
+            }
 
+          </Container >
+          <Container sx={{
+            display: "flex",
+            flexWrap: 'wrap',
+            justifyContent: "center",
+            gap: '10px',
+            marginTop: '10px',
+
+          }} maxWidth='xl'>
+
+            <PostList />
+
+          </Container>
         </Container>
-        <Container sx={{
-          display: "flex",
-          flexWrap: 'wrap',
-          justifyContent: "center",
-          gap: '10px',
-          marginTop: '10px',
 
-        }} maxWidth='xl'>
-
-          <PostList />
-
-        </Container>
-
-        <Container sx={{
-          display: "flex",
-          flexWrap: 'wrap',
-          justifyContent: "center",
-          padding: '15px',
-          mb: '10%',
-        }}>
-
-          {displayPaginate
-            ? <Pagination
-              page={pageNumber}
-              count={pagePostCount} color="primary" onChange={(event, num) =>
-                paginatePage(num)
-              } sx={{
-                background: 'white',
-                borderRadius: '10px'
-              }} />
-            : null
-          }
-
-        </Container >
 
       </Stack>
     </>

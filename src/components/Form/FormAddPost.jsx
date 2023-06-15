@@ -89,7 +89,7 @@ export const Form = ({
           {errors?.head?.message ?
             <p className="authRegForm__leble">{errors?.head?.message}</p>
             :
-            'Введите заголовок поста'
+            'Введите заголовок заметки'
           }
           <input
             className="authRegForm__input"

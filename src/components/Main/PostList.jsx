@@ -19,9 +19,9 @@ import { AllContextData } from "../../context/context";
 
 export const PostList = ({ onSort }) => {
 
-  const countedPost = useContext(AllContextData)
+  const { postData } = useContext(AllContextData)
 
-  let post = (!!countedPost[0]) ? countedPost[0] : [];
+  /* let post = (!!countedPost[0]) ? countedPost[0] : []; */
 
   const sortedItems = [
     { id: 'Популярные', title: 'POPULAR' },
@@ -40,8 +40,8 @@ export const PostList = ({ onSort }) => {
       }
 
       {
-        !!post.length
-          ? post.map(el => <Post key={el._id} {...el} />)
+        !!postData.length
+          ? postData.map(el => <Post key={el._id} {...el} />)
           : <ErrorPage />
 
       }

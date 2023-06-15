@@ -13,9 +13,9 @@ import { PostComment } from "./PostComment";
 export default function PostComments({ comments, id }) {
   const [postCommentState, setPostCommentState] = useState([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (id) api.getPostComments(id).then((data) => setPostCommentState(data));
-  }, [id, comments]);
+  }, [id, comments]); */
 
   return (
     <div>
@@ -27,15 +27,15 @@ export default function PostComments({ comments, id }) {
           </Typography>
         </AccordionSummary>
 
-        <AccordionDetails>
-          {postCommentState.map((e) =>
+        {<AccordionDetails>
+          {comments.map((comment) =>
             <PostComment
-              key={e._id}
+              key={comment._id}
               postId={id}
-              {...e}
+              {...comment}
             />
           )}
-        </AccordionDetails>
+        </AccordionDetails>}
       </Accordion>
     </div>
   );

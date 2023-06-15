@@ -27,7 +27,7 @@ class Api {
     }).then(onResponse);
   }
   getPaginate(page, number, query = '') {
-        return fetch(`${this.baseUrl}/v2/group-12/posts/paginate?page=${page}&limit=${number}&query=${query}`, {
+        return fetch(`${this.baseUrl}/v2/12/posts/paginate?page=${page}&limit=${number}&query=${query}`, {
           method: "GET",
             headers: this.headers,
         }).then(onResponse)

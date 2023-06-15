@@ -24,9 +24,9 @@ export const Post = ({
   ...args
 }) => {
   /* const { theme } = useContext(ThemeContext); */
-  const { user, data } = useContext({ ...AllContextData });
-  const changeStateLikedPost = data[1]
-  const deletePost = data[2]
+  const { userData, data, changeStateLikedPost, deletePost } = useContext(AllContextData);
+  /* const changeStateLikedPost = data[1] */
+  /* const deletePost = data[2] */
 
   /* const handleClick = () => {
     handleLike(post, isLikedPost);
@@ -35,8 +35,8 @@ export const Post = ({
 
   let dataAuthor;
 
-  if (user.userData._id === author._id) {
-    dataAuthor = user.userData
+  if (userData._id === author._id) {
+    dataAuthor = userData
   } else {
     dataAuthor = author
   }
@@ -113,7 +113,7 @@ export const Post = ({
       <div className="post__sticky post__sticky_type_bottom-right" >
 
         {
-          user.userData._id === author._id
+          userData._id === author._id
             ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
               <DeleteForever className='comment-delete-icon' />
             </IconButton>

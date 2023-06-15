@@ -28,13 +28,13 @@ import s from './pages.module.css'
 
 export const PostOfPage = () => {
   const urlpage = useParams();
+  const { changeStateLikedPost, deletePost, userData } = useContext({ ...AllContextData });
 
-  const changeStateLikedPost = data[1]
+  /* const changeStateLikedPost = data[1] */
   const [singlePost, setSinglePost] = useState({})
-  const { user, data } = useContext({ ...AllContextData });
 
   const postIdFromUrl = useParams()
-  const deletePost = data[2]
+  /* const deletePost = data[2] */
   const navigate = useNavigate();
 
   useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
@@ -68,7 +68,7 @@ export const PostOfPage = () => {
               <CardHeader
                 className='singlePost__card__header'
                 avatar={
-                  author && <Avatar aria-label="recipe" src={CheckAvatar(author)}>
+                  author && <Avatar aria-label="recipe" src={author.avatar}>
                     {CheckAvatar(author)}
                   </Avatar>
                 }
@@ -114,7 +114,7 @@ export const PostOfPage = () => {
                 < BasicModal urlpage={urlpage} singlePost={singlePost} />
 
                 {
-                  user?.userData._id === author?._id
+                  userData._id === author?._id
                     ? <IconButton onClick={() => deletePost(author, _id)} className={s.post_deleteBtn_icon}>
                       <DeleteForeverIcon className={s.post_delete_icon} />
                     </IconButton>
@@ -125,7 +125,7 @@ export const PostOfPage = () => {
 
               {
                 comments?.length
-                  ? <PostComment comments={comments} id={_id} />
+                  ? <PostComments comments={comments} id={_id} />
                   : null
               }
               {
