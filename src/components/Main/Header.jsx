@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-/* import { ReactComponent } from "../img/logo.svg"; */
+// import { ReactComponent as Logo } from "../img/logo.svg";
 import "./style.module.css";
 import { Link, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -34,11 +34,11 @@ export const Header = () => {
           minWidth: '300px',
         }}
       >
-        {/* <Link to="/">
+        {<Link to="/">
           <button type="button" className="header__logo">
-            <ReactComponent className="header__logotip" />
+            {/* <Logo className="header__logotip" /> */}
           </button>
-        </Link> */}
+        </Link>}
         <div className="marquee-container">
           <span className="marquee">
             <pre>Журнал "Весёлые заметки"</pre>

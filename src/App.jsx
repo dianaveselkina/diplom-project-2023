@@ -15,9 +15,10 @@ import { AuthError } from './components/Auth/AuthError';
 
 const App = () => {
 
-  const [autorozation, SetAutorization] = useState(false); // Стейт авторизации
+  const [autorozation, SetAutorization] = useState(true); // Стейт авторизации
   const [authErr, setAuthErr] = useState(""); // стейт ошибок авторизации
-
+  console.log(!!localStorage.getItem("postApi") !== "" &&
+    !!localStorage.getItem("postApi"));
   useEffect(() => {
     if (
       localStorage.getItem("postApi") !== "" &&
@@ -105,10 +106,13 @@ const App = () => {
   const [postData, setPostData] = useState([]); // Стейт постов
   const [allPostCount, setAllPostcount] = useState([]); //  Стейт общего количества постов
   const [pageNumber, setPageNumber] = useState(1); // Стейт пагинации
-
+  console.log(userData);
   useEffect(() => {
-    if (autorozation) {
+    if (!!autorozation) {
+      console.log('i work');
       api.getUserInfo().then((data) => setUserData(data));
+    } else {
+      console.log('i not work');
     }
 
     if (autorozation) {
@@ -186,7 +190,7 @@ const App = () => {
     <>
       {/* <CssBaseline /> */} {/* сбросить CSS стилий от MaterialUI */}
       <AllContextData.Provider
-        value={[
+        value={{
           // Контекс для работы с постами
           posts,
           setPosts,
@@ -202,7 +206,7 @@ const App = () => {
           singUp,
           logOut,
           setUserData,
-        ]}
+        }}
       ><Routes>
           <Route path="*" element={<Header />} />
         </Routes>

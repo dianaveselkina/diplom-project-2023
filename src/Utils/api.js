@@ -34,20 +34,7 @@ class Api {
             headers: this.headers,
         }).then(onResponse)
     }
-  addLike(postId) {
-    return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
-      headers: this.headers,
-      method: "PUT",
-      // authorization: `Bearer ${localStorage.getItem("postApi")}`,
-    }).then(onResponse);
-  }
-  deleteLike(postId) {
-    return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
-      headers: this.headers,
-      method: "DELETE",
-      // authorization: `Bearer ${localStorage.getItem("postApi")}`,
-    }).then(onResponse);
-  }
+
   changePostLike(postId, isLikedPost) {
     return fetch(`${this.baseUrl}/posts/likes/${postId}`, {
       headers: this.headers,
@@ -129,10 +116,11 @@ const config = {
   baseUrl:
     "https://api.react-learning.ru/v2/group-12" ||
     "https://api.react-learning.ru/v2/12",
-  baseUsersUrl: `https://api.react-learning.ru/users`,
+  
   headers: {
     "Content-Type": "application/json",
     authorization:
+    `Bearer ${localStorage.getItem('postApi')}` ||
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQyM2MzMDMyOTFkNzkwYjNmYzk2N2MiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyMDY1MDgwLCJleHAiOjE3MTM2MDEwODB9.podOuWY9CAovzjgr22aT8s3D__ihq20XmXXT06INvUA" ||
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao",
   },
