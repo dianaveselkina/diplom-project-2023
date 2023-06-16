@@ -25,14 +25,15 @@ export const Header = () => {
         sx={{
           position: "fixed",
           zIndex: 2,
-          display: 'flex', alignItems: 'space-around',
+          display: 'flex',
           height: '80px',
           backgroundColor: '#5fcdd9',
           justifyContent: 'space-between',
           alignItems: 'center',
           borderRadius: '10px',
-          margin: 2,
+          /* margin: 2, */
           minWidth: '300px',
+          left: '65px',
         }}
       >
         {<Link to="/">
@@ -41,10 +42,17 @@ export const Header = () => {
             <EmojiEmotionsIcon />
           </Button>
         </Link>}
-
-        <Typography variant="h5" element="div" color={'primary'} marginLeft={'100'}>
+        <Container maxWidth='xl'
+          sx={{}}>
+          <div className="marquee-container">
+            <span className="marquee">
+              <pre>Журнал "Весёлые заметки"</pre>
+            </span>
+          </div>
+        </Container >
+        {/* <Typography variant="h5" element="div" color={'primary'} marginLeft={'100'}>
           <pre>Журнал "Весёлые заметки"</pre>
-        </Typography>
+        </Typography> */}
 
         <BasicModal urlpage={urlpage} />
         {

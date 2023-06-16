@@ -27,21 +27,27 @@ export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginat
         }} maxWidth='xl'>
 
           <Container sx={{
+            padding: '15px',
+            marginTop: '80px',
+          }}>
+            <div className="sort-posts">
+              {
+                sortedItems.map((e) => (
+                  <span className="sort-item" key={e.id} onClick={(e) => onSort(e.id)} >
+                    {e.id}
+                  </span>
+                ))
+              }
+            </div>
+          </Container>
+
+          <Container sx={{
             display: "flex",
             flexWrap: 'wrap',
             justifyContent: "center",
             padding: '15px',
             mb: '1%',
           }}>
-            <div className="sort-posts">
-              {
-                sortedItems.map((e) => (
-                  <span className="sort-item" key={e.id} onClick={() => onSort(e.id)} >
-                    {e.id}
-                  </span>
-                ))
-              }
-            </div>
             {
               displayPaginate
                 ? <Pagination
@@ -53,9 +59,9 @@ export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginat
                     display: "flex",
                     justifyContent: "center",
                     background: '#5fcdd9',
-                    mt: '10%',
-                    ml: '-15%',
-                    borderRadius: '10px',
+                    mt: '-30px',
+                    /* ml: '-15%', */
+                    borderRadius: '4px',
                   }} />
                 : null
             }
@@ -68,7 +74,6 @@ export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginat
             gap: '30px',
             marginTop: '10px',
             marginBottom: '80px',
-            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
 
           }} maxWidth='xl'>
 

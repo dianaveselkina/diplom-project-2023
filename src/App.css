@@ -5,3 +5,65 @@
 .postlist__dark {
   background-color: rgb(88, 88, 88);
 }
+
+
+.main{
+  height: calc(100vh - 300px);
+}
+
+.sort-post {
+  margin: -55px 20px 0 40px;
+  position: fixed;
+  display: flex;
+  gap: 1rem;
+}
+.sort-item {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #5fcdd9;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+.marquee-text {
+  color: #027373;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 300;
+  margin: 10px auto;
+  border: none;
+  max-width: 60%;
+  overflow: hidden;
+}
+
+.marquee-container {
+  display: flex;
+  max-width: 990px;
+  align-items: center;
+  background: #5fcdd9;
+  overflow: hidden;
+  top: 10px;
+}
+
+.marquee {
+  color: #2b7ad4;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: marquee 5s infinite linear;
+}
+.marquee:after {
+  content: "Журнал " Весёлые заметки "";
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(250%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

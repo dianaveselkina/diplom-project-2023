@@ -42,7 +42,7 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
           variant="contained"
           onClick={handleOpen}
           startIcon={<PostAddIcon />}
-        >Добавить заметку</Button>
+        >Прислать</Button>
         : user?.userData._id === singlePost?.author?._id ?
           <IconButton
             aria-label="Редакировать"

@@ -15,7 +15,7 @@ export default function TransitionsModal({ onpenUserModal, setOpenUserModal }) {
       handleOpen();
       setOpenUserModal(!onpenUserModal)
     }
-  }, [onpenUserModal])
+  }, [onpenUserModal, setOpenUserModal])
 
   return (
     <div>

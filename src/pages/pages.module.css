@@ -157,19 +157,3 @@ label {
 .post_deleteBtn_icon:hover .post_delete_icon {
     color: red;
     }
-
-    
-.sort-post {
-  margin: -55px 20px 0 40px;
-  position: fixed;
-  display: flex;
-  gap: 1rem;
-}
-.sort-item {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  color: #78adad;
-  padding: 5px;
-  cursor: pointer;
-}
