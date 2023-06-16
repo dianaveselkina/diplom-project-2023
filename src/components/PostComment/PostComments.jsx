@@ -5,17 +5,9 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Badge } from "@mui/material";
-import { useState } from "react";
-import { useEffect } from "react";
-import { api } from "../../Utils/api";
 import { PostComment } from "./PostComment";
 
 export default function PostComments({ comments, id }) {
-  const [postCommentState, setPostCommentState] = useState([]);
-
-  /* useEffect(() => {
-    if (id) api.getPostComments(id).then((data) => setPostCommentState(data));
-  }, [id, comments]); */
 
   return (
     <div>

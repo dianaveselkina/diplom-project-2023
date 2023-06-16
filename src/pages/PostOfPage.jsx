@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-/* import { ReactComponent as Like } from './../img/like.svg'; */
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   Avatar,
   Badge,
@@ -13,14 +12,11 @@ import {
   Typography,
 } from '@mui/material';
 import { AllContextData } from '../context/context';
-/* import './style.module.css'; */
 import BasicModal from '../components/Modal/modal';
 import PostComments from '../components/PostComment/PostComments';
 import CheckAvatar from '../Utils/avatar';
 import dayjs from 'dayjs';
 import { PostTagList } from '../components/PostTag/PostTagList';
-import { DeleteForever } from '@mui/icons-material';
-import { PostComment } from '../components/PostComment/PostComment';
 import { api } from '../Utils/api';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -30,11 +26,9 @@ export const PostOfPage = () => {
   const urlpage = useParams();
   const { changeStateLikedPost, deletePost, userData } = useContext({ ...AllContextData });
 
-  /* const changeStateLikedPost = data[1] */
   const [singlePost, setSinglePost] = useState({})
 
   const postIdFromUrl = useParams()
-  /* const deletePost = data[2] */
   const navigate = useNavigate();
 
   useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
@@ -49,21 +43,14 @@ export const PostOfPage = () => {
     <>
       {!singlePost ? <></> :
         <div className={s.mainpost}>
-          <div className={s.button__homepage_top}>
-            <Link to="/" className={s.btn__home}>
-              <Button variant="contained" >Вернуться на главную страницу</Button>
-            </Link>
-          </div>
 
           {!singlePost
             ? <h1>dont worry</h1>
             :
             <Card sx={{
               maxWidth: '800px',
-              // height: '800px',
               display: 'flex',
               flexDirection: 'column',
-
             }} >
               <CardHeader
                 className='singlePost__card__header'
@@ -80,15 +67,12 @@ export const PostOfPage = () => {
 
               <CardMedia
                 component="img"
-                // height="600"
                 width='auto'
                 src={image}
                 alt="Изображение"
                 sx={{
                   display: 'flex',
-                  // maxHeight: '800px',
-                  // maxWidth:'50%', 
-                  alignSelf: 'center'
+                  alignSelf: 'center',
                 }}
               >
               </CardMedia>
@@ -99,7 +83,7 @@ export const PostOfPage = () => {
                   {title}
                 </Typography>
 
-                <p dangerouslySetInnerHTML={{ __html: text }} />
+                <p>{text}</p>
 
               </CardContent>
 
@@ -112,7 +96,6 @@ export const PostOfPage = () => {
                 </IconButton>
 
                 < BasicModal urlpage={urlpage} singlePost={singlePost} />
-
                 {
                   userData._id === author?._id
                     ? <IconButton onClick={() => deletePost(author, _id)} className={s.post_deleteBtn_icon}>
@@ -120,9 +103,7 @@ export const PostOfPage = () => {
                     </IconButton>
                     : null
                 }
-
               </div>
-
               {
                 comments?.length
                   ? <PostComments comments={comments} id={_id} />
@@ -144,101 +125,3 @@ export const PostOfPage = () => {
       }</>
   )
 }
-
-
-{/* <Card
-      sx={{
-        maxWidth: '800px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px',
-        margin: '50px',
-      }}
-    >
-      <div className="postlist__container">
-        <CardHeader
-          className="singlePost__card__header"
-          avatar={
-            author && (
-              <Avatar aria-label="recipe" src={CheckAvatar(author)}>
-                {CheckAvatar(author)}
-              </Avatar>
-            )
-          }
-          sx={{ minHeight: '7em' }}
-          title={author?.about + ' ' + author?.name}
-          subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
-        ></CardHeader>
-        <CardMedia
-          component="img"
-          width="auto"
-          src={image}
-          alt="Изображение"
-          sx={{
-            display: 'flex',
-            maxWidth: '50%',
-            alignSelf: 'center',
-          }}
-        ></CardMedia>
-        <CardContent sx={{ flex: 1 }}>
-          <Typography variant="h5" color="text.secondary">
-            {title}
-          </Typography>
-          <p dangerouslySetInnerHTML={{ __html: text }} />
-        </CardContent>
-        <>
-          {comments?.length ? (
-            <PostComments comments={comments} id={_id} />
-          ) : null}
-          {tags?.length ? <PostTagList tags={tags} id={_id} /> : null}
-        </>
-        <div className="postpage__like">
-          <button
-            onClick={handleClick}
-            className={`card__like ${isLikedPost ? 'card__like_active' : ''}`}
-          >
-            <Like />
-            <span>{isLikedPost ? 'Мне нравится' : 'Не нравится'}</span>
-          </button>
-
-          < BasicModal urlpage={urlpage} singlePost={singlePost} />
-
-
-          {
-            user?.userData._id === author?._id
-              ? <IconButton onClick={() => deletePost(author, _id)} className=''>
-                <DeleteForever className='' />
-              </IconButton>
-              : null
-          }
-
-        </div>
-
-        {
-          comments?.length
-            ? <PostComment comments={comments} id={_id} />
-            : null
-        }
-        {
-          tags?.length
-            ? <PostTagList tags={tags} id={_id} />
-            : null
-        }
-
-        <Link to="/">
-          {
-            <Button
-              variant="contained"sx={{
-                margin: '50px',
-              }}
-            >
-              Вернуться на главную страницу
-            </Button>
-          }
-        </Link>
-      </div>
-    </Card >
-  );
-}; */}

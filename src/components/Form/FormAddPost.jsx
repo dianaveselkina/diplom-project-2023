@@ -14,9 +14,7 @@ export const Form = ({
   tags,
   ...rest
 }) => {
-  const data = useContext(AllContextData)
-  const addNewPostInState = data[3]
-  const updatePostState = data[4]
+  const { data, addNewPostInState, updatePostState } = useContext(AllContextData)
   const {
     register,
     handleSubmit,

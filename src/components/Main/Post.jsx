@@ -23,15 +23,7 @@ export const Post = ({
   created_at,
   ...args
 }) => {
-  /* const { theme } = useContext(ThemeContext); */
-  const { userData, data, changeStateLikedPost, deletePost } = useContext(AllContextData);
-  /* const changeStateLikedPost = data[1] */
-  /* const deletePost = data[2] */
-
-  /* const handleClick = () => {
-    handleLike(post, isLikedPost);
-  };
-  const isLikedPost = likes.some((e) => e === user._id); */
+  const { userData, changeStateLikedPost, deletePost } = useContext(AllContextData);
 
   let dataAuthor;
 
@@ -47,10 +39,8 @@ export const Post = ({
       maxWidth: 345,
       minWidth: 345,
       paddingBottom: 4,
-
     }
     } >
-
       <Link to={`/post/${_id}`} className="post__link">
         <CardHeader
           avatar={
@@ -67,7 +57,7 @@ export const Post = ({
         />
         <CardMedia
           component="img"
-          height="200"
+          height="250"
           src={image}
           alt="Изображение"
         >
@@ -77,7 +67,8 @@ export const Post = ({
           <Typography variant="h5" color="text.secondary">
             {title}
           </Typography>
-          <div dangerouslySetInnerHTML={{ __html: text }} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }} className="post__text__fild" />
+          <div style={{ overflow: 'hidden', LineClamp: 3, maxHeight: '50px' }} className="post__text__fild" />
+          <p>{text}</p>
         </CardContent>
       </Link >
       <div className="post__sticky post__sticky_type_bottom-left" >
@@ -106,12 +97,8 @@ export const Post = ({
           </Link>
           : null}
 
-
-
-
       </div>
       <div className="post__sticky post__sticky_type_bottom-right" >
-
         {
           userData._id === author._id
             ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
@@ -120,73 +107,6 @@ export const Post = ({
             : null
         }
       </div>
-
     </Card >
-
   );
 }
-
-/* {/* <div className={`card__container postlist__${theme ? 'light' : 'dark'} `}>
-
-          title={dataAuthor.about + ' ' + dataAuthor.name}
-        />
-        <img className="card__img" src={image} alt="Изображение" />
-        <span className="card__title">{title}</span>
-        <p className="card__text">{text}</p>
-      </Link>
-      <div className="card__info">
-        <div className="card__time">
-          {dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
-        </div>
-
-        <button
-          onClick={handleClick}
-          className={`card__like ${isLikedPost ? 'card__like_active' : ''}`}
-        >
-          <Badge badgeContent={likes.length} color="primary"></Badge>
-          <Like />
-        </button>
-
-        {comments.length ?
-          <Link to={`/post/${_id}`}>
-            <IconButton aria-label="go to comments" >
-              <Badge badgeContent={comments.length} color='primary'  >
-                <QuestionAnswer color='gray' />
-              </Badge>
-            </IconButton>
-          </Link>
-          : null} */
-
-{/* {tags.length ?
-          <Link to={`/post/${_id}`}>
-            <IconButton aria-label="go to comments" >
-              <Badge badgeContent={tags.length} color='primary'  >
-                <Style color='gray' />
-              </Badge>
-            </IconButton>
-          </Link>
-          : null} */}
-
-/* <div className="post__sticky post__sticky_type_bottom-right">
-
-  {
-    user.userData._id === author._id
-      ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
-        <DeleteForever className='comment-delete-icon' />
-      </IconButton>
-      : null
-  } */
-
-
-{/* <Link to={`/post/${_id}`}>
-            <IconButton aria-label="go to comments">
-              <Badge badgeContent={comments.length} color="primary">
-                <CommentIcon color="gray" />
-              </Badge>
-            </IconButton>
-          </Link> */}
-/* </div>
-</div> */
-{/* </div > */ }/* 
-  );
-}; */

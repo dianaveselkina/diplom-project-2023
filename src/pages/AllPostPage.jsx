@@ -3,11 +3,16 @@ import './pages.module.css';
 import { Container, Pagination, Stack } from '@mui/material';
 import { PostList } from '../components/Main/PostList';
 
-export default function AllPostPage({ pagePostCount, pageNumber, paginatePage }) {
+export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginatePage }) {
 
-  console.log(pagePostCount);
   const displayPaginate = pagePostCount > 1
+  /* console.log(postData) */
 
+  const sortedItems = [
+    { id: 'Популярные', title: 'POPULAR' },
+    { id: 'Новые', title: 'NEWEST' },
+    { id: 'Все', title: 'ALL' },
+  ];
 
   return (
     <>
@@ -17,11 +22,9 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
           display: "flex",
           flexWrap: 'wrap',
           justifyContent: "center",
-          gap: '10px',
-          marginTop: '10px',
+          backgroundColor: '#006663',
 
         }} maxWidth='xl'>
-
 
           <Container sx={{
             display: "flex",
@@ -30,7 +33,15 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
             padding: '15px',
             mb: '1%',
           }}>
-
+            <div className="sort-posts">
+              {
+                sortedItems.map((e) => (
+                  <span className="sort-item" key={e.id} onClick={() => onSort(e.id)} >
+                    {e.id}
+                  </span>
+                ))
+              }
+            </div>
             {
               displayPaginate
                 ? <Pagination
@@ -39,40 +50,25 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
                     (event, num) =>
                       paginatePage(num)
                   } sx={{
-                    background: 'white',
-                    borderRadius: '10px'
+                    display: "flex",
+                    justifyContent: "center",
+                    background: '#5fcdd9',
+                    mt: '10%',
+                    ml: '-15%',
+                    borderRadius: '10px',
                   }} />
                 : null
             }
-
           </Container>
+
           <Container sx={{
             display: "flex",
             flexWrap: 'wrap',
             justifyContent: "center",
-            padding: '15px',
-            mb: '10%',
-          }}>
-
-            {displayPaginate
-              ? <Pagination
-                page={pageNumber}
-                count={pagePostCount} color="primary" onChange={(event, num) =>
-                  paginatePage(num)
-                } sx={{
-                  background: 'white',
-                  borderRadius: '10px'
-                }} />
-              : null
-            }
-
-          </Container >
-          <Container sx={{
-            display: "flex",
-            flexWrap: 'wrap',
-            justifyContent: "center",
-            gap: '10px',
+            gap: '30px',
             marginTop: '10px',
+            marginBottom: '80px',
+            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
 
           }} maxWidth='xl'>
 
@@ -80,43 +76,7 @@ export default function AllPostPage({ pagePostCount, pageNumber, paginatePage })
 
           </Container>
         </Container>
-
-
       </Stack>
     </>
   )
 }
-
-
-/* ) => {
-  const [post, setPosts] = useState({});
-  const { id } = useParams();
-  const { user, handleLike } = useContext(AllContextData);
-  useEffect(() => {
-    if (id) {
-      api.getPostById(id).then((data) => setPosts(data));
-    }
-  }, [id]);
-
-  const onPostLike = (item, isLikedPost) => {
-    handleLike(item, isLikedPost);
-    if (isLikedPost) {
-      const filteredLikes = item.likes.filter((e) => e !== user?._id);
-      setPosts((s) => ({ ...s, likes: filteredLikes }));
-    } else {
-      const addLikes = [...item.likes, user?._id];
-      setPosts((s) => ({ ...s, likes: addLikes }));
-    }
-  };
-
-  return (
-    <>
-      {!!Object.keys(post).length ? (
-        <PostOfPage post={post} onPostLike={onPostLike} setPosts={setPosts} />
-      ) : (
-        <div>Loading...</div>
-      )}
-    </>
-  );
-};
- */

@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-// import { ReactComponent as Logo } from "../img/logo.svg";
 import "./style.module.css";
 import { Link, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Login } from "@mui/icons-material";
-import { Avatar, CardHeader, Container } from "@mui/material";
+import { Avatar, CardHeader, Container, Typography } from "@mui/material";
 import { AllContextData } from "../../context/context";
 import { useState } from "react";
 import BasicModal from "../Modal/modal";
 import CheckAvatar from "../../Utils/avatar";
 import TransitionsModal from "../Modal/transitModal";
 import s from './style.module.css';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
 export const Header = () => {
   /* const { theme, setTheme } = useContext(ThemeContext); */
@@ -35,21 +36,22 @@ export const Header = () => {
         }}
       >
         {<Link to="/">
-          <button type="button" className="header__logo">
-            {/* <Logo className="header__logotip" /> */}
-          </button>
+          <Button type="primary">
+            <SentimentVerySatisfiedIcon />
+            <EmojiEmotionsIcon />
+          </Button>
         </Link>}
-        <div className="marquee-container">
-          <span className="marquee">
-            <pre>Журнал "Весёлые заметки"</pre>
-          </span>
-        </div>
+
+        <Typography variant="h5" element="div" color={'primary'} marginLeft={'100'}>
+          <pre>Журнал "Весёлые заметки"</pre>
+        </Typography>
+
+        <BasicModal urlpage={urlpage} />
         {
           Object.entries(userInfo).length > 0
             ? <div style={{
               display: 'flex',
-              alignItems: 'center',
-              paddingRight: '1vw'
+              justifyContent: 'end',
             }}>
               <CardHeader className={s.headerUserData}
                 avatar={
@@ -57,10 +59,7 @@ export const Header = () => {
                   >
                     {CheckAvatar(userInfo)}
                   </Avatar>
-                }
-                titleTypographyProps={{
-                  color: 'white',
-                }} />
+                } />
 
               <Button type="primary">
                 <Login className="" onClick={() => logOut()} />
@@ -69,15 +68,6 @@ export const Header = () => {
             : null
         }
         <TransitionsModal onpenUserModal={onpenUserModal} setOpenUserModal={setOpenUserModal} />
-        <BasicModal urlpage={urlpage} />
-        {/* <FormGroup>
-          <FormControlLabel
-            control={
-              {<Switch onChange={() => setTheme(!theme)} defaultChecked /> }
-            }
-            label="Тема"
-          />
-        </FormGroup> */}
       </Container >
     </>
   );

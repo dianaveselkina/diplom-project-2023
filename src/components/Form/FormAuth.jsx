@@ -96,7 +96,6 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
           Регистрация
         </Button>
 
-        {/* <Link to="/"> */}
         <Button
           type="submit"
           variant="contained"
@@ -106,7 +105,6 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
         >
           Войти
         </Button>
-        {/* </Link> */}
       </div>
     </form>
   );

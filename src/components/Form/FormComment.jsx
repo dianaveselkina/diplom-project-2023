@@ -23,7 +23,6 @@ export const FormComment = ({
 
   const cbSubmit = (data) => {
     /* console.log(data); */
-    console.log(data);
     api
       .addNewComments(data, _id)
       .then((newPost) => {
@@ -38,8 +37,8 @@ export const FormComment = ({
     <>
       <form onSubmit={handleSubmit(cbSubmit)} className="form">
         <label className="labelfor">
-          {errors.text.message ?
-            <p className="paragrafor">{errors.text.message}</p>
+          {errors?.text?.message ?
+            <p className="paragrafor">{errors?.text?.message}</p>
             :
             "Ваш комметарий"
           }

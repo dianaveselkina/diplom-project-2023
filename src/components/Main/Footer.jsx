@@ -18,8 +18,7 @@ export const Footer = () => {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#5FCDD9',
-        marginBottom: 0,
-        /* zIndex: '2', */
+
       }}
     >
       <Typography

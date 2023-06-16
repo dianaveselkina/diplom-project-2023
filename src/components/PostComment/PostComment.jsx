@@ -7,13 +7,10 @@ import dayjs from "dayjs";
 import "./index.css";
 import { api } from "../../Utils/api";
 import { AllContextData } from "../../context/context";
-import CheckAvatar from "../../Utils/avatar";
 
 export const PostComment = ({ postId, author, created_at, text, ...rest }) => {
-  console.log(rest);
+  /* console.log(rest); */
   const { updatePostState } = useContext(AllContextData)
-
-
 
   function delComment() {
     api.deleteComments(rest._id, postId).then((data) => updatePostState(data));
@@ -27,7 +24,6 @@ export const PostComment = ({ postId, author, created_at, text, ...rest }) => {
         title={author.name}
         subheader={dayjs(created_at).format("hh:mm DD-MM-YYYY")}
       />
-      {/* HTMLReactParser(string[, options]). Парсер преобразует строку HTML в React element */}
       <div className="comment-text">{text}</div>
       <IconButton
         onClick={() => delComment()}
