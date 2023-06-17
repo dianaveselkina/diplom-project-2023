@@ -33,7 +33,7 @@ export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginat
             <div className="sort-posts">
               {
                 sortedItems.map((e) => (
-                  <span className="sort-item" key={e.id} onClick={(e) => onSort(e.id)} >
+                  <span className="sort-item" key={e.id} onClick={() => onSort(e.id)} >
                     {e.id}
                   </span>
                 ))

@@ -30,8 +30,6 @@ export const Header = () => {
           backgroundColor: '#5fcdd9',
           justifyContent: 'space-between',
           alignItems: 'center',
-          borderRadius: '10px',
-          /* margin: 2, */
           minWidth: '300px',
           left: '65px',
         }}
@@ -42,6 +40,7 @@ export const Header = () => {
             <EmojiEmotionsIcon />
           </Button>
         </Link>}
+
         <Container maxWidth='xl'
           sx={{}}>
           <div className="marquee-container">
@@ -50,9 +49,6 @@ export const Header = () => {
             </span>
           </div>
         </Container >
-        {/* <Typography variant="h5" element="div" color={'primary'} marginLeft={'100'}>
-          <pre>Журнал "Весёлые заметки"</pre>
-        </Typography> */}
 
         <BasicModal urlpage={urlpage} />
         {

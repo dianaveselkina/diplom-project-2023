@@ -29,24 +29,25 @@ const App = () => {
 
   ////////////////// Сориртировка /////////////////
 
-  const [posts, setPosts] = useState([]);
+  /* const [posts, setPosts] = useState([]);*/
 
   const onSort = (sortId) => {
+    let newPost = [];
     if (sortId === 'Популярные') {
-      const newPost = posts.sort((a, b) => b.likes.length - a.likes.length);
-      setPosts([...newPost]);
+      newPost = postData.sort((a, b) => b.likes.length - a.likes.length);
+      setPostData([...newPost]);
       return;
     }
     if (sortId === 'Новые') {
-      const newPost = posts.sort(
+      newPost = postData.sort(
         (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
-      setPosts([...newPost]);
+      setPostData([...newPost]);
       return;
     }
     if (sortId === 'Все') {
-      const newPost = posts;
-      setPosts([...newPost]);
+      newPost = postData;
+      setPostData([...newPost]);
       return;
     }
   };
@@ -177,8 +178,8 @@ const App = () => {
     <>
       <AllContextData.Provider
         value={{
-          posts,
-          setPosts,
+          /* posts,
+          setPosts, */
           postData,
           changeStateLikedPost,
           deletePost,
