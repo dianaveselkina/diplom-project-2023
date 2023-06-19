@@ -45,8 +45,12 @@ const App = () => {
       setPostData([...newPost]);
       return;
     }
-    if (sortId === 'Все') {
-      newPost = postData;
+    if (sortId === 'По алфавиту') {
+      newPost = postData.sort((a, b) => {
+        let aText = a.title.toLowerCase();
+        let bText = b.title.toLowerCase();
+        return aText < bText ? -1 : aText > bText ? 1 : 0;
+      });
       setPostData([...newPost]);
       return;
     }
@@ -178,8 +182,6 @@ const App = () => {
     <>
       <AllContextData.Provider
         value={{
-          /* posts,
-          setPosts, */
           postData,
           changeStateLikedPost,
           deletePost,

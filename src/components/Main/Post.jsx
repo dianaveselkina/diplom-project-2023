@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Avatar, Badge, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
 import { AllContextData } from '../../context/context';
 import CheckAvatar from '../../Utils/avatar';
-import { DeleteForever, Favorite, QuestionAnswer, Style } from '@mui/icons-material';
+import { Comment, Delete, Favorite, TurnedIn } from '@mui/icons-material';
 import cN from "classnames";
 
 export const Post = ({
@@ -64,7 +64,7 @@ export const Post = ({
         </CardMedia>
 
         <CardContent sx={{ flex: 1, }}>
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h6" color="text.secondary">
             {title}
           </Typography>
           <div style={{ overflow: 'hidden', LineClamp: 3, maxHeight: '50px' }} className="post__text__fild" />
@@ -81,7 +81,7 @@ export const Post = ({
           <Link to={`/post/${_id}`}>
             <IconButton aria-label="go to comments" >
               <Badge badgeContent={comments.length} color='primary'  >
-                <QuestionAnswer color='gray' />
+                <Comment color='gray' />
               </Badge>
             </IconButton>
           </Link>
@@ -91,18 +91,15 @@ export const Post = ({
           <Link to={`/post/${_id}`}>
             <IconButton aria-label="go to comments" >
               <Badge badgeContent={tags.length} color='primary'  >
-                <Style color='gray' />
+                <TurnedIn color='gray' />
               </Badge>
             </IconButton>
           </Link>
           : null}
-
-      </div>
-      <div className="post__sticky post__sticky_type_bottom-right" >
         {
           userData._id === author._id
             ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
-              <DeleteForever className='comment-delete-icon' />
+              <Delete className='comment-delete-icon' />
             </IconButton>
             : null
         }

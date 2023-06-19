@@ -60,7 +60,7 @@ export const FormComment = ({
           ></input>
         </label>
 
-        <Button type="submit" variant="contained">{Object.entries(rest).length ? 'Сохранить изменения' : 'Опубликовать пост'}</Button>
+        <Button type="submit" variant="contained">{Object.entries(rest).length ? 'Сохранить изменения' : 'Опубликовать заметку'}</Button>
 
       </form>
     </>

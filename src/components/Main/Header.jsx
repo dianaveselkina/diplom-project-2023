@@ -26,7 +26,7 @@ export const Header = () => {
           position: "fixed",
           zIndex: 2,
           display: 'flex',
-          height: '80px',
+          height: '70px',
           backgroundColor: '#5fcdd9',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -41,8 +41,7 @@ export const Header = () => {
           </Button>
         </Link>}
 
-        <Container maxWidth='xl'
-          sx={{}}>
+        <Container maxWidth='xl'>
           <div className="marquee-container">
             <span className="marquee">
               <pre>Журнал "Весёлые заметки"</pre>

@@ -17,10 +17,6 @@ post__link {
 	left: 0;
 }
 
-.post__sticky_type_bottom-right {
-	bottom: 0;
-	right: 0;
-}
 .post__text__fild {
 	max-width: 290px;
 }
@@ -56,14 +52,13 @@ post__link {
     transition: .3s;
 }
 .headerUserData:hover {
-    filter: drop-shadow(0 0 20px white);
+    filter: drop-shadow(0 0 15px white);
     transition: .3s;
 }
 
 
 @media (max-width: 600px) {
     .projectName {
-        /* font-size: 1vw; */
         display: none;
         
     }
@@ -211,8 +206,6 @@ main ~ {
 .post__card__header {
     min-height: 4em;
 }
-
-
 .button__homepage_top {
 
     align-items: center;
@@ -228,7 +221,6 @@ main ~ {
     margin-bottom: 10vh;
     
 }
-
 .btn__home{
     text-decoration: none;
     color: currentColor;

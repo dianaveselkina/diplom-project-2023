@@ -11,7 +11,7 @@ export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginat
   const sortedItems = [
     { id: 'Популярные', title: 'POPULAR' },
     { id: 'Новые', title: 'NEWEST' },
-    { id: 'Все', title: 'ALL' },
+    { id: 'По алфавиту', title: 'ABC' },
   ];
 
   return (

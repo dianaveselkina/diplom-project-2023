@@ -50,8 +50,8 @@ export const Form = ({
       <form onSubmit={handleSubmit(cbSubmit)} className="authRegForm">
         <h5 className="authRegForm__header">
           {!Object.entries(rest).length
-            ? 'Добавление поста'
-            : 'Редактироание поста'}
+            ? 'Добавление заметки'
+            : 'Редактироание заметки'}
           <br />
           <p className="authRegForm__header_text"></p>
         </h5>
@@ -147,7 +147,7 @@ export const Form = ({
         <Button type="submit" variant="contained">
           {Object.entries(rest).length
             ? 'Сохранить изменения'
-            : 'Опубликовать пост'}
+            : 'Опубликовать заметку'}
         </Button>
       </form>
     </>
