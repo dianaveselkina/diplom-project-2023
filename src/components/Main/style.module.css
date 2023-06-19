@@ -1,14 +1,24 @@
-.header {
-  background-color: #5fcdd9;
-  top: 0;
-  padding: 0.5rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  /* position: fixed; */
-  width: 100%;
-  height: 80px;
-  z-index: 2;
+
+.post:hover {
+    filter: drop-shadow(0 0 10px #5fcdd9);
+}
+post__link {
+	text-decoration: none;
+	color: currentColor;
+}
+
+.post__sticky {
+	position: absolute;
+	padding: 10px;
+}
+
+.post__sticky_type_bottom-left {
+	bottom: 0;
+	left: 0;
+}
+
+.post__text__fild {
+	max-width: 290px;
 }
 
 .header__logotip {
@@ -20,48 +30,6 @@
   outline: none;
   background-color: transparent;
   cursor: pointer;
-}
-
-.marquee-text {
-  color: #027373;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 300;
-
-  margin: 10px auto;
-  border: none;
-  max-width: 60%;
-  overflow: hidden;
-}
-
-.marquee-container {
-  display: flex;
-  width: 600px;
-  align-items: center;
-  background: #5fcdd9;
-  overflow: hidden;
-  top: 10px;
-}
-
-.marquee {
-  color: #2b7ad4;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  white-space: nowrap;
-  animation: marquee 5s infinite linear;
-}
-.marquee:after {
-  content: "Журнал " Весёлые заметки "";
-}
-@keyframes marquee {
-  0% {
-    transform: translateX(250%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
 }
 
 .logOutBtn {
@@ -84,14 +52,13 @@
     transition: .3s;
 }
 .headerUserData:hover {
-    filter: drop-shadow(0 0 20px white);
+    filter: drop-shadow(0 0 15px white);
     transition: .3s;
 }
 
 
 @media (max-width: 600px) {
     .projectName {
-        /* font-size: 1vw; */
         display: none;
         
     }
@@ -106,7 +73,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px 30px;
-  padding: 100px 40px 80px 40px;
+  padding: 80px;
   align-content: flex-start;
 }
 .postpage__infa {
@@ -118,21 +85,6 @@
   justify-content: space-evenly;
 }
 
-.sort-post {
-  margin: -25px 20px 0 40px;
-  position: fixed;
-  display: flex;
-  gap: 1rem;
-}
-.sort-item {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  color: #78adad;
-  padding: 5px;
-  cursor: pointer;
-}
-
 .card__container {
   background-color: #fcfcfc;
   color: #027373;
@@ -142,7 +94,7 @@
   display: grid;
   grid-template-rows: 650px auto 1fr 20px;
   align-content: flex-start;
-  box-shadow: 0 20px 30px#ebbb91;
+  /* box-shadow: 0 20px 30px#ebbb91; */
   cursor: pointer;
   overflow: hidden;
   border-radius: 4px;
@@ -254,8 +206,6 @@ main ~ {
 .post__card__header {
     min-height: 4em;
 }
-
-
 .button__homepage_top {
 
     align-items: center;
@@ -271,7 +221,6 @@ main ~ {
     margin-bottom: 10vh;
     
 }
-
 .btn__home{
     text-decoration: none;
     color: currentColor;

@@ -28,7 +28,7 @@
 .authBtn:hover {
     padding: 8% 8%;
     background: whitesmoke;
-    background:gold;
+    background: #5fcdd9;
     border-radius: 20px;
     filter: drop-shadow(0 0 10px gold);
     transition: .3s;

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import dayjs from 'dayjs';
-import './style.css';
-import { ReactComponent as Like } from '../img/like.svg';
+import './style.module.css';
 import { Link } from 'react-router-dom';
-import { Avatar, Badge, CardHeader, IconButton } from '@mui/material';
-import { ThemeContext, AllContextData } from '../../context/context';
-import CommentIcon from '@mui/icons-material/Comment';
+import { Avatar, Badge, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
+import { AllContextData } from '../../context/context';
 import CheckAvatar from '../../Utils/avatar';
+import { Comment, Delete, Favorite, TurnedIn } from '@mui/icons-material';
+import cN from "classnames";
 
 export const Post = ({
   image,
@@ -23,64 +23,87 @@ export const Post = ({
   created_at,
   ...args
 }) => {
-  const { theme } = useContext(ThemeContext);
-  const user = useContext({ ...AllContextData });
-  const { handleLike } = useContext(AllContextData);
-  /* const deletePost = data */
-
-  const handleClick = () => {
-    handleLike(post, isLiked);
-  };
-  const isLiked = likes.some((e) => e === user._id);
+  const { userData, changeStateLikedPost, deletePost } = useContext(AllContextData);
 
   let dataAuthor;
 
-  if (user._id === author._id) {
-    dataAuthor = user.user;
+  if (userData._id === author._id) {
+    dataAuthor = userData
   } else {
-    dataAuthor = author;
+    dataAuthor = author
   }
 
   return (
-    <div className={`card__container postlist__${theme ? 'light' : 'dark'} `}>
+
+    < Card className="post" sx={{
+      maxWidth: 345,
+      minWidth: 345,
+      paddingBottom: 4,
+    }
+    } >
       <Link to={`/post/${_id}`} className="post__link">
         <CardHeader
           avatar={
-            author && (
-              <Avatar aria-label="recipe" src={CheckAvatar}>
-                {CheckAvatar}
-              </Avatar>
-            )
-          }
+            author &&
+            <Avatar aria-label="recipe" src={CheckAvatar(dataAuthor)}>
+              {CheckAvatar(dataAuthor)}
+            </Avatar>
+
+          } sx={{ minHeight: '7em' }}
+
           title={dataAuthor.about + ' ' + dataAuthor.name}
+
+          subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
         />
-        <img className="card__img" src={image} alt="Изображение" />
-        <span className="card__title">{title}</span>
-        <p className="card__text">{text}</p>
-      </Link>
-      <div className="card__info">
-        <div className="card__time">
-          {dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
-        </div>
-
-        <button
-          onClick={handleClick}
-          className={`card__like ${isLiked ? 'card__like_active' : ''}`}
+        <CardMedia
+          component="img"
+          height="250"
+          src={image}
+          alt="Изображение"
         >
-          <Badge badgeContent={likes.length} color="primary"></Badge>
-          <Like />
-        </button>
+        </CardMedia>
 
-        <div className="post__sticky">
+        <CardContent sx={{ flex: 1, }}>
+          <Typography variant="h6" color="text.secondary">
+            {title}
+          </Typography>
+          <div style={{ overflow: 'hidden', LineClamp: 3, maxHeight: '50px' }} className="post__text__fild" />
+          <p>{text}</p>
+        </CardContent>
+      </Link >
+      <div className="post__sticky post__sticky_type_bottom-left" >
+        <IconButton aria-label="add to favorites" color={cN({ 'gray': !likes.length }, { 'warning': likes.length })} onClick={() => changeStateLikedPost(likes, _id)} >
+          <Badge badgeContent={likes.length} color="primary" >
+            <Favorite />
+          </Badge>
+        </IconButton>
+        {comments.length ?
           <Link to={`/post/${_id}`}>
-            <IconButton aria-label="go to comments">
-              <Badge badgeContent={comments.length} color="primary">
-                <CommentIcon color="gray" />
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={comments.length} color='primary'  >
+                <Comment color='gray' />
               </Badge>
             </IconButton>
           </Link>
-        </div>
+          : null}
+
+        {tags.length ?
+          <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={tags.length} color='primary'  >
+                <TurnedIn color='gray' />
+              </Badge>
+            </IconButton>
+          </Link>
+          : null}
+        {
+          userData._id === author._id
+            ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
+              <Delete className='comment-delete-icon' />
+            </IconButton>
+            : null
+        }
       </div>
-    </div>
+    </Card >
   );
-};
+}

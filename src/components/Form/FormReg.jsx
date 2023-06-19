@@ -35,9 +35,9 @@ export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
       </h5>
 
       <label className="authRegForm__leble">
-        {errors?.email?.message ? 
+        {errors?.email?.message ?
           <p className="authRegForm__leble_error">{errors?.email?.message}</p>
-         : 
+          :
           "Ваш Email"
         }
         <input
@@ -58,11 +58,11 @@ export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
       </label>
 
       <label className="authRegForm__leble">
-        {errors?.password?.message ? 
+        {errors?.password?.message ?
           <p className="authRegForm__leble_error">
             {errors?.password?.message}
           </p>
-         : 
+          :
           "Введите пароль"
         }
         <input
@@ -84,16 +84,16 @@ export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
       </label>
 
       <label className="authRegForm__leble">
-        {errors?.password?.message ? 
+        {errors?.password?.message ?
           <p className="authRegForm__leble_error">
             {errors?.password?.message}
           </p>
-         : 
+          :
           "Укажите группу"
         }
         <input
           className="authRegForm__input"
-          {...register("group", {
+          {...register("group-12", {
             required: {
               value: true,
               message: " обязательное поле",

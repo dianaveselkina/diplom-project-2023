@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.css';
+import './pages.module.css';
 import { Button } from '@mui/material';
 
 export const ErrorPage = () => {

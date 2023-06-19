@@ -3,216 +3,240 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Main/Footer';
 import { Header } from './components/Main/Header';
-import { PostList } from './components/Main/PostList';
 // import data from './DB/data.json';
-import { PostPage } from './pages/PostPage';
+import { PostOfPage } from './pages/PostOfPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { api } from './Utils/api';
-import { ThemeContext, AllContextData } from './context/context';
+import { AllContextData } from './context/context';
 import { Authorisation } from './components/Auth/Authorisation';
 import { AuthError } from './components/Auth/AuthError';
+import AllPostPage from './pages/AllPostPage';
 
-function App() {
-  const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState({});
-  const [theme, setTheme] = useState(true);
-  const [favorites, setFavorites] = useState([]);
-  const [autorozation, SetAutorization] = useState(false); // Стейт авторизации
-  const [authErr, setAuthErr] = useState(''); // стейт ошибок авторизации
-  const themeValue = { theme, setTheme };
 
-  const handlePostLike = async (post, wasLiked) => {
-    const updatedPost = await api.changePostLike(post._id, wasLiked);
-    const index = post.findIndex((e) => e._id === updatedPost?._id);
-    if (index !== -1) {
-      setPosts((state) => [
-        ...state.slice(0, index),
-        updatedPost,
-        ...state.slice(index + 1),
-      ]);
-    }
-    wasLiked
-      ? setFavorites((state) => state.filter((f) => f._id !== updatedPost._id))
-      : setFavorites((state) => [updatedPost, ...state]);
-  };
+const App = () => {
 
-  /* const filteredPost = (post) => {
-    return post.filter(
-      (e) =>
-        e.author._id === '64423c303291d790b3fc967c' ||
-        e.author._id === '644573ee3291d790b3073d8d'
-    );
-  }; */
-
-  const onSort = (sortId) => {
-    if (sortId === 'Популярные') {
-      const newPost = posts.sort((a, b) => b.likes.length - a.likes.length);
-      setPosts([...newPost]);
-      return;
-    }
-    if (sortId === 'Новые') {
-      const newPost = posts.sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at)
-      );
-      setPosts([...newPost]);
-      return;
-    }
-    if (sortId === 'Все') {
-      const newPost = posts;
-      setPosts([...newPost]);
-      return;
-    }
-  };
-
-  function updatePostState(likedPost) {
-    let updatedPost = posts.map((el) => {
-      return el._id !== likedPost._id ? el : likedPost;
-    });
-    setPosts([...updatedPost]);
-  }
+  const [autorozation, SetAutorization] = useState(false);
+  const [authErr, setAuthErr] = useState("");
 
   useEffect(() => {
     if (
-      localStorage.getItem('postApi') !== '' &&
-      localStorage.getItem('postApi')
+      localStorage.getItem("") !== "" &&
+      localStorage.getItem("")
     ) {
       SetAutorization(true);
     }
   }, []);
 
-  useEffect(() => {
-    if (autorozation) {
-      api.getUserInfo().then((data) => setUser(data));
+  ////////////////// Сориртировка /////////////////
+
+  /* const [posts, setPosts] = useState([]);*/
+
+  const onSort = (sortId) => {
+    let newPost = [];
+    if (sortId === 'Популярные') {
+      newPost = postData.sort((a, b) => b.likes.length - a.likes.length);
+      setPostData([...newPost]);
+      return;
     }
-  }, [autorozation]);
-
-  useEffect(() => {
-    api.getAllPosts().then((data) => setPosts(data));
-  }, []);
-
-  useEffect(() => {
-    api.getUserInfo().then((user) => {
-      setUser(user);
-    });
-  }, []);
-
-  const postValue = {
-    updatePostState,
-    deletePost,
-    addNewPostInState,
-    handleLike: handlePostLike,
-    posts: posts,
-    setPosts,
-    favorites,
-    onSort,
-    user,
-    autorozation,
-    singIn,
-    singUp,
-    logOut,
-    setUser,
+    if (sortId === 'Новые') {
+      newPost = postData.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      setPostData([...newPost]);
+      return;
+    }
+    if (sortId === 'По алфавиту') {
+      newPost = postData.sort((a, b) => {
+        let aText = a.title.toLowerCase();
+        let bText = b.title.toLowerCase();
+        return aText < bText ? -1 : aText > bText ? 1 : 0;
+      });
+      setPostData([...newPost]);
+      return;
+    }
   };
 
-  ///////////////////////////// Блок авторизации и регистрации /////////////////////////////
-
-  function singIn(user) {
+  ///////////////////////////////////////////////
+  function singIn(userData) {
     api
-      .singInUser(user)
+      .singInUser(userData)
       .then((data) => authIsTru(data))
       .catch((err) => setAuthErr(err.message));
   }
 
-  function singUp(user) {
-    const { email: userEmail, password: userPassword } = { ...user };
-    /* console.log(userEmail, userPassword, user); */
+  function singUp(userData) {
+    alert("Готово!");
+    const { email: userEmail, password: userPassword } = { ...userData };
+    /* console.log(userEmail, userPassword, userData); */
     api
-      .singUpUser(user)
+      .singUpUser(userData)
       .then((res) => {
-        console.log(res);
+        /* console.log(res); */
         singIn({ email: userEmail, password: userPassword });
       })
-
       .catch((err) => setAuthErr(err.message));
   }
 
   function authIsTru(data) {
-    setUser(data.data);
-    localStorage.setItem('postApi', data.token);
-    localStorage.setItem('group', data.data.group);
+    setUserData(data.data);
+    localStorage.setItem("", data.token);
+    localStorage.setItem("group-12", data.data.group);
     SetAutorization(true);
   }
-
   function logOut() {
-    const result = window.confirm('Уже уходите?');
+    const result = window.confirm("Уже уходите?");
 
     if (result) {
-      localStorage.removeItem('postApi');
-      localStorage.removeItem('group');
+      localStorage.removeItem("");
+      localStorage.removeItem("group-12");
       SetAutorization(false);
-      setUser({});
+      setUserData({});
     }
   }
+  /////////////////////////////////////////////////////
 
-  //////////////////Oбновлениe стейта постов, после добавления нового поста ///////////////
+  const [userData, setUserData] = useState([]); // Стейт данных пользователя
+  const [postData, setPostData] = useState([]); // Стейт постов
+  const [allPostCount, setAllPostcount] = useState([]); //  Стейт общего количества постов
+  const [pageNumber, setPageNumber] = useState(1); // Стейт пагинации
+  /* console.log(userData); */
+  useEffect(() => {
+    if (!!autorozation) {
+      /* console.log('i work'); */
+      api.getUserInfo().then((data) => setUserData(data));
+    } else {
+      /* console.log('i not work'); */
+    }
 
-  function addNewPostInState(newPost) {
-    let updatedPost = [newPost, ...posts];
-    setPosts(updatedPost);
+    if (autorozation) {
+      paginatePage(1);
+    }
+  }, [autorozation]); // Хук useEffect (зависимость стейт авторизации) апи запрос на массива с постами
+
+  ////////////////////////// Пагинация ////////////////////
+
+  let pagePostCount = Math.ceil(allPostCount / 9); // Количество страниц пагинации
+  const POST_QUANTITY = 9;
+
+  function paginatePage(currentPage = 1) {
+    let postQuantity = POST_QUANTITY; // Переменная определяющая количество постов на странице
+    api
+      .getPaginate(currentPage, postQuantity)
+      .then(
+        (
+          data // апи запрос на получение постов с сервера.
+        ) => {
+          /* console.log(data) */
+          setPostData(data.posts);
+          setAllPostcount(data.total);
+          setPageNumber(currentPage);
+        }
+      )
+      .catch((err) => console.log("ошибка при запросе постов:", err.message));
   }
 
+  //////////// Изменение лайка ////////////////////////
+
+  const likeIsHer = (likesArr, userDataid) => {
+    return likesArr.some(e => e === userDataid)
+  }
+
+  function changeStateLikedPost(likesArr, postId) {
+    api
+      .changePostLike(postId, likeIsHer(likesArr, userData._id))
+      .then((res) => updatePostState(res));
+  }
+  function updatePostState(likedPost) {
+    let updatedPostData = postData.map((el) => {
+      return el._id !== likedPost._id ? el : likedPost;
+    });
+    setPostData(updatedPostData);
+  }
+  ////////// Обновление постов после добавления нового
+
+  function addNewPostInState(newPost) {
+    let updatedPostData = [...postData, newPost];
+    setPostData(updatedPostData);
+  }
+  ////////// Удаления поста ////////////////////////////
+
   function deletePost(author, _id) {
-    author._id !== user._id ? alert('Атата!') : delPost(_id);
+    author._id !== userData._id
+      ? alert("Ата-та!")
+      : delPost(_id);
 
     function delPost(_id) {
-      const result = window.confirm('Вы уверены?');
+      const result = window.confirm("Вы уверенны?");
       if (result) {
         api.deletePostById(_id);
-        let updatedPost = posts.filter((e) => {
+        let updatedPostData = postData.filter((e) => {
           return e._id !== _id;
         });
-        setPosts(updatedPost);
+        setPostData(updatedPostData);
       }
     }
   }
+  /////////////////////////////////////////////////////////
 
   return (
-    <div className="App">
-      <div className={`theme__postlist__${theme ? 'light' : 'dark'} `}>
-        <ThemeContext.Provider value={themeValue}>
-          <AllContextData.Provider value={postValue}>
+    <>
+      <AllContextData.Provider
+        value={{
+          postData,
+          changeStateLikedPost,
+          deletePost,
+          addNewPostInState,
+          updatePostState,
+          paginatePage,
+          onSort,
+          userData,
+          autorozation,
+          singIn,
+          singUp,
+          logOut,
+          setUserData,
+        }}
+      ><Routes>
+          <Route path="*" element={<Header />} />
+        </Routes>
+        {autorozation ?
+          <main className="main">
             <Routes>
-              <Route path="*" element={<Header />} />
-            </Routes>
-            {autorozation ? (
-              <main className="main">
-                <Routes>
-                  <Route
-                    index
-                    element={<PostList onSort={onSort} posts={posts} />}
+              <Route
+                index
+                element={
+                  <AllPostPage
+                    onSort={onSort}
+                    pagePostCount={pagePostCount}
+                    pageNumber={pageNumber}
+                    paginatePage={paginatePage}
                   />
-                  {/* <Route path="/post/:postId" element={<PostPage />} /> */}
-                  <Route path="/post/:id" element={<PostPage />} />
-                  <Route path="*" element={<ErrorPage />} />
-                </Routes>
-              </main>
-            ) : (
-              <Authorisation />
-            )}
-
-            {authErr !== '' ? (
-              <AuthError authErr={authErr} setAuthErr={setAuthErr} />
-            ) : null}
-            <Routes>
-              <Route path="*" element={<Footer />} />
+                }
+              />
+              <Route path="/post/:postId" element={<PostOfPage />} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
-          </AllContextData.Provider>
-        </ThemeContext.Provider>
-      </div>
-    </div>
+          </main>
+          :
+          <Authorisation />
+        }
+        {(authErr !== "") ?
+          <AuthError authErr={authErr} setAuthErr={setAuthErr} />
+          : null}
+        <Routes>
+          <Route path="*" element={<Footer />} />
+        </Routes>
+      </AllContextData.Provider >
+    </>
   );
-}
+};
 
 export default App;
-
-//     {<Route path="/createpostpage" element={<FormAddPost />} />}
-//     <Route path="/userpage" element={<Authorisation />} />
+///////////////////////////// фильтрация по токену //////////////////////////
+/* const filteredPost = (post) => {
+  return post.filter(
+    (e) =>
+      e.author._id === '64423c303291d790b3fc967c' ||
+      e.author._id === '644573ee3291d790b3073d8d'
+  );
+}; <CssBaseline /> сброс CSS стилий от MaterialUI */ 

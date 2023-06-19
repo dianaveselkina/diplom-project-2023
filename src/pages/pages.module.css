@@ -115,3 +115,45 @@ label {
   text-decoration: none;
   color: currentColor;
 }
+.mainpost {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 5vw;
+}
+.singlePost__card__header {
+    min-height: 4em;
+}
+
+
+.button__homepage_top {
+
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    
+}
+.button__homepage_bottom {
+
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    margin-bottom: 10vh;
+    
+}
+
+.btn__home{
+    text-decoration: none;
+    color: currentColor;
+}
+
+.cart__bottom {
+    display: flex;
+    padding: 0 5px 2px 5px;
+    justify-content: space-between;
+}
+.post_deleteBtn_icon:hover .post_delete_icon {
+    color: red;
+    }
