@@ -42,8 +42,8 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
         <Button
           variant="contained"
           onClick={handleOpen}
-          startIcon={<PostAddIcon />}
-        ><MailOutline /></Button>
+          startIcon={<MailOutline />}
+        >{/* <PostAddIcon /> */}</Button>
         : user?.userData._id === singlePost?.author?._id ?
           <IconButton
             aria-label="Редакировать"

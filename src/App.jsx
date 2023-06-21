@@ -80,6 +80,7 @@ const App = () => {
   function authIsTru(data) {
     setUserData(data.data);
     localStorage.setItem("", data.token);
+    console.log('token')
     localStorage.setItem("group-12", data.data.group);
     SetAutorization(true);
   }
@@ -102,10 +103,8 @@ const App = () => {
   /* console.log(userData); */
   useEffect(() => {
     if (!!autorozation) {
-      /* console.log('i work'); */
       api.getUserInfo().then((data) => setUserData(data));
     } else {
-      /* console.log('i not work'); */
     }
 
     if (autorozation) {
