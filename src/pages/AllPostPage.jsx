@@ -6,7 +6,6 @@ import { PostList } from '../components/Main/PostList';
 export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginatePage }) {
 
   const displayPaginate = pagePostCount > 1
-  /* console.log(postData) */
 
   const sortedItems = [
     { id: 'Популярные', title: 'POPULAR' },
@@ -60,7 +59,6 @@ export default function AllPostPage({ onSort, pagePostCount, pageNumber, paginat
                     justifyContent: "center",
                     background: '#5fcdd9',
                     mt: '-30px',
-                    /* ml: '-15%', */
                     borderRadius: '4px',
                   }} />
                 : null

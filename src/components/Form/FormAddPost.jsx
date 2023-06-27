@@ -37,7 +37,6 @@ export const Form = ({
       data.tags = data.tags.split(',')
     }
 
-    // console.log(data.tags)
     Object.entries(rest).length
       ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
       : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))

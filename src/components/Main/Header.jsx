@@ -13,7 +13,6 @@ import s from './style.module.css';
 import logo from '../img/logo.svg'
 
 export const Header = () => {
-  /* const { theme, setTheme } = useContext(ThemeContext); */
   const { userData: userInfo, logOut } = useContext({ ...AllContextData });
   const [onpenUserModal, setOpenUserModal] = useState(false);
   const urlpage = useParams();
