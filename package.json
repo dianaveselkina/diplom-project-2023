@@ -2,7 +2,7 @@
   "name": "diplom-project-2023",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/8Lou/diplom-project-2023",
+  "homepage": "https://8Lou.github.io/diplom-project-2023/",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
