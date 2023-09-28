@@ -22,15 +22,12 @@ export const FormComment = ({
   });
 
   const cbSubmit = (data) => {
-    /* console.log(data); */
     api
       .addNewComments(data, _id)
       .then((newPost) => {
         updatePostState(newPost)
       })
-    /* console.log(data); */
     handleClose2();
-    /* .catch((e) => console.log(e)); */
   };
 
   return (

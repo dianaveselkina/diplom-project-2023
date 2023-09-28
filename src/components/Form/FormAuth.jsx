@@ -33,7 +33,7 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
         Авторизация
         <br />
         <p className="authRegForm__header_text">
-          (По умолчанию данные соавтора проекта)
+          (По умолчаниюбудут указаны данные соавтора проекта)
         </p>
       </h5>
 

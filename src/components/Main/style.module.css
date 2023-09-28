@@ -1,4 +1,10 @@
-
+.logo {
+  filter:drop-shadow(0 0 2px gold);
+}
+.logo:hover {
+  filter: drop-shadow(0 0 10px white);
+  transition: 0.3s;
+}
 .post:hover {
     filter: drop-shadow(0 0 10px #5fcdd9);
 }
@@ -67,104 +73,7 @@ post__link {
         font-size: .1em;
     }
 }
-.postlist__container {
-  width: 100%;
-  background-color: #f2e3d5;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px 30px;
-  padding: 80px;
-  align-content: flex-start;
-}
-.postpage__infa {
-  height: 37rem;
-  color: #027373;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
 
-.card__container {
-  background-color: #fcfcfc;
-  color: #027373;
-  box-sizing: border-box;
-  width: 350px;
-  height: 700px;
-  display: grid;
-  grid-template-rows: 650px auto 1fr 20px;
-  align-content: flex-start;
-  /* box-shadow: 0 20px 30px#ebbb91; */
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 4px;
-  position: relative;
-  padding: 15px;
-  margin: 15px;
-}
-
-.card__img {
-  padding: 15px 0 15px;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: calc(650px - 35%);
-  object-fit: cover;
-}
-.postlist__img {
-  object-fit: cover;
-}
-
-.card__author {
-  font-size: 1.1em;
-  padding-top: 5px;
-}
-
-.card__title {
-  font-size: 1.2em;
-  font-weight: 600;
-  padding: 10px;
-}
-.card__text {
-  font-size: 1em;
-  padding: 10px;
-  overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 4;
-	-webkit-box-orient: vertical;
-}
-.card__info {
-  display: flex;
-  justify-content: space-around;
-}
-.card__time {
-  gap: 10px;
-}
-.card__like {
-  font-size: 1.4em;
-  cursor: pointer;
-  fill: none;
-  background: none;
-  border: none;
-  stroke: red;
-  display: flex;
-}
-
-.card__like_active {
-  border: none;
-  background: none;
-  fill: red;
-  stroke: red;
-}
-
-.postlist__light {
-  background-color: #fdf4eb;
-}
-.postlist__dark {
-  background-color: rgb(81, 86, 92);
-  color: #1bd1f1;
-}
 .logOutBtn {
   color: white;
   background: rgb(52, 114, 195);
@@ -234,3 +143,32 @@ main ~ {
 .post_deleteBtn_icon:hover .post_delete_icon {
     color: red;
     }
+    
+.formUser {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: rgb(125, 229, 243);
+    padding: 20px;
+}
+
+.formUserChangeLable {
+    width: inherit;
+    margin-top: 10px;
+    font-size: medium;
+}
+
+.formUserChangeInput {
+    width:max-content;
+    border-radius: 6px;
+    border: 1px solid rgb(8, 68, 219);
+    padding: 4px;
+    font-size: medium;
+}
+
+.formBtn {
+    margin-top: 20px;
+}

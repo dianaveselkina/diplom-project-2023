@@ -38,6 +38,7 @@ export const Post = ({
     < Card className="post" sx={{
       maxWidth: 345,
       minWidth: 345,
+      maxHeight: 600,
       paddingBottom: 4,
     }
     } >
@@ -67,8 +68,9 @@ export const Post = ({
           <Typography variant="h6" color="text.secondary">
             {title}
           </Typography>
-          <div style={{ overflow: 'hidden', LineClamp: 3, maxHeight: '50px' }} className="post__text__fild" />
-          <p>{text}</p>
+          <div className='items-text' style={{ overflow: 'hidden', LineClamp: 3, maxHeight: '50px' }}>
+            <p>{text}</p>
+          </div>
         </CardContent>
       </Link >
       <div className="post__sticky post__sticky_type_bottom-left" >
@@ -103,6 +105,7 @@ export const Post = ({
             </IconButton>
             : null
         }
+
       </div>
     </Card >
   );

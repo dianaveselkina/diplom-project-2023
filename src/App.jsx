@@ -15,7 +15,7 @@ import AllPostPage from './pages/AllPostPage';
 
 const App = () => {
 
-  const [autorozation, SetAutorization] = useState(false);
+  const [autorozation, setAutorization] = useState(false);
   const [authErr, setAuthErr] = useState("");
 
   useEffect(() => {
@@ -23,13 +23,9 @@ const App = () => {
       localStorage.getItem("") !== "" &&
       localStorage.getItem("")
     ) {
-      SetAutorization(true);
+      setAutorization(true);
     }
   }, []);
-
-  ////////////////// Сориртировка /////////////////
-
-  /* const [posts, setPosts] = useState([]);*/
 
   const onSort = (sortId) => {
     let newPost = [];
@@ -56,7 +52,6 @@ const App = () => {
     }
   };
 
-  ///////////////////////////////////////////////
   function singIn(userData) {
     api
       .singInUser(userData)
@@ -67,11 +62,9 @@ const App = () => {
   function singUp(userData) {
     alert("Готово!");
     const { email: userEmail, password: userPassword } = { ...userData };
-    /* console.log(userEmail, userPassword, userData); */
     api
       .singUpUser(userData)
       .then((res) => {
-        /* console.log(res); */
         singIn({ email: userEmail, password: userPassword });
       })
       .catch((err) => setAuthErr(err.message));
@@ -80,53 +73,47 @@ const App = () => {
   function authIsTru(data) {
     setUserData(data.data);
     localStorage.setItem("", data.token);
+    console.log('token')
     localStorage.setItem("group-12", data.data.group);
-    SetAutorization(true);
+    setAutorization(true);
   }
   function logOut() {
     const result = window.confirm("Уже уходите?");
 
     if (result) {
-      localStorage.removeItem("");
       localStorage.removeItem("group-12");
-      SetAutorization(false);
+      setAutorization(false);
       setUserData({});
     }
   }
-  /////////////////////////////////////////////////////
 
-  const [userData, setUserData] = useState([]); // Стейт данных пользователя
-  const [postData, setPostData] = useState([]); // Стейт постов
-  const [allPostCount, setAllPostcount] = useState([]); //  Стейт общего количества постов
-  const [pageNumber, setPageNumber] = useState(1); // Стейт пагинации
-  /* console.log(userData); */
+  const [userData, setUserData] = useState([]);
+  const [postData, setPostData] = useState([]);
+  const [allPostCount, setAllPostcount] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
     if (!!autorozation) {
-      /* console.log('i work'); */
       api.getUserInfo().then((data) => setUserData(data));
     } else {
-      /* console.log('i not work'); */
     }
 
     if (autorozation) {
       paginatePage(1);
     }
-  }, [autorozation]); // Хук useEffect (зависимость стейт авторизации) апи запрос на массива с постами
+  }, [autorozation]);
 
-  ////////////////////////// Пагинация ////////////////////
 
-  let pagePostCount = Math.ceil(allPostCount / 9); // Количество страниц пагинации
+  let pagePostCount = Math.ceil(allPostCount / 9);
   const POST_QUANTITY = 9;
 
   function paginatePage(currentPage = 1) {
-    let postQuantity = POST_QUANTITY; // Переменная определяющая количество постов на странице
+    let postQuantity = POST_QUANTITY;
     api
       .getPaginate(currentPage, postQuantity)
       .then(
         (
-          data // апи запрос на получение постов с сервера.
+          data
         ) => {
-          /* console.log(data) */
           setPostData(data.posts);
           setAllPostcount(data.total);
           setPageNumber(currentPage);
@@ -134,8 +121,6 @@ const App = () => {
       )
       .catch((err) => console.log("ошибка при запросе постов:", err.message));
   }
-
-  //////////// Изменение лайка ////////////////////////
 
   const likeIsHer = (likesArr, userDataid) => {
     return likesArr.some(e => e === userDataid)
@@ -152,13 +137,13 @@ const App = () => {
     });
     setPostData(updatedPostData);
   }
-  ////////// Обновление постов после добавления нового
+
 
   function addNewPostInState(newPost) {
     let updatedPostData = [...postData, newPost];
     setPostData(updatedPostData);
   }
-  ////////// Удаления поста ////////////////////////////
+
 
   function deletePost(author, _id) {
     author._id !== userData._id
@@ -176,7 +161,6 @@ const App = () => {
       }
     }
   }
-  /////////////////////////////////////////////////////////
 
   return (
     <>
@@ -232,11 +216,3 @@ const App = () => {
 };
 
 export default App;
-///////////////////////////// фильтрация по токену //////////////////////////
-/* const filteredPost = (post) => {
-  return post.filter(
-    (e) =>
-      e.author._id === '64423c303291d790b3fc967c' ||
-      e.author._id === '644573ee3291d790b3073d8d'
-  );
-}; <CssBaseline /> сброс CSS стилий от MaterialUI */ 

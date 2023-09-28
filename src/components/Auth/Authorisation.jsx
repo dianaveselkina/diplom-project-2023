@@ -7,6 +7,7 @@ import { useState } from "react";
 import { FormAuth } from "../Form/FormAuth";
 import { FormReg } from "../Form/FormReg";
 import s from "./auth.module.css";
+import { Button } from "@mui/material";
 
 export const Authorisation = () => {
   const [authReg, setAuthReg] = useState(true);
@@ -31,30 +32,28 @@ export const Authorisation = () => {
   return (
     <>
       <div className={s.authPage}>
-        <div className="">
-          <div>Hеобходима авторизация</div>
+        <div style={{ margin: '100' }}>Hеобходима авторизация</div>
 
-          <div className={s.buttonBlock}>
-            <button
-              className={s.authBtn}
-              onClick={() => {
-                handleOpen();
-                setAuthReg(true);
-              }}
-            >
-              Авторизация
-            </button>
-            или
-            <button
-              className={s.authBtn}
-              onClick={() => {
-                handleOpen();
-                setAuthReg(false);
-              }}
-            >
-              Регистарция
-            </button>
-          </div>
+        <div className={s.buttonBlock}>
+          <Button
+            className={s.authBtn}
+            onClick={() => {
+              handleOpen();
+              setAuthReg(true);
+            }}
+          >
+            Авторизация
+          </Button>
+          или
+          <Button
+            className={s.authBtn}
+            onClick={() => {
+              handleOpen();
+              setAuthReg(false);
+            }}
+          >
+            Регистарция
+          </Button>
         </div>
       </div>
 
@@ -68,13 +67,13 @@ export const Authorisation = () => {
         >
           <Fade in={open}>
             <Box sx={style}>
-              {authReg ? 
+              {authReg ?
                 <FormAuth
                   authReg={authReg}
                   handleClose={handleClose}
                   setAuthReg={setAuthReg}
                 />
-               : 
+                :
                 <FormReg
                   authReg={authReg}
                   handleClose={handleClose}

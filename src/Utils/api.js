@@ -13,7 +13,20 @@ class Api {
       headers: this.headers,
     }).then(onResponse);
   }
-
+changeUserInfo(data) {
+        return fetch(`${this.baseUrl}/users/me`, {
+            method: 'PATCH',
+            body: JSON.stringify(data),
+      headers: this.headers,
+    }).then(onResponse);
+    }
+    changeAvatar(data) {
+        return fetch(`${this.baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            body: JSON.stringify(data),
+            headers: this.headers,
+    }).then(onResponse);
+    }
   getAllPosts() {
     return fetch(`${this.baseUrl}/posts`, {
       method: "GET",
@@ -27,7 +40,7 @@ class Api {
     }).then(onResponse);
   }
   getPaginate(page, number, query = '') {
-        return fetch(`${this.baseUrl}/v2/12/posts/paginate?page=${page}&limit=${number}&query=${query}`, {
+        return fetch(`${this.baseUrl}/v2/group-12/posts/paginate?page=${page}&limit=${number}&query=${query}`, {
           method: "GET",
             headers: this.headers,
         }).then(onResponse)

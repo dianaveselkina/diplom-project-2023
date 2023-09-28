@@ -9,7 +9,6 @@ import { AllContextData } from "../../context/context";
 import { Delete } from "@mui/icons-material";
 
 export const PostComment = ({ postId, author, created_at, text, ...rest }) => {
-  /* console.log(rest); */
   const { updatePostState } = useContext(AllContextData)
 
   function delComment() {

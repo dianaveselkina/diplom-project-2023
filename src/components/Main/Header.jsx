@@ -10,11 +10,9 @@ import BasicModal from "../Modal/modal";
 import CheckAvatar from "../../Utils/avatar";
 import TransitionsModal from "../Modal/transitModal";
 import s from './style.module.css';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import logo from '../img/logo.svg'
 
 export const Header = () => {
-  /* const { theme, setTheme } = useContext(ThemeContext); */
   const { userData: userInfo, logOut } = useContext({ ...AllContextData });
   const [onpenUserModal, setOpenUserModal] = useState(false);
   const urlpage = useParams();
@@ -35,10 +33,8 @@ export const Header = () => {
         }}
       >
         {<Link to="/">
-          <Button type="primary">
-            <SentimentVerySatisfiedIcon />
-            <EmojiEmotionsIcon />
-          </Button>
+          <Button className={s.logo}>
+            <img src={logo} height="50px" width="50px" /></Button>
         </Link>}
 
         <Container maxWidth='xl'>
@@ -62,7 +58,20 @@ export const Header = () => {
                   >
                     {CheckAvatar(userInfo)}
                   </Avatar>
-                } />
+                }
+                titleTypographyProps={{
+                  color: 'white',
+                }}
+                title={userInfo?.about}
+                subheaderTypographyProps={{
+                  color: 'whitesmoke',
+                }}
+                subheader={userInfo?.name}
+                onClick={() => setOpenUserModal(!onpenUserModal)}
+
+
+
+              />
 
               <Button type="primary">
                 <Login className="" onClick={() => logOut()} />
