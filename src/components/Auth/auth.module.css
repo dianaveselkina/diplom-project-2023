@@ -3,9 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    color: #2162ac;
+    color: rgb(52, 114, 195);
     font-size: 1em;
     font-weight: 800;
+    padding: 100px;
 }
 
 .buttonBlock {
@@ -14,7 +15,6 @@
     margin-top: 100px;
     align-items: center;
     justify-content: center;
-    margin-left: 34px;
     height: 15%;
 }
 
@@ -30,10 +30,9 @@
 }
 .authBtn:hover {
     padding: 8% 8%;
-    background: whitesmoke;
     background: #5fcdd9;
     border-radius: 20px;
-    filter: drop-shadow(0 0 10px gold);
+    filter: drop-shadow(0 10 20px gold);
     transition: .3s;
 }
 .errorBlock {

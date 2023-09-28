@@ -29,7 +29,6 @@ export const Header = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           minWidth: '300px',
-          left: '65px',
         }}
       >
         {<Link to="/">

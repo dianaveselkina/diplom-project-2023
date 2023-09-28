@@ -27,10 +27,6 @@ post__link {
 	max-width: 290px;
 }
 
-.header__logotip {
-  height: 75px;
-  width: 150px;
-}
 .header__logo {
   border: none;
   outline: none;

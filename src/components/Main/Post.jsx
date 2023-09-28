@@ -50,7 +50,7 @@ export const Post = ({
               {CheckAvatar(dataAuthor)}
             </Avatar>
 
-          } sx={{ minHeight: '7em' }}
+          } sx={{ minHeight: '5em' }}
 
           title={dataAuthor.about + ' ' + dataAuthor.name}
 
